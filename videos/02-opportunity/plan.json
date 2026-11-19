@@ -210,8 +210,8 @@
    "say": "Su misión: buscar pistas de agua. Y las encontró: pequeñas esferas de hematita, que solo se forman con agua.",
    "show": "Su misión: buscar pistas de agua. Y las encontró: pequeñas esferas de hematita, que solo se forman con agua.",
    "planos": [
-    "b04",
-    "b15"
+    "b09b",
+    "b13b"
    ],
    "textos": [
     {
@@ -494,7 +494,35 @@
    "orbitR",
    "dust",
    0
+  ],
+  "b09_91": [
+   "push",
+   "none",
+   0
+  ],
+  "b13_132": [
+   "crane",
+   "dust",
+   0
   ]
  },
- "cola": 2.6
+ "cola": 2.6,
+ "elegidas": {
+  "b01": "b01_11",
+  "b02": "b02_22",
+  "b03": "b03_31",
+  "b05": "b05_52",
+  "b06": "b06_62",
+  "b07": "b07_71",
+  "b08": "b08_82",
+  "b09": "b09_92",
+  "b10": "b10_102",
+  "b11": "b11_111",
+  "b12": "b12_122",
+  "b13": "b13_131",
+  "b14": "b14_141",
+  "b16": "b16_162",
+  "b09b": "b09_91",
+  "b13b": "b13_132"
+ }
 }
