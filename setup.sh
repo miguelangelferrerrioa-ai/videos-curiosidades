@@ -5,7 +5,10 @@
 set -uo pipefail
 cd "$(dirname "$0")"
 [ -x .venv/bin/python ] || python3 -m venv .venv
-.venv/bin/pip install -q numpy scipy soundfile && echo "entorno ok"
+.venv/bin/pip install -q numpy scipy soundfile pillow && echo "entorno ok"
+mkdir -p .modelos  # Real-ESRGAN (superresolución x4 de las imágenes, motor/escalar.py)
+[ -f .modelos/realesr-general-x4v3.pth ] || curl -fsSL -o .modelos/realesr-general-x4v3.pth https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesr-general-x4v3.pth
+[ -f .modelos/realesr-general-x4v3.pth ] && echo "escalado ok"
 if [ "${1:-}" = "alinear" ]; then
   .venv/bin/pip install -q librosa kokoro-onnx
   mkdir -p .modelos && cd .modelos

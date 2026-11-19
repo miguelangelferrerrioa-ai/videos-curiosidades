@@ -5,8 +5,8 @@ import json, sys
 D = sys.argv[1]; P = json.load(open(D + '/plan.json'))
 REPO = 'miguelangelferrerrioa-ai/videos-curiosidades'
 MUESTRA = f'https://raw.githubusercontent.com/{REPO}/main/voz/muestra.wav'
-STYLE = P.get('estilo', 'cinematic, photorealistic, dramatic lighting, highly detailed, 35mm film still')
-NEG = P.get('negativo', 'text, letters, watermark, logo, blurry, lowres, cartoon, deformed, people')
+STYLE = P.get('estilo', 'hyperrealistic, cinematic lighting, ultra detailed textures, sharp focus, high dynamic range, professional photography, 35mm film still')
+NEG = P.get('negativo', 'text, letters, watermark, logo, blurry, lowres, jpeg artifacts, noise, oversaturated, cartoon, painting, deformed, people')
 J = [(x['id'], x['prompt'], x.get('seeds', [1, 2]), x.get('neg', '')) for x in P['imagenes']]
 FR = [f['say'] for f in P['frases']]
 VOZ = ('import json, soundfile as sf\n'

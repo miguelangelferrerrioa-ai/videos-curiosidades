@@ -10,3 +10,5 @@ videos/*/timeline.json
 videos/*/seg*
 *.zip
 __pycache__/
+videos/*/imagenes_x4/
+videos/*/*.log

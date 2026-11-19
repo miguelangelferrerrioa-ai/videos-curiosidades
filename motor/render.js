@@ -4,6 +4,9 @@
 const {chromium}=require('playwright');const fs=require('fs');const path=require('path');const {spawn}=require('child_process');
 const DIR=path.resolve(process.argv[2]);const P=JSON.parse(fs.readFileSync(DIR+'/plan.json'));
 const FPS=30,OFF=.35,GAP=P.pausa??.3,TAIL=P.cola??2.2;
+// Resolución de salida: 4k = 2160x3840 (por defecto), 2k = 1440x2560, 1080 = borrador rápido
+const RES={'4k':2,'2k':4/3,'1080':1}[process.env.RES||P.resolucion||'4k'];
+const X4=fs.existsSync(DIR+'/imagenes_x4');
 
 // ---- duración de cada frase ----
 function wavDur(f){const b=fs.readFileSync(f);let i=12,sr=0,ch=1,bits=16;
@@ -50,7 +53,7 @@ F.forEach((l,i)=>{(l.textos||[]).forEach(x=>{const a=L(i,x.t??0);
   if(x.golpe)impacts.push(a);if(x.flash)flashes.push(a);});
  if(l.rojo)red.push([L(i,l.rojo[0]),L(i,l.rojo[1])]);});
 impacts.sort((a,b)=>a-b);
-const TL={shots,words,calls,impacts,flashes,red,total:TOTAL,starts,durs,voice,beatEnd:P.ritmo_hasta!=null?starts[P.ritmo_hasta]:null};
+const TL={shots,words,calls,impacts,flashes,red,total:TOTAL,starts,durs,voice,beatEnd:P.ritmo_hasta!=null?starts[P.ritmo_hasta]:null,res:RES,gs:1};
 fs.writeFileSync(DIR+'/timeline.json',JSON.stringify(TL,null,1));
 
 // ---- cámara por plano (movimiento, partículas, calor) ----
@@ -61,13 +64,15 @@ const camFor=(k,i)=>CAM[k]||CAM[k.split('_')[0]]||[MOVS[i%MOVS.length],'dust',0]
  const br=await chromium.launch({args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});
  const p=await br.newPage({viewport:{width:400,height:400}});p.on('pageerror',e=>console.log('ERR',e.message));
  await p.goto('file://'+__dirname+'/scene.html');
- const imgs={},sh={};shots.forEach((s,i)=>{if(!imgs[s.k])imgs[s.k]={c:'data:image/jpeg;base64,'+fs.readFileSync(`${DIR}/imagenes/${s.k}.jpg`).toString('base64'),
-  d:'data:image/png;base64,'+fs.readFileSync(`${DIR}/imagenes/${s.k}_d.png`).toString('base64')};sh[s.k]=sh[s.k]||camFor(s.k,i);});
- await p.evaluate(([tl,im])=>window.setup(tl,im),[TL,imgs]);
+ const sh={};shots.forEach((s,i)=>{sh[s.k]=sh[s.k]||camFor(s.k,i);});
+ await p.evaluate(tl=>window.setup(tl,{}),TL);
+ for(const k of Object.keys(sh)){ // de una en una (las imágenes x4 pesan varios MB)
+  const c=X4&&fs.existsSync(`${DIR}/imagenes_x4/${k}.jpg`)?`${DIR}/imagenes_x4/${k}.jpg`:`${DIR}/imagenes/${k}.jpg`;
+  await p.evaluate(([k,c,d])=>window.addTex(k,c,d),[k,'data:image/jpeg;base64,'+fs.readFileSync(c).toString('base64'),'data:image/png;base64,'+fs.readFileSync(`${DIR}/imagenes/${k}_d.png`).toString('base64')]);}
  await p.evaluate(cam=>{for(const k in cam)SH[k]=cam[k];},sh);
  if(mode==='t'){const d=await p.evaluate(x=>window.frame(x),+process.argv[4]);fs.writeFileSync(process.argv[5],Buffer.from(d.split(',')[1],'base64'));await br.close();return;}
  const from=+process.argv[3],to=Math.min(+process.argv[4],TOTAL),outp=process.argv[5];
- const ff=spawn('ffmpeg',['-y','-loglevel','error','-f','image2pipe','-framerate',String(FPS),'-c:v','mjpeg','-i','-','-c:v','libx264','-preset','medium','-crf','18','-pix_fmt','yuv420p',outp]);
+ const ff=spawn('ffmpeg',['-y','-loglevel','error','-f','image2pipe','-framerate',String(FPS),'-c:v','mjpeg','-i','-','-c:v','libx264','-preset','medium','-crf',RES>1?'14':'18','-pix_fmt','yuv420p',outp]);
  const N=Math.round((to-from)*FPS);
  for(let f=0;f<N;f++){const d=await p.evaluate(x=>window.frame(x),from+f/FPS);if(!ff.stdin.write(Buffer.from(d.split(',')[1],'base64')))await new Promise(r=>ff.stdin.once('drain',r));}
  ff.stdin.end();await new Promise(r=>ff.on('close',r));await br.close();})();

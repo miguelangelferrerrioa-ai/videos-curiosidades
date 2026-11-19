@@ -3,7 +3,7 @@
 <body><canvas id="gl"></canvas><canvas id="out"></canvas>
 <script id="fs" type="x-shader">#version 300 es
 precision highp float;
-uniform sampler2D C,D;uniform vec2 R;uniform float AR,zoom,dz,rot,heat,blur,ca,T,flash,red;uniform vec2 par,pan;
+uniform sampler2D C,D;uniform vec2 R;uniform float AR,zoom,dz,rot,heat,blur,ca,T,flash,red;uniform vec2 par,pan;uniform float GR;
 out vec4 o;
 float h(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
 float n2(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
@@ -23,14 +23,14 @@ void main(){vec2 uv=gl_FragCoord.xy/R;vec2 q=uv-.5;
  // gradación
  c=pow(c,vec3(1.05));c=c*c*(3.-2.*c)*.35+c*.65;float l=dot(c,vec3(.299,.587,.114));c=mix(vec3(l),c,1.18);
  c*=1.-.55*pow(length((uv-.5)*vec2(1.,1.25)),2.2);
- c+=(h(gl_FragCoord.xy+fract(T*7.)*91.)-.5)*.045;
+ c+=(h(gl_FragCoord.xy+fract(T*7.)*91.)-.5)*GR;
  c=mix(c,vec3(1.,.25,.1)*l*1.6,red);c+=flash;
  o=vec4(c,1);}
 </script>
 <script>
-const W=1080,H=1920,GS=.75;
+const W=1080,H=1920;let RS=1,GS=.75; // W,H: coordenadas de maquetación; RS: escala de salida (2 = 4K)
 const gl=document.getElementById('gl'),out=document.getElementById('out');
-gl.width=W*GS;gl.height=H*GS;out.width=W;out.height=H;
+function resize(){gl.width=Math.round(W*RS*GS);gl.height=Math.round(H*RS*GS);out.width=W*RS;out.height=H*RS;}resize();
 const g=gl.getContext('webgl2',{preserveDrawingBuffer:true});
 const sh=(t,s)=>{const x=g.createShader(t);g.shaderSource(x,s);g.compileShader(x);if(!g.getShaderParameter(x,g.COMPILE_STATUS))throw g.getShaderInfoLog(x);return x;};
 const pr=g.createProgram();g.attachShader(pr,sh(g.VERTEX_SHADER,`#version 300 es
@@ -45,7 +45,8 @@ function mk(im){const t=g.createTexture();g.bindTexture(g.TEXTURE_2D,t);g.pixelS
  g.texImage2D(g.TEXTURE_2D,0,g.RGBA,g.RGBA,g.UNSIGNED_BYTE,im);g.texParameteri(g.TEXTURE_2D,g.TEXTURE_MIN_FILTER,g.LINEAR);
  g.texParameteri(g.TEXTURE_2D,g.TEXTURE_MAG_FILTER,g.LINEAR);g.texParameteri(g.TEXTURE_2D,g.TEXTURE_WRAP_S,g.CLAMP_TO_EDGE);g.texParameteri(g.TEXTURE_2D,g.TEXTURE_WRAP_T,g.CLAMP_TO_EDGE);return t;}
 const load=u=>new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.src=u;});
-window.setup=async(tl,imgs)=>{TL=tl;for(const k in imgs){TEX[k]={c:mk(await load(imgs[k].c)),d:mk(await load(imgs[k].d))};}
+window.addTex=async(k,c,d)=>{TEX[k]={c:mk(await load(c)),d:mk(await load(d))};return k;};
+window.setup=async(tl,imgs)=>{TL=tl;if(tl.res){RS=tl.res;GS=tl.gs??1;resize();}for(const k in imgs){TEX[k]={c:mk(await load(imgs[k].c)),d:mk(await load(imgs[k].d))};}
  await document.fonts.load('900 50px "Inter Display"');return Object.keys(TEX).length;};
 // ---------- cámara ----------
 const ease=x=>x<0?0:x>1?1:x*x*(3-2*x);
@@ -100,7 +101,7 @@ function captions(time){const w=TL.words;let i=w.findIndex(x=>time>=x.a&&time<x.
   const sc=cur?1+.18*Math.max(0,1-(time-x0.a)/.15):1;
   txt(x0.s,x+widths[j]/2,y,84,{s:sc,color:cur?'#ffd23f':said?'#ffffff':'rgba(255,255,255,.75)',a:said?1:.85});x+=widths[j]+sp;});ctx.restore();}
 // ---------- fotograma ----------
-window.frame=time=>{
+window.frame=time=>{ctx.setTransform(RS,0,0,RS,0,0);
  const S=TL.shots;let i=S.findIndex(s=>time>=s.a&&time<s.b);if(i<0)i=S.length-1;const s=S[i];const L=s.b-s.a,t=time-s.a,u=t/L;
  const [mv,pk,heat]=SH[s.k];const m=MOV[mv];const e=ease(u)*.7+u*.3;
  const tin=Math.max(0,1-t/.28),tout=Math.max(0,1-(s.b-time)/.14)*(i<S.length-1?1:0);
@@ -110,7 +111,7 @@ window.frame=time=>{
  const par=L2(m[2],m[3]),pan=L2(m[4],m[5]);
  pan[0]+=sk*.012*Math.sin(time*73);pan[1]+=sk*.012*Math.cos(time*61);
  g.viewport(0,0,gl.width,gl.height);g.activeTexture(g.TEXTURE0);g.bindTexture(g.TEXTURE_2D,TEX[s.k].c);g.activeTexture(g.TEXTURE1);g.bindTexture(g.TEXTURE_2D,TEX[s.k].d);
- g.uniform2f(U('R'),gl.width,gl.height);g.uniform1f(U('AR'),(W/H)/(832/1216));g.uniform1f(U('zoom'),zoom);g.uniform1f(U('dz'),m[8]);
+ g.uniform2f(U('R'),gl.width,gl.height);g.uniform1f(U('GR'),RS>1?.022:.045);g.uniform1f(U('AR'),(W/H)/(832/1216));g.uniform1f(U('zoom'),zoom);g.uniform1f(U('dz'),m[8]);
  g.uniform1f(U('rot'),m[6]+(m[7]-m[6])*e+sk*.01*Math.sin(time*50));g.uniform2f(U('par'),par[0],par[1]);g.uniform2f(U('pan'),pan[0],pan[1]);
  g.uniform1f(U('heat'),heat);g.uniform1f(U('blur'),Math.max(tin*tin*1.6,tout*1.4,sk*.5));g.uniform1f(U('ca'),Math.max(tin,tout,sk)*.012);
  g.uniform1f(U('T'),time);g.uniform1f(U('flash'),flashAt(time)+tin*tin*.12);g.uniform1f(U('red'),TL.red.some(r=>time>=r[0]&&time<r[1])?.35:0);
@@ -120,5 +121,5 @@ window.frame=time=>{
  // barra de progreso arriba
  ctx.fillStyle='rgba(255,255,255,.25)';ctx.fillRect(0,0,W,8);ctx.fillStyle='#ffd23f';ctx.fillRect(0,0,W*time/TL.total,8);
  callouts(time);captions(time);
- return out.toDataURL('image/jpeg',.9);};
+ return out.toDataURL('image/jpeg',RS>1?.93:.9);};
 </script></body></html>

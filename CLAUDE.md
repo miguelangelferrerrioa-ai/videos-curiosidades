@@ -25,11 +25,21 @@ El dueño trabaja **desde el móvil**: responder siempre en español, corto y al
 4. **Elegir imágenes** — con el zip: descomprimir en la carpeta del vídeo, `python3 motor/hojas.py videos/NN-tema`,
    mirar las hojas y poner en `plan.json` → `elegidas` la mejor semilla de cada prompt (`"a03": "a03_20"`).
    Descartar las que no encajan (planetas que parecen otros, objetos imposibles, texto).
-5. **Montar** — `motor/montar.sh videos/NN-tema [zip]` → `videos/NN-tema/final.mp4` (~10 min). Antes, sacar 6–8
+5. **Montar** — `motor/montar.sh videos/NN-tema [zip]` → `videos/NN-tema/final.mp4` en 4K (~15 min de escalado + ~25 min de render). Antes, sacar 6–8
    fotogramas de prueba (`node motor/render.js videos/NN-tema t SEGUNDO salida.jpg`) y revisar que los textos no
    tapen lo importante. Medir el audio con earshot (`earshot measure`). Mandar el vídeo con SendUserFile, más
    título, descripción y hashtags (`/yt-package`, `/yt-seo`).
 6. Commit del `plan.json` (las imágenes, la voz y el vídeo final NO se suben: están en .gitignore).
+
+## Calidad de imagen (obligatorio)
+- Exportar en **4K vertical (2160×3840)**; si no se puede, 2K (1440×2560). Nunca bajar a 1080p voluntariamente
+  (`RES=1080` solo para borradores internos). Comprobar con ffprobe la resolución real antes de entregar.
+- SDXL en la T4 de Colab genera ~832×1216: **no es 4K nativo**. Las imágenes elegidas se escalan ×4 con IA
+  (Real-ESRGAN, `motor/escalar.py`, ~40 s/imagen en CPU) → 3328×4864, y el vídeo se renderiza a 4K a partir de ellas.
+  Decirlo así al entregar: "renderizado en 4K a partir de imágenes escaladas ×4 con IA", nunca "4K nativo".
+- Prompts: hiperrealistas, iluminación cinematográfica, texturas detalladas, sin texto. Descartar imágenes con
+  artefactos, deformaciones o borrosas. Mantener un estilo coherente entre escenas.
+- Movimientos suaves; el grano de película va más bajo en 4K para no ensuciar.
 
 ## Si la voz viene de ElevenLabs en un solo archivo
 Guardarla como `videos/NN-tema/voz/narracion.wav`, `./setup.sh alinear` y
