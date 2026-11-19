@@ -1,6 +1,6 @@
 # Genera la narración con la voz clonada (Chatterbox multilingüe) AQUÍ, en CPU, sin Colab.
 # Uso: .venv-voz/bin/python motor/voz_local.py videos/<n>   -> videos/<n>/voz/vo_XX.wav (una por frase)
-# Instalar una vez: python3 -m venv .venv-voz && .venv-voz/bin/pip install chatterbox-tts   (necesita Hugging Face)
+# Instalar una vez: ./setup.sh voz   (~13 frases x ~26 s en CPU; la red debe permitir los hosts de Hugging Face)
 import json, os, sys, time, torch, soundfile as sf
 from chatterbox.mtl_tts import ChatterboxMultilingualTTS
 D = sys.argv[1]; P = json.load(open(D + '/plan.json')); os.makedirs(D + '/voz', exist_ok=True)

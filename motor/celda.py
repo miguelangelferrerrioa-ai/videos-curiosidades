@@ -17,7 +17,7 @@ VOZ = ('import json, soundfile as sf\n'
        f'    w = m.generate(t, language_id="es", audio_prompt_path="muestra.wav", exaggeration={P.get("exageracion", 0.5)}, cfg_weight={P.get("cfg", 0.5)})\n'
        '    sf.write(f"out/voz/vo_{i:02d}.wav", w.squeeze(0).cpu().numpy(), m.sr)\n'
        '    print("Voz lista", i + 1, "de", len(F))\n')
-solo_voz = '--solo-voz' in sys.argv
+solo_voz = '--solo-voz' in sys.argv; solo_img = '--solo-imagenes' in sys.argv
 L = []
 if not solo_voz:
     L += ['!pip -q install -U diffusers transformers accelerate',
@@ -36,12 +36,12 @@ if not solo_voz:
           'del pipe, dep; torch.cuda.empty_cache()']
 else:
     L += ['import os, json, zipfile, urllib.request', 'os.makedirs("out/voz", exist_ok=True)']
-L += [f'open("frases.json", "w").write(json.dumps({FR!r}))',
+L += [] if solo_img else [f'open("frases.json", "w").write(json.dumps({FR!r}))',
       f'urllib.request.urlretrieve({MUESTRA!r}, "muestra.wav")',
       f'open("voz.py", "w").write({VOZ!r})',
       '!pip -q install chatterbox-tts',
-      '!python voz.py',
-      f'z = zipfile.ZipFile({P.get("nombre", "video") + ".zip"!r}, "w"); _ = [z.write(os.path.join(r, f), os.path.relpath(os.path.join(r, f), "out")) for r, _d, fs in os.walk("out") for f in fs]; z.close()',
+      '!python voz.py']
+L += [f'z = zipfile.ZipFile({P.get("nombre", "video") + ".zip"!r}, "w"); _ = [z.write(os.path.join(r, f), os.path.relpath(os.path.join(r, f), "out")) for r, _d, fs in os.walk("out") for f in fs]; z.close()',
       f'from google.colab import files; files.download({P.get("nombre", "video") + ".zip"!r})']
 out = '\n'.join(L) + '\n'
 assert not any(l.startswith((' ', '\t')) for l in out.splitlines()), 'la celda no puede llevar sangrías'

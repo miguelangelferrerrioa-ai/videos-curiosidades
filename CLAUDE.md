@@ -28,9 +28,10 @@ El dueño trabaja **desde el móvil**: responder siempre en español, corto y al
      4–6 `golpe` en todo el vídeo (el primero arranca la batería, el último es la explosión final).
    - `camara`: por imagen `[movimiento, partículas, calor]`; movimientos: push pull orbitL orbitR crane rush
      drift spin; partículas: embers ash dust acid bubbles sparks none; calor 0–1.
-3. **Celda de Colab** — `python3 motor/celda.py videos/NN-tema` → `celda_colab.txt`. Mandársela en un bloque de
-   código: genera las imágenes + mapas de profundidad (SDXL + Depth Anything) y la narración con la voz clonada
-   (Chatterbox, muestra en `voz/muestra.wav`), y descarga un zip. Va SIN sangrías (el editor del móvil las rompe).
+3. **Celda de Colab** — `python3 motor/celda.py videos/NN-tema --solo-imagenes` → `celda_colab.txt`. Mandársela en un
+   bloque de código: genera las imágenes + mapas de profundidad (SDXL + Depth Anything) y descarga un zip.
+   **La voz se hace aquí**: `./setup.sh voz` y `HF_HUB_DISABLE_XET=1 .venv-voz/bin/python motor/voz_local.py videos/NN-tema`
+   (Chatterbox en CPU con `voz/muestra.wav`, ~6 min), mientras él está en Colab. Va SIN sangrías (el editor del móvil las rompe).
    Recordarle: Entorno de ejecución → T4 GPU. Tarda ~20 min.
 4. **Elegir imágenes** — con el zip: descomprimir en la carpeta del vídeo, `python3 motor/hojas.py videos/NN-tema`,
    mirar las hojas y poner en `plan.json` → `elegidas` la mejor semilla de cada prompt (`"a03": "a03_20"`).

@@ -9,6 +9,10 @@ cd "$(dirname "$0")"
 mkdir -p .modelos  # Real-ESRGAN (superresolución x4 de las imágenes, motor/escalar.py)
 [ -f .modelos/realesr-general-x4v3.pth ] || curl -fsSL -o .modelos/realesr-general-x4v3.pth https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesr-general-x4v3.pth
 [ -f .modelos/realesr-general-x4v3.pth ] && echo "escalado ok"
+if [ "${1:-}" = "voz" ]; then  # clon de voz en CPU (motor/voz_local.py)
+  [ -x .venv-voz/bin/python ] || python3 -m venv .venv-voz
+  .venv-voz/bin/pip install -q chatterbox-tts "setuptools<81" && echo "voz ok"
+fi
 if [ "${1:-}" = "alinear" ]; then
   .venv/bin/pip install -q librosa kokoro-onnx
   mkdir -p .modelos && cd .modelos
