@@ -4,6 +4,7 @@
 | nº | tema | fecha | notas |
 |---|---|---|---|
 | 01 | Venus (curiosidades) | 2026-11-19 | primer vídeo; voz ElevenLabs |
+| 02 | Las últimas palabras del rover Opportunity | 2026-11-19 | formato "final trágico" (Astrum Cassini 14x, Spirit 9,4x) |
 
 ## Mi canal
 https://www.youtube.com/@randomfacts.tv1

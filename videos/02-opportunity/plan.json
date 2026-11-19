@@ -1,0 +1,500 @@
+{
+ "nombre": "opportunity",
+ "titulo": "Las últimas palabras del rover Opportunity",
+ "voz": "clon",
+ "resolucion": "4k",
+ "estilo": "hyperrealistic, NASA style photography, cinematic lighting, ultra detailed textures, sharp focus, high dynamic range, 35mm film still",
+ "imagenes": [
+  {
+   "id": "b01",
+   "prompt": "NASA Opportunity Mars rover with solar panels standing alone on red Martian plains, Meridiani Planum, dusty pink sky, wide shot",
+   "seeds": [
+    11,
+    12
+   ]
+  },
+  {
+   "id": "b02",
+   "prompt": "Mars rover silhouette on a ridge under a darkening dusty Martian sky, sun fading, melancholic mood",
+   "seeds": [
+    21,
+    22
+   ]
+  },
+  {
+   "id": "b03",
+   "prompt": "airbag-cushioned spacecraft bouncing on the red surface of Mars during landing, dust clouds, dramatic",
+   "seeds": [
+    31,
+    32
+   ]
+  },
+  {
+   "id": "b04",
+   "prompt": "extreme macro of tiny grey hematite spherules called blueberries embedded in red Martian rock",
+   "seeds": [
+    41,
+    42
+   ]
+  },
+  {
+   "id": "b05",
+   "prompt": "dust devil whirlwind crossing the plains of Mars in the distance, rover tracks in the foreground",
+   "seeds": [
+    51,
+    52
+   ]
+  },
+  {
+   "id": "b06",
+   "prompt": "close-up of dusty solar panels of a Mars rover glinting in the sunlight, red dust particles",
+   "seeds": [
+    61,
+    62
+   ]
+  },
+  {
+   "id": "b07",
+   "prompt": "long winding rover wheel tracks stretching to the horizon across Martian desert, aerial view",
+   "seeds": [
+    71,
+    72
+   ]
+  },
+  {
+   "id": "b08",
+   "prompt": "Mars rover stuck in soft sand with wheels half buried, lonely, red terrain",
+   "seeds": [
+    81,
+    82
+   ],
+   "neg": "people"
+  },
+  {
+   "id": "b09",
+   "prompt": "massive global dust storm engulfing planet Mars seen from orbit, swirling orange dust clouds",
+   "seeds": [
+    91,
+    92
+   ]
+  },
+  {
+   "id": "b10",
+   "prompt": "Mars surface in a dark dust storm, sky turning almost black, rover barely visible, eerie",
+   "seeds": [
+    101,
+    102
+   ]
+  },
+  {
+   "id": "b11",
+   "prompt": "giant radio telescope dish antenna at night under the stars pointing at the red planet Mars",
+   "seeds": [
+    111,
+    112
+   ],
+   "neg": "people"
+  },
+  {
+   "id": "b12",
+   "prompt": "lonely Mars rover in a valley at sunset on Mars, blue sunset sky of Mars, cinematic",
+   "seeds": [
+    121,
+    122
+   ]
+  },
+  {
+   "id": "b13",
+   "prompt": "planet Mars seen from space, rusty red planet with thin atmosphere, black starry background",
+   "seeds": [
+    131,
+    132
+   ]
+  },
+  {
+   "id": "b14",
+   "prompt": "old vinyl record playing on a turntable in a dark room lit by a dim warm lamp, nostalgic",
+   "seeds": [
+    141,
+    142
+   ],
+   "neg": "people"
+  },
+  {
+   "id": "b15",
+   "prompt": "rover wheel close-up in red Martian dust, detailed aluminium wheel with treads",
+   "seeds": [
+    151,
+    152
+   ]
+  },
+  {
+   "id": "b16",
+   "prompt": "two identical Mars rovers side by side on Mars, twins, wide shot, dusty sky",
+   "seeds": [
+    161,
+    162
+   ]
+  }
+ ],
+ "frases": [
+  {
+   "say": "Iba a durar noventa días. Duró casi quince años.",
+   "show": "Iba a durar 90 días. Duró casi 15 años.",
+   "planos": [
+    "b01",
+    "b13"
+   ],
+   "textos": [
+    {
+     "t": 0.0,
+     "hasta": 0.45,
+     "texto": "90 DÍAS",
+     "color": "blanco"
+    },
+    {
+     "t": 0.5,
+     "texto": "15 AÑOS",
+     "color": "amarillo",
+     "golpe": true,
+     "flash": true
+    }
+   ]
+  },
+  {
+   "say": "Y su último mensaje, traducido a palabras humanas, fue este: mi batería está baja… y está oscureciendo.",
+   "show": "Y su último mensaje, traducido a palabras humanas, fue este: mi batería está baja… y está oscureciendo.",
+   "planos": [
+    "b02",
+    "b10"
+   ],
+   "textos": [
+    {
+     "t": 0.5,
+     "texto": "«MI BATERÍA ESTÁ BAJA…",
+     "pos": "centro",
+     "tam": "pequeno",
+     "color": "crema"
+    },
+    {
+     "t": 0.75,
+     "texto": "…Y ESTÁ OSCURECIENDO»",
+     "pos": "centro2",
+     "tam": "pequeno",
+     "color": "crema"
+    }
+   ]
+  },
+  {
+   "say": "Opportunity aterrizó en Marte en enero de dos mil cuatro, junto a su gemelo, Spirit.",
+   "show": "Opportunity aterrizó en Marte en enero de 2004, junto a su gemelo, Spirit.",
+   "planos": [
+    "b03",
+    "b16"
+   ],
+   "textos": [
+    {
+     "t": 0.1,
+     "texto": "2004",
+     "color": "amarillo"
+    },
+    {
+     "t": 0.65,
+     "texto": "GEMELOS",
+     "tam": "medio",
+     "pos": "arriba2"
+    }
+   ]
+  },
+  {
+   "say": "Su misión: buscar pistas de agua. Y las encontró: pequeñas esferas de hematita, que solo se forman con agua.",
+   "show": "Su misión: buscar pistas de agua. Y las encontró: pequeñas esferas de hematita, que solo se forman con agua.",
+   "planos": [
+    "b04",
+    "b15"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "hasta": 0.4,
+     "texto": "MISIÓN: AGUA",
+     "tam": "medio",
+     "color": "azul"
+    },
+    {
+     "t": 0.45,
+     "texto": "¡ENCONTRADA!",
+     "tam": "medio",
+     "color": "azul",
+     "golpe": true
+    }
+   ]
+  },
+  {
+   "say": "El viento le limpiaba el polvo de los paneles solares… y así siguió, y siguió.",
+   "show": "El viento le limpiaba el polvo de los paneles solares… y así siguió, y siguió.",
+   "planos": [
+    "b05",
+    "b06"
+   ],
+   "textos": []
+  },
+  {
+   "say": "Recorrió más de cuarenta y cinco kilómetros. Más que una maratón.",
+   "show": "Recorrió más de 45 kilómetros. Más que una maratón.",
+   "planos": [
+    "b07"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "texto": "# KM",
+     "contar": 45,
+     "durante": 1.6,
+     "color": "amarillo"
+    },
+    {
+     "t": 0.6,
+     "texto": "> UNA MARATÓN",
+     "pos": "arriba2",
+     "tam": "pequeno"
+    }
+   ]
+  },
+  {
+   "say": "En dos mil diez, Spirit dejó de responder. Opportunity siguió solo.",
+   "show": "En 2010, Spirit dejó de responder. Opportunity siguió solo.",
+   "planos": [
+    "b08",
+    "b01"
+   ],
+   "textos": [
+    {
+     "t": 0.62,
+     "texto": "SOLO",
+     "tam": "enorme",
+     "color": "crema"
+    }
+   ]
+  },
+  {
+   "say": "Pero en junio de dos mil dieciocho, una tormenta de polvo cubrió todo el planeta. El cielo se volvió negro.",
+   "show": "Pero en junio de 2018, una tormenta de polvo cubrió todo el planeta. El cielo se volvió negro.",
+   "planos": [
+    "b09",
+    "b10"
+   ],
+   "textos": [
+    {
+     "t": 0.1,
+     "texto": "2018",
+     "color": "naranja"
+    },
+    {
+     "t": 0.45,
+     "texto": "TORMENTA GLOBAL",
+     "tam": "medio",
+     "color": "naranja",
+     "golpe": true,
+     "flash": true
+    }
+   ]
+  },
+  {
+   "say": "Sin sol, sus baterías se vaciaron. Ese fue su último mensaje.",
+   "show": "Sin sol, sus baterías se vaciaron. Ese fue su último mensaje.",
+   "planos": [
+    "b02"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "texto": "BATERÍA 0 %",
+     "tam": "grande",
+     "color": "rojo"
+    }
+   ]
+  },
+  {
+   "say": "La NASA le envió más de mil órdenes durante ocho meses. Nunca contestó.",
+   "show": "La NASA le envió más de 1.000 órdenes durante 8 meses. Nunca contestó.",
+   "planos": [
+    "b11",
+    "b13"
+   ],
+   "textos": [
+    {
+     "t": 0.1,
+     "texto": "+#",
+     "contar": 1000,
+     "durante": 2.0,
+     "color": "blanco"
+    },
+    {
+     "t": 0.72,
+     "texto": "NUNCA CONTESTÓ",
+     "tam": "medio",
+     "pos": "arriba2",
+     "color": "rojo",
+     "golpe": true
+    }
+   ]
+  },
+  {
+   "say": "Antes de despedirse, le pusieron una última canción: I'll Be Seeing You. Te volveré a ver.",
+   "show": "Antes de despedirse, le pusieron una última canción: I'll Be Seeing You. Te volveré a ver.",
+   "planos": [
+    "b14",
+    "b11"
+   ],
+   "textos": [
+    {
+     "t": 0.45,
+     "texto": "«I'LL BE SEEING YOU»",
+     "tam": "pequeno",
+     "color": "crema",
+     "brillo": false
+    },
+    {
+     "t": 0.8,
+     "texto": "TE VOLVERÉ A VER",
+     "pos": "arriba2",
+     "tam": "pequeno",
+     "color": "amarillo"
+    }
+   ]
+  },
+  {
+   "say": "Sigue allí, en el Valle de la Perseverancia, esperando a que alguien vaya a buscarlo.",
+   "show": "Sigue allí, en el Valle de la Perseverancia, esperando a que alguien vaya a buscarlo.",
+   "planos": [
+    "b12"
+   ],
+   "textos": [
+    {
+     "t": 0.7,
+     "texto": "SIGUE ALLÍ",
+     "pos": "centro",
+     "tam": "grande",
+     "color": "crema",
+     "golpe": true,
+     "flash": true
+    }
+   ]
+  },
+  {
+   "say": "¿Irías tú a rescatarlo? Sígueme para más historias del espacio.",
+   "show": "¿Irías tú a rescatarlo? Sígueme para más historias del espacio.",
+   "planos": [
+    "b12"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "hasta": 0.45,
+     "texto": "¿IRÍAS TÚ?",
+     "pos": "centro",
+     "tam": "grande"
+    },
+    {
+     "t": 0.45,
+     "hasta": "final",
+     "texto": "SÍGUEME",
+     "pos": "centro",
+     "tam": "grande",
+     "color": "amarillo"
+    },
+    {
+     "t": 0.6,
+     "hasta": "final",
+     "texto": "+ HISTORIAS DEL ESPACIO",
+     "pos": "centro3",
+     "tam": "mini"
+    }
+   ]
+  }
+ ],
+ "camara": {
+  "b01": [
+   "push",
+   "dust",
+   0
+  ],
+  "b02": [
+   "pull",
+   "dust",
+   0
+  ],
+  "b03": [
+   "rush",
+   "dust",
+   0
+  ],
+  "b04": [
+   "push",
+   "none",
+   0
+  ],
+  "b05": [
+   "orbitL",
+   "dust",
+   0
+  ],
+  "b06": [
+   "crane",
+   "dust",
+   0
+  ],
+  "b07": [
+   "crane",
+   "none",
+   0
+  ],
+  "b08": [
+   "orbitR",
+   "dust",
+   0
+  ],
+  "b09": [
+   "spin",
+   "none",
+   0
+  ],
+  "b10": [
+   "drift",
+   "ash",
+   0
+  ],
+  "b11": [
+   "crane",
+   "none",
+   0
+  ],
+  "b12": [
+   "pull",
+   "dust",
+   0
+  ],
+  "b13": [
+   "orbitL",
+   "none",
+   0
+  ],
+  "b14": [
+   "push",
+   "dust",
+   0
+  ],
+  "b15": [
+   "push",
+   "dust",
+   0
+  ],
+  "b16": [
+   "orbitR",
+   "dust",
+   0
+  ]
+ },
+ "cola": 2.6
+}
