@@ -7,6 +7,16 @@ El dueño trabaja **desde el móvil**: responder siempre en español, corto y al
 `./setup.sh` (entorno de Python + skills: yt-*, earshot, real-sound, enrutador; copia `canal/voice.md`).
 
 ## El flujo de un vídeo (idea → vídeo)
+0. **Buscar temas virales** — SIEMPRE que diga "nuevo vídeo" (aunque traiga tema, comprobar si tiene tirón):
+   - WebSearch (modo `extended`, varias búsquedas a la vez, en español e inglés): curiosidades/espacio más vistas
+     en Shorts/TikTok/Reels este mes, noticias recientes (descubrimientos, lanzamientos, fenómenos en el cielo
+     esta semana), rastreadores de hashtags (#space, #curiosidades, #espacio).
+   - `/yt-viral` cuando se pueda leer YouTube (ahora youtube.com está bloqueado en la red de la sesión): ranking por
+     múltiplo sobre la mediana de cada canal; si no, pedirle que pegue títulos y visitas de canales de referencia
+     (`canal/temas.md`).
+   - Entregarle **5 propuestas** ordenadas: tema, gancho de la primera frase, por qué tiene tirón (con la evidencia
+     y los enlaces), y si hay noticia de actualidad que lo empuje. Nada de temas ya hechos (`canal/temas.md`).
+     Él elige una; anotarla en `canal/temas.md`.
 1. **Guion** — con `/yt-script` y `canal/voice.md`: gancho en el primer segundo, ~200 palabras (55–60 s),
    frases cortas, datos comprobados (nada inventado). Escribir `say` (números en letra, para la voz) y
    `show` (números en cifras, para los subtítulos).

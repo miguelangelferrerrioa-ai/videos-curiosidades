@@ -1,0 +1,14 @@
+# Temas
+
+## Hechos
+| nº | tema | fecha | notas |
+|---|---|---|---|
+| 01 | Venus (curiosidades) | 2026-11-19 | primer vídeo; voz ElevenLabs |
+
+## Canales de referencia (para /yt-viral)
+(pendiente: añadir canales de curiosidades/espacio que funcionen bien)
+
+## Señales de lo que funciona (búsqueda del 2026-11-19)
+- Comparaciones de escala y "¿qué pasaría si…?" (exoplanetas, nube de Oort, Betelgeuse).
+- Un solo concepto por vídeo, subtítulos grandes sobre fondo oscuro.
+- Actualidad del espacio: Starship, telescopio Nancy Grace Roman, actividad solar.
