@@ -1,0 +1,575 @@
+{
+ "nombre": "venus",
+ "titulo": "Curiosidades de Venus",
+ "voz": "elevenlabs",
+ "frases": [
+  {
+   "say": "Venus es lo más brillante del cielo nocturno, después de la Luna. Los antiguos lo llamaban el lucero del alba.",
+   "show": "Venus es lo más brillante del cielo nocturno, después de la Luna. Los antiguos lo llamaban el lucero del alba.",
+   "planos": [
+    "a02_1",
+    "a01_10"
+   ],
+   "textos": [
+    {
+     "t": 0.0,
+     "texto": "VENUS",
+     "pos": "titulo",
+     "tam": "grande",
+     "color": "crema"
+    },
+    {
+     "t": 0.6,
+     "texto": "EL LUCERO DEL ALBA",
+     "pos": "centro3",
+     "tam": "pequeno"
+    }
+   ]
+  },
+  {
+   "say": "Pero de cerca... es un infierno.",
+   "show": "Pero de cerca… es un infierno.",
+   "planos": [
+    "a03_20"
+   ],
+   "textos": [
+    {
+     "t": 0.55,
+     "texto": "INFIERNO",
+     "tam": "grande",
+     "color": "naranja",
+     "golpe": true,
+     "flash": true
+    }
+   ]
+  },
+  {
+   "say": "Su superficie alcanza cuatrocientos sesenta y cinco grados. Suficiente para derretir el plomo. Más caliente que Mercurio, aunque esté casi el doble de lejos del Sol.",
+   "show": "Su superficie alcanza 465 grados. Suficiente para derretir el plomo. Más caliente que Mercurio, aunque esté casi el doble de lejos del Sol.",
+   "planos": [
+    "a04_100",
+    "a05_30",
+    "a06_40"
+   ],
+   "textos": [
+    {
+     "t": 0.06,
+     "texto": "# °C",
+     "contar": 465,
+     "durante": 1.5,
+     "color": "amarillo"
+    },
+    {
+     "t": 0.33,
+     "hasta": 0.55,
+     "texto": "DERRITE EL PLOMO",
+     "pos": "arriba2",
+     "tam": "pequeno"
+    },
+    {
+     "t": 0.58,
+     "texto": "> MERCURIO",
+     "pos": "arriba2",
+     "tam": "pequeno"
+    }
+   ]
+  },
+  {
+   "say": "Y tiene más volcanes que ningún otro planeta del sistema solar.",
+   "show": "Y tiene más volcanes que ningún otro planeta del sistema solar.",
+   "planos": [
+    "a07_51"
+   ],
+   "textos": [
+    {
+     "t": 0.15,
+     "texto": "Nº1",
+     "color": "amarillo",
+     "golpe": true
+    },
+    {
+     "t": 0.4,
+     "texto": "EN VOLCANES",
+     "pos": "arriba2",
+     "tam": "pequeno"
+    }
+   ]
+  },
+  {
+   "say": "Lo cubren nubes de ácido sulfúrico, con vientos que dan la vuelta al planeta en solo cuatro días. Allí llueve ácido... pero las gotas se evaporan antes de tocar el suelo.",
+   "show": "Lo cubren nubes de ácido sulfúrico, con vientos que dan la vuelta al planeta en solo 4 días. Allí llueve ácido… pero las gotas se evaporan antes de tocar el suelo.",
+   "planos": [
+    "a08_201",
+    "a09_61",
+    "a08_201"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "hasta": 0.3,
+     "texto": "ÁCIDO SULFÚRICO",
+     "tam": "medio",
+     "color": "acido"
+    },
+    {
+     "t": 0.32,
+     "hasta": 0.6,
+     "texto": "VIENTOS",
+     "tam": "medio"
+    },
+    {
+     "t": 0.48,
+     "hasta": 0.6,
+     "texto": "4 DÍAS",
+     "pos": "arriba2",
+     "color": "amarillo"
+    },
+    {
+     "t": 0.63,
+     "texto": "LLUEVE ÁCIDO",
+     "tam": "medio",
+     "color": "acido"
+    }
+   ]
+  },
+  {
+   "say": "Y su atmósfera atrapa el calor, como un invernadero descontrolado.",
+   "show": "Y su atmósfera atrapa el calor, como un invernadero descontrolado.",
+   "planos": [
+    "a10_71"
+   ],
+   "textos": [
+    {
+     "t": 0.5,
+     "texto": "EFECTO",
+     "tam": "medio"
+    },
+    {
+     "t": 0.6,
+     "texto": "INVERNADERO",
+     "pos": "arriba2",
+     "tam": "medio",
+     "color": "naranja"
+    }
+   ]
+  },
+  {
+   "say": "En el suelo, la presión es noventa veces la de la Tierra. Como estar a casi un kilómetro bajo el mar.",
+   "show": "En el suelo, la presión es 90 veces la de la Tierra. Como estar a casi un kilómetro bajo el mar.",
+   "planos": [
+    "a11_301",
+    "a12_80"
+   ],
+   "textos": [
+    {
+     "t": 0.3,
+     "texto": "×90",
+     "tam": "enorme",
+     "golpe": true,
+     "flash": true
+    },
+    {
+     "t": 0.65,
+     "texto": "≈ 1 KM BAJO EL MAR",
+     "pos": "arriba2",
+     "tam": "pequeno",
+     "color": "azul"
+    }
+   ]
+  },
+  {
+   "say": "Un día en Venus dura más que su año: doscientos cuarenta y tres días en girar sobre sí mismo, y solo doscientos veinticinco en dar la vuelta al Sol.",
+   "show": "Un día en Venus dura más que su año: 243 días en girar sobre sí mismo, y solo 225 en dar la vuelta al Sol.",
+   "planos": [
+    "a13_400",
+    "a14_90"
+   ],
+   "textos": [
+    {
+     "t": 0.3,
+     "texto": "1 DÍA = 243 DÍAS",
+     "tam": "medio",
+     "color": "rosa"
+    },
+    {
+     "t": 0.75,
+     "texto": "1 AÑO = 225 DÍAS",
+     "pos": "arriba2",
+     "tam": "medio",
+     "color": "amarillo"
+    }
+   ]
+  },
+  {
+   "say": "Y además, gira al revés. Allí, el Sol sale por el oeste.",
+   "show": "Y además, gira al revés. Allí, el Sol sale por el oeste.",
+   "planos": [
+    "a15_501"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "texto": "↻ AL REVÉS",
+     "tam": "medio"
+    },
+    {
+     "t": 0.6,
+     "texto": "SALE POR EL OESTE",
+     "pos": "arriba2",
+     "tam": "pequeno",
+     "color": "amarillo"
+    }
+   ]
+  },
+  {
+   "say": "La sonda soviética Venera trece aguantó solo ciento veintisiete minutos, antes de ser aplastada y derretida. Pero antes, envió las primeras fotos en color de su superficie.",
+   "show": "La sonda soviética Venera 13 aguantó solo 127 minutos, antes de ser aplastada y derretida. Pero antes, envió las primeras fotos en color de su superficie.",
+   "planos": [
+    "a16_111",
+    "a17_120",
+    "a16_111"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "hasta": 0.66,
+     "texto": "# MIN",
+     "contar": 127,
+     "durante": 2.9
+    },
+    {
+     "t": 0.12,
+     "hasta": 0.66,
+     "texto": "VENERA 13 · 1982",
+     "pos": "arriba2",
+     "tam": "pequeno",
+     "color": "crema",
+     "brillo": false
+    },
+    {
+     "t": 0.6,
+     "hasta": 0.62,
+     "texto": " ",
+     "golpe": true,
+     "flash": true
+    },
+    {
+     "t": 0.7,
+     "texto": "1ª FOTO EN COLOR",
+     "tam": "medio",
+     "color": "amarillo"
+    }
+   ],
+   "rojo": [
+    0.58,
+    0.68
+   ]
+  },
+  {
+   "say": "Casi del mismo tamaño que la Tierra... Venus es nuestro gemelo infernal.",
+   "show": "Casi del mismo tamaño que la Tierra… Venus es nuestro gemelo infernal.",
+   "planos": [
+    "a18_130",
+    "a19_140"
+   ],
+   "textos": [
+    {
+     "t": 0.62,
+     "texto": "GEMELO",
+     "pos": "centro",
+     "tam": "grande"
+    },
+    {
+     "t": 0.78,
+     "texto": "INFERNAL",
+     "pos": "centro2",
+     "tam": "grande",
+     "color": "naranja",
+     "golpe": true,
+     "flash": true
+    }
+   ]
+  },
+  {
+   "say": "¿Te irías a vivir allí? Sígueme para más curiosidades del espacio.",
+   "show": "¿Te irías a vivir allí? Sígueme para más curiosidades del espacio.",
+   "planos": [
+    "a01_10"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "hasta": 0.45,
+     "texto": "¿TE IRÍAS?",
+     "pos": "centro",
+     "tam": "grande"
+    },
+    {
+     "t": 0.45,
+     "hasta": "final",
+     "texto": "SÍGUEME",
+     "pos": "centro",
+     "tam": "grande",
+     "color": "amarillo"
+    },
+    {
+     "t": 0.6,
+     "hasta": "final",
+     "texto": "+ CURIOSIDADES DEL ESPACIO",
+     "pos": "centro3",
+     "tam": "mini"
+    }
+   ]
+  }
+ ],
+ "camara": {
+  "a02_1": [
+   "crane",
+   "dust",
+   0
+  ],
+  "a01_10": [
+   "push",
+   "dust",
+   0
+  ],
+  "a03_20": [
+   "rush",
+   "embers",
+   1
+  ],
+  "a04_100": [
+   "orbitL",
+   "embers",
+   1
+  ],
+  "a05_30": [
+   "push",
+   "embers",
+   1
+  ],
+  "a06_40": [
+   "orbitR",
+   "none",
+   0
+  ],
+  "a07_51": [
+   "crane",
+   "ash",
+   0.6
+  ],
+  "a08_201": [
+   "drift",
+   "acid",
+   0.3
+  ],
+  "a09_61": [
+   "spin",
+   "none",
+   0
+  ],
+  "a10_71": [
+   "push",
+   "dust",
+   0.8
+  ],
+  "a11_301": [
+   "pull",
+   "ash",
+   0.4
+  ],
+  "a12_80": [
+   "crane",
+   "bubbles",
+   0
+  ],
+  "a13_400": [
+   "orbitL",
+   "none",
+   0
+  ],
+  "a14_90": [
+   "push",
+   "sparks",
+   0.5
+  ],
+  "a15_501": [
+   "crane",
+   "dust",
+   0.5
+  ],
+  "a16_111": [
+   "orbitR",
+   "ash",
+   0.7
+  ],
+  "a17_120": [
+   "rush",
+   "sparks",
+   1
+  ],
+  "a18_130": [
+   "pull",
+   "none",
+   0
+  ],
+  "a19_140": [
+   "push",
+   "embers",
+   0.6
+  ]
+ },
+ "cola": 2.6,
+ "nota": "Imágenes de la tanda 2 (venus2.zip). Voz: ElevenLabs en un solo archivo, alineado con motor/alinear.py.",
+ "imagenes": [
+  {
+   "id": "a01",
+   "prompt": "the planet Venus in space, close-up, thick swirling cream and orange clouds, dramatic rim light, black space",
+   "seeds": [
+    10,
+    11
+   ]
+  },
+  {
+   "id": "a02",
+   "prompt": "twilight sky over dark rolling hills, the planet Venus shining as a brilliant star low above the horizon, deep blue to orange gradient sky",
+   "seeds": [
+    1
+   ]
+  },
+  {
+   "id": "a03",
+   "prompt": "hellish landscape on Venus, massive volcanic eruption, walls of fire and lava, red glowing sky",
+   "seeds": [
+    20,
+    21
+   ]
+  },
+  {
+   "id": "a04",
+   "prompt": "surface of planet Venus, volcanic plains with glowing rivers of lava, thick orange hazy sky, extreme heat shimmer",
+   "seeds": [
+    100
+   ]
+  },
+  {
+   "id": "a05",
+   "prompt": "extreme close-up macro of glowing molten lava cracks in black basalt rock, intense heat",
+   "seeds": [
+    30,
+    31
+   ]
+  },
+  {
+   "id": "a06",
+   "prompt": "grey cratered planet Mercury close to the huge blazing Sun, space",
+   "seeds": [
+    40,
+    41
+   ]
+  },
+  {
+   "id": "a07",
+   "prompt": "aerial view of countless volcanoes on Venus surface, shield volcanoes stretching to the horizon, orange haze",
+   "seeds": [
+    50,
+    51
+   ]
+  },
+  {
+   "id": "a08",
+   "prompt": "dense swirling clouds of yellow sulfuric acid in the atmosphere of Venus, sunlight filtering through toxic yellow haze",
+   "seeds": [
+    201
+   ]
+  },
+  {
+   "id": "a09",
+   "prompt": "giant hurricane vortex of yellow clouds at the pole of planet Venus seen from orbit, spiral storm",
+   "seeds": [
+    60,
+    61
+   ]
+  },
+  {
+   "id": "a10",
+   "prompt": "sunlight rays trapped inside thick glowing orange haze, greenhouse effect, oppressive heat, volumetric light",
+   "seeds": [
+    70,
+    71
+   ]
+  },
+  {
+   "id": "a11",
+   "prompt": "crushing dense atmosphere on the surface of Venus, thick dark orange fog, dark basalt rocks, oppressive heavy air",
+   "seeds": [
+    301
+   ]
+  },
+  {
+   "id": "a12",
+   "prompt": "deep dark ocean abyss, faint light rays from far above, crushing depth, particles floating",
+   "seeds": [
+    80,
+    81
+   ],
+   "neg": "fish, submarine"
+  },
+  {
+   "id": "a13",
+   "prompt": "the planet Venus in space next to the bright Sun, thick cream colored clouds, black starry space",
+   "seeds": [
+    400
+   ]
+  },
+  {
+   "id": "a14",
+   "prompt": "close-up of the Sun surface with huge solar flares and prominences, space",
+   "seeds": [
+    90,
+    91
+   ]
+  },
+  {
+   "id": "a15",
+   "prompt": "dim blurry sun rising above the horizon of Venus, dark orange sky, rocky volcanic landscape, eerie atmosphere",
+   "seeds": [
+    501
+   ]
+  },
+  {
+   "id": "a16",
+   "prompt": "1980s soviet Venera lander probe, spherical metal body with a round disc on top and a ring-shaped landing collar, standing on flat cracked rock slabs of Venus, orange sky",
+   "seeds": [
+    110,
+    111
+   ],
+   "neg": "wheels, rover, legs"
+  },
+  {
+   "id": "a17",
+   "prompt": "extreme close-up of metal melting and glowing red hot, dripping molten metal, sparks",
+   "seeds": [
+    120,
+    121
+   ]
+  },
+  {
+   "id": "a18",
+   "prompt": "exactly two planets in space: blue planet Earth on the left and cream yellow planet Venus on the right, same size, black background with stars",
+   "seeds": [
+    130,
+    131
+   ],
+   "neg": "moon, third planet"
+  },
+  {
+   "id": "a19",
+   "prompt": "planet Venus engulfed in fire, hellish burning planet in space, glowing red and orange, apocalyptic",
+   "seeds": [
+    140,
+    141
+   ]
+  }
+ ]
+}

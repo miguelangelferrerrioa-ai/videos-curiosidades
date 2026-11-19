@@ -1,0 +1,12 @@
+.venv/
+.modelos/
+node_modules/
+videos/*/imagenes/
+videos/*/voz/
+videos/*/hojas/
+videos/*/final.mp4
+videos/*/mezcla.wav
+videos/*/timeline.json
+videos/*/seg*
+*.zip
+__pycache__/

@@ -1,0 +1,40 @@
+# Vídeos de curiosidades — instrucciones para Claude
+
+Canal de vídeos cortos verticales (TikTok / Reels / Shorts) de curiosidades, en español, con narrador en off.
+El dueño trabaja **desde el móvil**: responder siempre en español, corto y al grano. Él da una idea; Claude hace el resto.
+
+## Al empezar una sesión
+`./setup.sh` (entorno de Python + skills: yt-*, earshot, real-sound, enrutador; copia `canal/voice.md`).
+
+## El flujo de un vídeo (idea → vídeo)
+1. **Guion** — con `/yt-script` y `canal/voice.md`: gancho en el primer segundo, ~200 palabras (55–60 s),
+   frases cortas, datos comprobados (nada inventado). Escribir `say` (números en letra, para la voz) y
+   `show` (números en cifras, para los subtítulos).
+2. **Plan** — `videos/NN-tema/plan.json` (copiar la estructura de `videos/01-venus/plan.json`):
+   - `imagenes`: ~18–20 prompts en inglés para SDXL, 2 semillas cada uno; planos variados (gran plano, detalle,
+     espacio, superficie), nada de texto ni personas. Formato vertical.
+   - `frases`: cada una con `say`, `show`, `planos` (1–3 imágenes, cortes cada 2–3 s) y `textos`
+     (cifras grandes: `t` = fracción de la frase, `hasta`, `pos`, `tam`, `color`, `contar`, `golpe`, `flash`).
+     4–6 `golpe` en todo el vídeo (el primero arranca la batería, el último es la explosión final).
+   - `camara`: por imagen `[movimiento, partículas, calor]`; movimientos: push pull orbitL orbitR crane rush
+     drift spin; partículas: embers ash dust acid bubbles sparks none; calor 0–1.
+3. **Celda de Colab** — `python3 motor/celda.py videos/NN-tema` → `celda_colab.txt`. Mandársela en un bloque de
+   código: genera las imágenes + mapas de profundidad (SDXL + Depth Anything) y la narración con la voz clonada
+   (Chatterbox, muestra en `voz/muestra.wav`), y descarga un zip. Va SIN sangrías (el editor del móvil las rompe).
+   Recordarle: Entorno de ejecución → T4 GPU. Tarda ~20 min.
+4. **Elegir imágenes** — con el zip: descomprimir en la carpeta del vídeo, `python3 motor/hojas.py videos/NN-tema`,
+   mirar las hojas y poner en `plan.json` → `elegidas` la mejor semilla de cada prompt (`"a03": "a03_20"`).
+   Descartar las que no encajan (planetas que parecen otros, objetos imposibles, texto).
+5. **Montar** — `motor/montar.sh videos/NN-tema [zip]` → `videos/NN-tema/final.mp4` (~10 min). Antes, sacar 6–8
+   fotogramas de prueba (`node motor/render.js videos/NN-tema t SEGUNDO salida.jpg`) y revisar que los textos no
+   tapen lo importante. Medir el audio con earshot (`earshot measure`). Mandar el vídeo con SendUserFile, más
+   título, descripción y hashtags (`/yt-package`, `/yt-seo`).
+6. Commit del `plan.json` (las imágenes, la voz y el vídeo final NO se suben: están en .gitignore).
+
+## Si la voz viene de ElevenLabs en un solo archivo
+Guardarla como `videos/NN-tema/voz/narracion.wav`, `./setup.sh alinear` y
+`python motor/alinear.py videos/NN-tema` → `voz/tiempos.json` (alinea cada frase por DTW contra una lectura de
+referencia). render.js usa `tiempos.json` si existe.
+
+## Límites de esta máquina
+Sin GPU y sin acceso a Hugging Face: imágenes y voz se generan en Colab. El render (WebGL por software) va aquí.
