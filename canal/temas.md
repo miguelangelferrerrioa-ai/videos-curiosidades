@@ -5,6 +5,11 @@
 |---|---|---|---|
 | 01 | Venus (curiosidades) | 2026-11-19 | primer vídeo; voz ElevenLabs |
 
+## Mi canal
+(pendiente: enlace)
+REGLA: analizar SOLO los vídeos hechos con este sistema (los de la tabla "Hechos", desde el 2026-11-19).
+Los vídeos anteriores del canal NO se analizan nunca (ni /yt-audit, ni /yt-viral, ni /yt-retention).
+
 ## Canales de referencia (para /yt-viral)
 (pendiente: añadir canales de curiosidades/espacio que funcionen bien)
 
