@@ -11,9 +11,9 @@ El dueño trabaja **desde el móvil**: responder siempre en español, corto y al
    - WebSearch (modo `extended`, varias búsquedas a la vez, en español e inglés): curiosidades/espacio más vistas
      en Shorts/TikTok/Reels este mes, noticias recientes (descubrimientos, lanzamientos, fenómenos en el cielo
      esta semana), rastreadores de hashtags (#space, #curiosidades, #espacio).
-   - `/yt-viral` cuando se pueda leer YouTube (ahora youtube.com está bloqueado en la red de la sesión): ranking por
-     múltiplo sobre la mediana de cada canal; si no, pedirle que pegue títulos y visitas de canales de referencia
-     (`canal/temas.md`).
+   - `/yt-viral` con datos reales de YouTube: `.venv/bin/yt-dlp --flat-playlist -J --playlist-end 40
+     "https://www.youtube.com/@CANAL/shorts"` sobre los canales de referencia (`canal/temas.md`) y los que salgan en
+     la búsqueda; ranking por múltiplo sobre la mediana de cada canal.
    - Entregarle **5 propuestas** ordenadas: tema, gancho de la primera frase, por qué tiene tirón (con la evidencia
      y los enlaces), y si hay noticia de actualidad que lo empuje. Nada de temas ya hechos (`canal/temas.md`).
      Él elige una; anotarla en `canal/temas.md`.
@@ -57,4 +57,4 @@ Guardarla como `videos/NN-tema/voz/narracion.wav`, `./setup.sh alinear` y
 referencia). render.js usa `tiempos.json` si existe.
 
 ## Límites de esta máquina
-Sin GPU y sin acceso a Hugging Face: imágenes y voz se generan en Colab. El render (WebGL por software) va aquí.
+Sin GPU: imágenes y voz se generan en Colab. La red permite YouTube y Hugging Face (desde el 2026-11-19). El render (WebGL por software) va aquí.
