@@ -8,16 +8,9 @@ El dueño trabaja **desde el móvil**: responder siempre en español, corto y al
 systematic-debugging, caveman; copia `canal/voice.md`).
 
 ## El flujo de un vídeo (idea → vídeo)
-0. **Buscar temas virales** — SIEMPRE que diga "nuevo vídeo" (aunque traiga tema, comprobar si tiene tirón):
-   - WebSearch (modo `extended`, varias búsquedas a la vez, en español e inglés): curiosidades/espacio más vistas
-     en Shorts/TikTok/Reels este mes, noticias recientes (descubrimientos, lanzamientos, fenómenos en el cielo
-     esta semana), rastreadores de hashtags (#space, #curiosidades, #espacio).
-   - `/yt-viral` con datos reales de YouTube: `.venv/bin/yt-dlp --flat-playlist -J --playlist-end 40
-     "https://www.youtube.com/@CANAL/shorts"` sobre los canales de referencia (`canal/temas.md`) y los que salgan en
-     la búsqueda; ranking por múltiplo sobre la mediana de cada canal.
-   - Entregarle **5 propuestas** ordenadas: tema, gancho de la primera frase, por qué tiene tirón (con la evidencia
-     y los enlaces), y si hay noticia de actualidad que lo empuje. Nada de temas ya hechos (`canal/temas.md`).
-     Él elige una; anotarla en `canal/temas.md`.
+0. **Buscar temas virales** — SIEMPRE que diga "nuevo vídeo" (aunque traiga tema): skill `/tendencias`
+   (`motor/tendencias.py` con datos reales de YouTube + noticias con WebSearch) → 5 propuestas con su evidencia.
+   Él elige una; anotarla en `canal/temas.md`.
 1. **Guion** — gancho con `/viral-hooks` (lote de 6–10 en 3 capas: imagen, voz y texto en pantalla; elegir el mejor),
    resto con `/yt-script` y `canal/voice.md`: gancho en el primer segundo, ~200 palabras (55–60 s),
    frases cortas, datos comprobados (nada inventado). Escribir `say` (números en letra, para la voz) y

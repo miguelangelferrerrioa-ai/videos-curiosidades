@@ -30,6 +30,6 @@ git clone -q --depth 1 https://github.com/Jakeschincariol/youtube-agent-skill.gi
 git clone -q --depth 1 https://github.com/Leonxlnx/earshot.git "$T/ea" && cp -r "$T"/ea/skills/earshot "$SK/" && echo "skills earshot ok"
 git clone -q --depth 1 https://github.com/obra/superpowers.git "$T/sp" && cp -r "$T"/sp/skills/verification-before-completion "$T"/sp/skills/systematic-debugging "$SK/" && echo "skills superpowers ok"
 git clone -q --depth 1 https://github.com/JuliusBrussee/caveman.git "$T/cv" && cp -r "$T"/cv/skills/caveman "$SK/" && echo "skill caveman ok"
-cp -r skills/viral-hooks skills/viral-captions-and-ctas "$SK/" && echo "skills viral ok"
+cp -r skills/viral-hooks skills/viral-captions-and-ctas skills/tendencias "$SK/" && echo "skills viral ok"
 cp canal/voice.md "${HOME}/.claude/youtube/voice.md"
 rm -rf "$T"
