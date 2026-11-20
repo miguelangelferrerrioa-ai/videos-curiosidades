@@ -81,10 +81,10 @@ for(let i=0;i<calls.length;i++)for(let j=i+1;j<calls.length;j++){const A=calls[i
  if(Math.abs(A.y-B.y)<(A.size+B.size)*.45&&B.a<A.b)A.b=Math.max(A.a+.2,B.a-.05);}
 // ---- mapas: globo terráqueo con países reales (Natural Earth), vuelo de cámara, ruta y marcadores ----
 // "mapa":{"vuela":[[lon,lat,zoom],...],"ruta":[[lon,lat],...],"ruta_t":[0.15,0.85],"marcas":[{"en":[lon,lat],"texto":"...","t":0.3}],
-//         "t":0,"frases":1}   (t, ruta_t y marcas.t = fracción de la ventana del mapa; zoom 1 = globo entero)
+//         "t":0,"hasta":0.5,"frases":1}   (t/hasta = fracción de la frase; ruta_t y marcas.t = fracción de la ventana del mapa; zoom 1 = globo entero)
 const shotA=i=>i?starts[i]-.12:0,shotB=i=>i<F.length-1?starts[i+1]-.12:TOTAL;
 const maps=[];F.forEach((l,i)=>{const m=l.mapa;if(!m)return;
- const a=m.t?L(i,m.t):shotA(i),b=shotB(Math.min(F.length-1,i+(m.frases??1)-1)),at=f=>a+(b-a)*f;const rt=m.ruta_t||[.15,.85];
+ const a=m.t?L(i,m.t):shotA(i),b=m.hasta!=null?L(i,m.hasta):shotB(Math.min(F.length-1,i+(m.frases??1)-1)),at=f=>a+(b-a)*f;const rt=m.ruta_t||[.15,.85];
  maps.push({a,b,vuela:m.vuela||[[0,20,1]],ruta:m.ruta||null,ra:at(rt[0]),rb:at(rt[1]),
   marcas:(m.marcas||[]).map(x=>({en:x.en,texto:x.texto||'',a:at(x.t??.3)}))});});
 const TL={shots,words,calls,impacts,flashes,red,maps,total:TOTAL,starts,durs,voice,beatEnd:P.ritmo_hasta!=null?starts[P.ritmo_hasta]:null,res:RES,gs:1};

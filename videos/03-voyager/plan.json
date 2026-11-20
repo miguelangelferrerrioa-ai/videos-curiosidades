@@ -288,7 +288,32 @@
      "durante": 1.4,
      "color": "blanco"
     }
-   ]
+   ],
+   "mapa": {
+    "hasta": 0.45,
+    "vuela": [
+     [
+      -40,
+      32,
+      1
+     ],
+     [
+      -80.58,
+      28.58,
+      2.6
+     ]
+    ],
+    "marcas": [
+     {
+      "en": [
+       -80.58,
+       28.58
+      ],
+      "texto": "CABO CAÑAVERAL",
+      "t": 0.55
+     }
+    ]
+   }
   },
   {
    "say": "Su ordenador tiene sesenta y nueve kilobaits de memoria. Menos que una sola foto de tu móvil.",
@@ -612,5 +637,10 @@
   "c17b": "c17_171",
   "c18": "c18_182",
   "c19": "c19_191"
+ },
+ "musica": {
+  "prompt": "cinematic space ambient soundtrack, emotional and epic, slow pulsing synth arpeggio, soft felt piano, warm analog pads, deep sub bass, gentle drums building to a powerful climax, interstellar mood, instrumental",
+  "bpm": 100,
+  "seed": 7
  }
 }

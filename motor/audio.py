@@ -78,10 +78,17 @@ else:
     for f, s_ in zip(vd['lines'], vd['starts']): put(vo, load(V + '/' + f), s_)
 vo = hp(vo, 80); vo /= np.abs(vo).max()
 env = np.convolve(np.abs(vo), np.ones(int(.2 * SR)) / (.2 * SR), 'same'); env = np.minimum(1, env * 10)
-for dl, g in ((.29, .25), (.53, .15)):
-    d = int(dl * SR); music[d:] += music[:-d] * g
-bed = music + drums * .9; bed /= np.abs(bed).max()
-mix = vo + bed * (.42 - .27 * env) + (sfx / np.abs(sfx).max() * .7 if np.abs(sfx).max() > 0 else 0)
+# Música con IA (ACE-Step, motor/celda.py --musica) si plan.json -> "musica": {"elegida": "m_0"}; si no, la sintetizada
+PL = json.load(open(V + '/plan.json')); MU = (PL.get('musica') or {}).get('elegida')
+if MU and os.path.exists(f'{V}/musica/{MU}.wav'):
+    bed = np.zeros(N); x = load(f'{V}/musica/{MU}.wav')[:N]; bed[:len(x)] = x
+    fi = int(.4 * SR); bed[:fi] *= np.linspace(0, 1, fi); bed /= np.abs(bed).max(); hi, lo = .36, .24
+    print('música:', MU)
+else:
+    for dl, g in ((.29, .25), (.53, .15)):
+        d = int(dl * SR); music[d:] += music[:-d] * g
+    bed = music + drums * .9; bed /= np.abs(bed).max(); hi, lo = .42, .27
+mix = vo + bed * (hi - lo * env) + (sfx / np.abs(sfx).max() * .7 if np.abs(sfx).max() > 0 else 0)
 mix[-int(1.2 * SR):] *= np.linspace(1, 0, int(1.2 * SR))
 mix = np.tanh(mix * 1.1) / np.tanh(1.1); mix /= np.abs(mix).max() * 1.03
 sf.write(V + '/mezcla.wav', mix, SR); print('mezcla ok', round(D, 1), 's')

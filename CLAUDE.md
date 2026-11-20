@@ -25,10 +25,11 @@ systematic-debugging, caveman; copia `canal/voice.md`).
      lanzamientos, caídas de meteoritos, eclipses…). `vuela`: puntos `[lon, lat, zoom]` por los que pasa la cámara
      (zoom 1 = globo entero, 3 = un país; un solo punto = gira despacio); `ruta`: `[[lon, lat], …]` que se dibuja
      entre `ruta_t` (fracciones, por defecto `[0.15, 0.85]`); `marcas`: `[{"en": [lon, lat], "texto": "CABO CAÑAVERAL", "t": 0.6}]`;
-     `frases`: cuántas frases dura (1). Las etiquetas no salen en la franja de los textos grandes de arriba.
+     `t`/`hasta`: desde/hasta qué fracción de la frase (por defecto la frase entera); `frases`: cuántas frases dura (1). Las etiquetas no salen en la franja de los textos grandes de arriba.
      Coordenadas: buscarlas, nunca inventarlas.
    - `camara`: por imagen `[movimiento, partículas, calor]`; movimientos: push pull orbitL orbitR crane rush
      drift spin; partículas: embers ash dust acid bubbles sparks none; calor 0–1.
+   - `musica`: `{"prompt": "…en inglés, instrumental…", "bpm": 100, "seed": 7}` → música con IA (paso 3b). Tras elegir: `"elegida": "m_0"`.
 3. **Celda de Colab** — `python3 motor/celda.py videos/NN-tema --solo-imagenes` → `celda_colab.txt`. Mandársela en un
    bloque de código: genera las imágenes + mapas de profundidad (SDXL + Depth Anything) y descarga un zip.
    **La voz se hace aquí**: `./setup.sh voz` y `HF_HUB_DISABLE_XET=1 .venv-voz/bin/python motor/voz_local.py videos/NN-tema`
@@ -36,6 +37,9 @@ systematic-debugging, caveman; copia `canal/voice.md`).
    se repite (3 intentos) y guarda los tiempos reales de cada palabra en `voz/palabras.json` (subtítulos y textos
    sincronizados al milisegundo). Palabras en inglés: escribir en `say` cómo se pronuncian en español. Va SIN sangrías (el editor del móvil las rompe).
    Recordarle: Entorno de ejecución → T4 GPU. Tarda ~20 min.
+3b. **Música con IA** — `python3 motor/celda.py videos/NN-tema --musica` → `celda_musica.txt` (ACE-Step 1.5, licencia MIT: se
+   puede monetizar). Va en un entorno de Colab NUEVO (T4), aparte de las imágenes. Saca 2 versiones en `musica.zip`: descomprimir
+   en la carpeta del vídeo, escucharlas con earshot y poner la mejor en `musica.elegida`. Sin música elegida, `audio.py` usa la sintetizada.
 4. **Elegir imágenes** — con el zip: descomprimir en la carpeta del vídeo, `python3 motor/hojas.py videos/NN-tema`,
    mirar las hojas y poner en `plan.json` → `elegidas` la mejor semilla de cada prompt (`"a03": "a03_20"`).
    Descartar las que no encajan (planetas que parecen otros, objetos imposibles, texto).

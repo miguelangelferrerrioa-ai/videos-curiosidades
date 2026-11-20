@@ -17,6 +17,45 @@ VOZ = ('import json, soundfile as sf\n'
        f'    w = m.generate(t, language_id="es", audio_prompt_path="muestra.wav", exaggeration={P.get("exageracion", 0.5)}, cfg_weight={P.get("cfg", 0.5)})\n'
        '    sf.write(f"out/voz/vo_{i:02d}.wav", w.squeeze(0).cpu().numpy(), m.sr)\n'
        '    print("Voz lista", i + 1, "de", len(F))\n')
+if '--musica' in sys.argv:
+    # Música con IA: ACE-Step 1.5 (licencia MIT, uso comercial permitido), modelo turbo 2B, solo instrumental.
+    # Celda APARTE (entorno nuevo de Colab): uv crea su propio entorno con la versión de torch que fija ACE-Step.
+    # Saca 2 versiones (semillas seguidas) en musica.zip -> descomprimir en la carpeta del vídeo (musica/m_0.wav, m_1.wav)
+    # y elegir una en plan.json -> "musica": {"elegida": "m_1"}. audio.py la usa en vez de la música sintetizada.
+    import os
+    M = P.get('musica') or {}
+    assert M.get('prompt'), 'falta "musica": {"prompt": "..."} en plan.json'
+    TLp = D + '/timeline.json'
+    DUR = round(json.load(open(TLp))['total'] + 3) if os.path.exists(TLp) else 70
+    CFG = {'prompt': M['prompt'], 'bpm': M.get('bpm'), 'duracion': DUR, 'seed': M.get('seed', 7)}
+    ACE = 'ca1e85fe9430179831e6bc6be790c332190a3866'  # versión probada de ACE-Step-1.5
+    MUS = ('import json, os\n'
+           'from acestep.handler import AceStepHandler\n'
+           'from acestep.inference import GenerationParams, GenerationConfig, generate_music\n'
+           'M = json.load(open("/content/musica.json"))\n'
+           'h = AceStepHandler()\n'
+           'print(h.initialize_service(project_root=os.getcwd(), config_path="acestep-v15-turbo", device="cuda"))\n'
+           'os.makedirs("/content/out/musica", exist_ok=True)\n'
+           'p = GenerationParams(caption=M["prompt"], lyrics="[Instrumental]", instrumental=True, bpm=M["bpm"], duration=M["duracion"], '
+           'inference_steps=8, shift=3.0, seed=M["seed"], thinking=False, use_cot_metas=False, use_cot_caption=False, use_cot_language=False)\n'
+           'c = GenerationConfig(batch_size=2, use_random_seed=False, seeds=[M["seed"], M["seed"] + 1], audio_format="wav")\n'
+           'r = generate_music(h, None, p, c, save_dir="/content/out/musica")\n'
+           'assert r.success, r.error\n'
+           'for i, a in enumerate(r.audios): os.rename(a["path"], f"/content/out/musica/m_{i}.wav")\n'
+           'print("Musica lista:", len(r.audios), "versiones")\n')
+    L = ['import os, json, zipfile',
+         f'open("/content/musica.json", "w").write(json.dumps({CFG!r}))',
+         f'open("/content/musica.py", "w").write({MUS!r})',
+         '!pip -q install uv',
+         f'!git clone -q https://github.com/ACE-Step/ACE-Step-1.5.git /content/ace && cd /content/ace && git checkout -q {ACE} && uv sync -q',
+         '!cd /content/ace && uv run python /content/musica.py',
+         'z = zipfile.ZipFile("musica.zip", "w"); _ = [z.write(os.path.join(r, f), os.path.relpath(os.path.join(r, f), "/content/out")) for r, _d, fs in os.walk("/content/out/musica") for f in fs]; z.close()',
+         'from google.colab import files; files.download("musica.zip")']
+    out = '\n'.join(L) + '\n'
+    assert not any(l.startswith((' ', '\t')) for l in out.splitlines()), 'la celda no puede llevar sangrías'
+    compile('\n'.join(l for l in L if not l.startswith('!')), 'celda', 'exec'); compile(MUS, 'musica', 'exec')
+    open(D + '/celda_musica.txt', 'w').write(out)
+    print(f'celda de música ok: {DUR} s, "{M["prompt"][:60]}…" -> {D}/celda_musica.txt'); sys.exit()
 solo_voz = '--solo-voz' in sys.argv; solo_img = '--solo-imagenes' in sys.argv
 L = []
 if not solo_voz:
