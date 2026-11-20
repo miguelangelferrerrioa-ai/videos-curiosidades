@@ -20,7 +20,7 @@ def handle(e):
     u = e.get('channel_url') or e.get('uploader_url') or ''
     return u.split('youtube.com/')[-1] if 'youtube.com/' in u else None
 temas = open(os.path.join(ROOT, 'canal/temas.md')).read()
-ref = re.findall(r'@[\w.\-]+', temas.split('## Canales de referencia')[1].split('\n## ')[0]) if '## Canales de referencia' in temas else []
+ref = re.findall(r'@[\w.\-]+|channel/UC[\w\-]+', temas.split('## Canales de referencia')[1].split('\n## ')[0]) if '## Canales de referencia' in temas else []
 ref = [c for c in ref if 'randomfacts' not in c] or ['@astrumspace', '@astrumespanol', '@QuantumFracture', '@CuriosaMente', '@kurzgesagt']
 with ThreadPoolExecutor(4) as ex:
     res = list(ex.map(lambda q: yt('https://www.youtube.com/results?search_query=' + urllib.parse.quote(q + ' #shorts'), 60), BUSQUEDAS))

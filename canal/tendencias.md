@@ -1,5 +1,5 @@
 # Tendencias del nicho (2026-11-20)
-Canales analizados: @astrumspace, @astrumespanol, @QuantumFracture, @CuriosaMente, @kurzgesagt, MisteriosDelCosmos, rockandsea, @MenteCuriosa30., Orbit Facts
+Canales analizados: @astrumspace, @astrumespanol, @QuantumFracture, @CuriosaMente, @kurzgesagt, MisteriosDelCosmos, @MenteCuriosa30., Orbit Facts
 
 ## A) Funcionando AHORA (entre los 12 Shorts más recientes de cada canal, ≥2× su mediana)
 | múltiplo | visitas | canal | título |
