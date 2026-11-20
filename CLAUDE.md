@@ -31,7 +31,9 @@ El dueño trabaja **desde el móvil**: responder siempre en español, corto y al
 3. **Celda de Colab** — `python3 motor/celda.py videos/NN-tema --solo-imagenes` → `celda_colab.txt`. Mandársela en un
    bloque de código: genera las imágenes + mapas de profundidad (SDXL + Depth Anything) y descarga un zip.
    **La voz se hace aquí**: `./setup.sh voz` y `HF_HUB_DISABLE_XET=1 .venv-voz/bin/python motor/voz_local.py videos/NN-tema`
-   (Chatterbox en CPU con `voz/muestra.wav`, ~6 min), mientras él está en Colab. Va SIN sangrías (el editor del móvil las rompe).
+   (Chatterbox en CPU con `voz/muestra.wav`). Cada frase se ESCUCHA con Whisper: si no se entiende igual que el guion
+   se repite (3 intentos) y guarda los tiempos reales de cada palabra en `voz/palabras.json` (subtítulos y textos
+   sincronizados al milisegundo). Palabras en inglés: escribir en `say` cómo se pronuncian en español. Va SIN sangrías (el editor del móvil las rompe).
    Recordarle: Entorno de ejecución → T4 GPU. Tarda ~20 min.
 4. **Elegir imágenes** — con el zip: descomprimir en la carpeta del vídeo, `python3 motor/hojas.py videos/NN-tema`,
    mirar las hojas y poner en `plan.json` → `elegidas` la mejor semilla de cada prompt (`"a03": "a03_20"`).

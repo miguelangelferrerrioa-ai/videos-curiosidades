@@ -35,7 +35,28 @@ const words=[];let page=0;F.forEach((l,i)=>{const ws=l.show.split(' ');const wt=
  const tot=wt.reduce((a,b)=>a+b,0);let a=starts[i],cnt=0,chars=0;
  ws.forEach((w,j)=>{const d=durs[i]*wt[j]/tot;const c=w.replace(/[,.:;]$/,'').toUpperCase();
   if(cnt>=3||chars+c.length>17){page++;cnt=0;chars=0;}
-  words.push({s:c,a,b:a+d,page});cnt++;chars+=c.length;a+=d;if(/[.,:;…?!]$/.test(w)){page++;cnt=0;chars=0;}});page++;});
+  words.push({s:c,a,b:a+d,page,line:i});cnt++;chars+=c.length;a+=d;if(/[.,:;…?!]$/.test(w)){page++;cnt=0;chars=0;}});page++;});
+
+// ---- tiempos REALES de cada palabra (motor/palabras.py, Whisper) ----
+// Empareja las palabras del guion con las reconocidas y corrige subtítulos y textos (si no, quedan estimados).
+const MAPA=F.map((_,i)=>[[0,0],[durs[i],durs[i]]]); // por frase: puntos (tiempo estimado, tiempo real), relativos
+const PJ=DIR+'/voz/palabras.json';
+if(fs.existsSync(PJ)&&!fs.existsSync(DIR+'/voz/tiempos.json')){
+ const R=JSON.parse(fs.readFileSync(PJ));const nz=s=>s.normalize('NFD').toLowerCase().replace(/[^a-z0-9]/g,'');
+ F.forEach((_,i)=>{const E=words.filter(w=>w.line===i),Q=R[i]||[];if(!Q.length)return;
+  const a=E.map(w=>nz(w.s)),b=Q.map(w=>nz(w.w)),n=a.length,m=b.length; // LCS
+  const T=Array.from({length:n+1},()=>new Array(m+1).fill(0));
+  for(let x=n-1;x>=0;x--)for(let y=m-1;y>=0;y--)T[x][y]=a[x]&&a[x]===b[y]?T[x+1][y+1]+1:Math.max(T[x+1][y],T[x][y+1]);
+  const pts=[[0,0]];let x=0,y=0;
+  while(x<n&&y<m){if(a[x]&&a[x]===b[y]){pts.push([E[x].a-starts[i],Q[y].a]);x++;y++;}else if(T[x+1][y]>=T[x][y+1])x++;else y++;}
+  pts.push([durs[i],Math.max(durs[i],Q[Q.length-1].b)]);
+  for(let k=1;k<pts.length;k++)if(pts[k][1]<pts[k-1][1])pts[k][1]=pts[k-1][1]; // monótono
+  MAPA[i]=pts;
+  const f=t=>{for(let k=1;k<pts.length;k++)if(t<=pts[k][0]){const [x0,y0]=pts[k-1],[x1,y1]=pts[k];return y0+(x1>x0?(t-x0)/(x1-x0):0)*(y1-y0);}return pts[pts.length-1][1];};
+  E.forEach(w=>{w.a=starts[i]+f(w.a-starts[i]);w.b=starts[i]+f(w.b-starts[i]);});
+ });
+}
+const realRel=(i,t)=>{const p=MAPA[i];for(let k=1;k<p.length;k++)if(t<=p[k][0]){const [x0,y0]=p[k-1],[x1,y1]=p[k];return y0+(x1>x0?(t-x0)/(x1-x0):0)*(y1-y0);}return p[p.length-1][1];};
 
 // ---- textos grandes, golpes, destellos ----
 const POS={titulo:880,arriba:330,arriba2:470,centro:820,centro2:970,centro3:1060};
@@ -43,7 +64,8 @@ const TAM={enorme:240,grande:180,medio:120,pequeno:76,mini:60};
 const COL={amarillo:['#ffd23f','rgba(255,120,30,.9)'],naranja:['#ff7a2a','rgba(255,40,0,1)'],blanco:['#ffffff','rgba(255,120,30,.7)'],
  crema:['#ffe6b0','rgba(255,170,60,.9)'],rojo:['#ff6a5a','rgba(255,40,20,.9)'],azul:['#9fe0ff','rgba(60,160,255,.8)'],
  acido:['#f4ff6a','rgba(200,220,0,.8)'],rosa:['#ff9a8a','rgba(255,80,60,.7)']};
-const L=(i,f)=>starts[i]+durs[i]*f;const END=i=>i<F.length-1?starts[i+1]-.15:TOTAL-.2;
+const L=(i,f)=>starts[i]+realRel(i,durs[i]*f); // fracción de la frase -> momento real en que se dice esa palabra
+const END=i=>i<F.length-1?starts[i+1]-.15:TOTAL-.2;
 const calls=[],impacts=[],flashes=[],red=[];
 F.forEach((l,i)=>{(l.textos||[]).forEach(x=>{const a=L(i,x.t??0);
   const b=x.hasta==null||x.hasta==='fin'?END(i):x.hasta==='final'?TOTAL-.2:L(i,x.hasta);

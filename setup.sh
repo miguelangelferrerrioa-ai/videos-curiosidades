@@ -11,7 +11,10 @@ mkdir -p .modelos  # Real-ESRGAN (superresolución x4 de las imágenes, motor/es
 [ -f .modelos/realesr-general-x4v3.pth ] && echo "escalado ok"
 if [ "${1:-}" = "voz" ]; then  # clon de voz en CPU (motor/voz_local.py)
   [ -x .venv-voz/bin/python ] || python3 -m venv .venv-voz
-  .venv-voz/bin/pip install -q chatterbox-tts "setuptools<81" && echo "voz ok"
+  .venv-voz/bin/pip install -q chatterbox-tts "setuptools<81" faster-whisper && echo "voz ok"
+  # earshot con oídos (modelos CLAP + AST): describir, comparar, timeline del audio
+  [ -d .earshot ] || git clone -q --depth 1 https://github.com/Leonxlnx/earshot.git .earshot
+  .venv-voz/bin/pip install -q --no-deps -e .earshot && .venv-voz/bin/pip install -q pyloudnorm scikit-learn soxr matplotlib pillow && echo "earshot ok"
 fi
 if [ "${1:-}" = "alinear" ]; then
   .venv/bin/pip install -q librosa kokoro-onnx
