@@ -49,7 +49,7 @@ if '--musica' in sys.argv:
          'os.makedirs("/content/out/musica", exist_ok=True)',
          '!pip -q install uv 2>&1 | tail -3 | tee /content/out/log_musica.txt',
          f'!(git clone -q https://github.com/ACE-Step/ACE-Step-1.5.git /content/ace; cd /content/ace && git checkout -q {ACE} && uv sync) 2>&1 | tail -40 | tee -a /content/out/log_musica.txt',
-         '!cd /content/ace && uv run python /content/musica.py 2>&1 | tail -80 | tee -a /content/out/log_musica.txt',
+         '!cd /content/ace && MPLBACKEND=Agg uv run python /content/musica.py 2>&1 | tail -80 | tee -a /content/out/log_musica.txt',
          'print("OK: musica generada" if os.listdir("/content/out/musica") else "FALLO: mándame el zip, lleva el registro del error")',
          'z = zipfile.ZipFile("musica.zip", "w"); _ = [z.write(os.path.join(r, f), os.path.relpath(os.path.join(r, f), "/content/out")) for r, _d, fs in os.walk("/content/out") for f in fs]; z.close()',
          'from google.colab import files; files.download("musica.zip")']
