@@ -15,6 +15,7 @@ if [ "${2:-}" != "" ]; then
   [ -d "$T/imagenes" ] && cp "$T"/imagenes/* "$D/imagenes/"
   [ -d "$T/voz" ] && cp "$T"/voz/* "$D/voz/"
   [ -d "$T/clips" ] && mkdir -p "$D/clips" && cp "$T"/clips/*.mp4 "$D/clips/"
+  [ -d "$T/musica" ] && mkdir -p "$D/musica" && cp "$T"/musica/*.wav "$D/musica/"
   rm -rf "$T"
 fi
 $PY motor/recortar_voz.py "$D"

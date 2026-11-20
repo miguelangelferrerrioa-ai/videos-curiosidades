@@ -8,6 +8,14 @@ El dueño trabaja **desde el móvil**: responder siempre en español, corto y al
 systematic-debugging, caveman; copia `canal/voice.md`).
 
 ## El flujo de un vídeo (idea → vídeo)
+**Rápido y sin perder nada** (objetivo: ~1 h, él solo pega 2 celdas): las celdas de `motor/celdas.py` guardan todo en su
+Google Drive (`Mi unidad/videos-curiosidades/<nombre>/`) y, si Colab se corta, al volver a ejecutar siguen donde iban.
+- **fase1** (`python3 motor/celdas.py videos/NN-tema fase1`): imágenes + mapas de profundidad + música en UNA celda (~25 min).
+  Mientras, la voz se hace aquí. Al llegar `<nombre>_fase1.zip`: elijo YO imágenes y música (sin preguntarle).
+- **clips** (`… clips`): imagen a vídeo SOLO de los planos clave (gancho, golpes, cierre; máx. 6, o `"clips": [...]` en plan.json),
+  con las imágenes elegidas que ya están en Drive (~15 min + descarga del modelo).
+- **Borrador a 1080** (`RES=1080 motor/montar.sh videos/NN-tema zip…`, ~5 min) para que lo vea; el **4K** solo cuando lo apruebe,
+  en segundo plano. Las celdas antiguas (`motor/celda.py --solo-imagenes / --musica / --clips`) siguen valiendo.
 0. **Buscar temas virales** — SIEMPRE que diga "nuevo vídeo" (aunque traiga tema): skill `/tendencias`
    (`motor/tendencias.py` con datos reales de YouTube + noticias con WebSearch) → 5 propuestas con su evidencia.
    Él elige una; anotarla en `canal/temas.md`.
