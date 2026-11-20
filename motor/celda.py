@@ -105,7 +105,7 @@ print("CLIPS LISTOS")
          f'open("/content/clips.json", "w").write(json.dumps({CFG!r}))',
          f'open("/content/clips.py", "w").write({SCR!r})',
          'os.makedirs("/content/out/clips", exist_ok=True)',
-         '!pip -q install -U diffusers transformers accelerate sentencepiece imageio imageio-ffmpeg 2>&1 | tail -3',
+         '!pip -q install -U diffusers "transformers<5" accelerate sentencepiece imageio imageio-ffmpeg 2>&1 | tail -3',
          '!python -u /content/clips.py 2>&1 | tee /content/out/log_clips.txt',
          'print(f"OK: {len(os.listdir(\'/content/out/clips\'))} clips" if os.listdir("/content/out/clips") else "FALLO: mándame el zip, lleva el registro del error")',
          f'z = zipfile.ZipFile("clips.zip", "w"); _ = [z.write(os.path.join(r, f), os.path.relpath(os.path.join(r, f), "/content/out")) for r, _d, fs in os.walk("/content/out") for f in fs]; z.close()',
