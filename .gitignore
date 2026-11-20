@@ -13,3 +13,4 @@ __pycache__/
 videos/*/imagenes_x4/
 videos/*/*.log
 .venv-voz/
+videos/*/revision/

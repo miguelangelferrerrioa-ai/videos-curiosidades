@@ -40,6 +40,10 @@ El dueño trabaja **desde el móvil**: responder siempre en español, corto y al
    fotogramas de prueba (`node motor/render.js videos/NN-tema t SEGUNDO salida.jpg`) y revisar que los textos no
    tapen lo importante. Medir el audio con earshot (`earshot measure`). Mandar el vídeo con SendUserFile, más
    título, descripción y hashtags (`/yt-package`, `/yt-seo`).
+5b. **Revisión obligatoria antes de mandar nada** — `motor/revisar.sh videos/NN-tema` tiene que decir
+   `RESULTADO: OK` (resolución real, duración = línea de tiempo, sin negros, textos que no se pisan, volumen) y hay que
+   mirar `revision/hoja.jpg` (orden de escenas, textos). Con la skill `verification-before-completion`: nada de
+   "listo" sin esa salida delante. Si algo falla, `systematic-debugging`: causa raíz antes de parchear.
 6. Commit del `plan.json` (las imágenes, la voz y el vídeo final NO se suben: están en .gitignore).
 
 ## Calidad de imagen (obligatorio)
