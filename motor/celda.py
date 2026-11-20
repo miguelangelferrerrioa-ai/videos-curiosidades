@@ -75,7 +75,7 @@ from diffusers.utils import export_to_video
 C = json.load(open("/content/clips.json")); os.makedirs("/content/out/clips", exist_ok=True)
 todo = [j for j in C["jobs"] if not os.path.exists(f"/content/out/clips/{j[0]}.mp4")]
 pipe = StableDiffusionXLPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16, variant="fp16", use_safetensors=True).to("cuda")
-pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config, use_karras_sigmas=True)
+pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config, use_karras_sigmas=True); pipe.set_progress_bar_config(disable=True)
 ims = {}
 for k, (p, sd, xn, mov) in todo:
     ims[k] = pipe(p + ", " + C["style"], negative_prompt=C["neg"] + (", " + xn if xn else ""), width=832, height=1216, num_inference_steps=30, guidance_scale=6.5, generator=torch.Generator("cuda").manual_seed(sd)).images[0]
@@ -87,7 +87,7 @@ def gen(lt, im, p, mov, sd):
             generator=torch.Generator("cuda").manual_seed(sd)).frames[0]
 def carga(dt):
     x = LTXImageToVideoPipeline.from_pretrained("Lightricks/LTX-Video", torch_dtype=dt)
-    x.enable_model_cpu_offload(); x.vae.enable_tiling(); return x
+    x.enable_model_cpu_offload(); x.vae.enable_tiling(); x.set_progress_bar_config(disable=True); return x
 lt = carga(torch.float16)  # la T4 no tiene bfloat16 nativo: float16 va mucho más rápido
 for n, (k, (p, sd, xn, mov)) in enumerate(todo):
     im = ims[k].resize((512, 768))
@@ -106,7 +106,7 @@ print("CLIPS LISTOS")
          f'open("/content/clips.py", "w").write({SCR!r})',
          'os.makedirs("/content/out/clips", exist_ok=True)',
          '!pip -q install -U diffusers transformers accelerate sentencepiece imageio imageio-ffmpeg 2>&1 | tail -3',
-         '!python /content/clips.py 2>&1 | grep -v "it/s\\]" | tail -60 | tee /content/out/log_clips.txt',
+         '!python -u /content/clips.py 2>&1 | tee /content/out/log_clips.txt',
          'print(f"OK: {len(os.listdir(\'/content/out/clips\'))} clips" if os.listdir("/content/out/clips") else "FALLO: mándame el zip, lleva el registro del error")',
          f'z = zipfile.ZipFile("clips.zip", "w"); _ = [z.write(os.path.join(r, f), os.path.relpath(os.path.join(r, f), "/content/out")) for r, _d, fs in os.walk("/content/out") for f in fs]; z.close()',
          'from google.colab import files; files.download("clips.zip")']
