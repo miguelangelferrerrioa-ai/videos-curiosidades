@@ -86,6 +86,12 @@ Google Drive (`Mi unidad/videos-curiosidades/<nombre>/`) y, si Colab se corta, a
 - Movimientos suaves; el grano de película va más bajo en 4K para no ensuciar.
 
 ## Si la voz viene de ElevenLabs en un solo archivo
+**Preferido (vídeo 03):** en ElevenLabs, voz diseñada, modelo Multilingual v2, Speed ~1.15–1.2, guion ENTERO de una vez (los
+números en letra). Guardar como `videos/NN-tema/voz_eleven/narracion.wav` y
+`HF_HUB_DISABLE_XET=1 .venv-voz/bin/python motor/partir_narracion.py videos/NN-tema videos/NN-tema/voz_eleven/narracion.wav`
+→ la corta en `voz/vo_XX.wav` + `voz/palabras.json` (Whisper + guion). Para cambiar de voz sin tocar el montaje:
+guardar antes la voz vieja en `voz_A/` y `python motor/igualar_ritmo.py videos/NN-tema videos/NN-tema/voz_A`.
+Método antiguo (alineado DTW, un solo audio):
 Guardarla como `videos/NN-tema/voz/narracion.wav`, `./setup.sh alinear` y
 `python motor/alinear.py videos/NN-tema` → `voz/tiempos.json` (alinea cada frase por DTW contra una lectura de
 referencia). render.js usa `tiempos.json` si existe.
