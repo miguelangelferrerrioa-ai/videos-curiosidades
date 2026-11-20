@@ -288,7 +288,8 @@
     {
      "t": 0.1,
      "texto": "2018",
-     "color": "naranja"
+     "color": "naranja",
+     "hasta": 0.43
     },
     {
      "t": 0.45,

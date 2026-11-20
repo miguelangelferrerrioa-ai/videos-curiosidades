@@ -53,6 +53,10 @@ F.forEach((l,i)=>{(l.textos||[]).forEach(x=>{const a=L(i,x.t??0);
   if(x.golpe)impacts.push(a);if(x.flash)flashes.push(a);});
  if(l.rojo)red.push([L(i,l.rojo[0]),L(i,l.rojo[1])]);});
 impacts.sort((a,b)=>a-b);
+// Nunca dos textos grandes en el mismo sitio a la vez: el anterior se quita cuando entra el siguiente
+calls.sort((a,b)=>a.a-b.a);
+for(let i=0;i<calls.length;i++)for(let j=i+1;j<calls.length;j++){const A=calls[i],B=calls[j];
+ if(Math.abs(A.y-B.y)<(A.size+B.size)*.45&&B.a<A.b)A.b=Math.max(A.a+.2,B.a-.05);}
 const TL={shots,words,calls,impacts,flashes,red,total:TOTAL,starts,durs,voice,beatEnd:P.ritmo_hasta!=null?starts[P.ritmo_hasta]:null,res:RES,gs:1};
 fs.writeFileSync(DIR+'/timeline.json',JSON.stringify(TL,null,1));
 
