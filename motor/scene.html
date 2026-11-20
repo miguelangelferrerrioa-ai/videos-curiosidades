@@ -46,6 +46,9 @@ function mk(im){const t=g.createTexture();g.bindTexture(g.TEXTURE_2D,t);g.pixelS
  g.texParameteri(g.TEXTURE_2D,g.TEXTURE_MAG_FILTER,g.LINEAR);g.texParameteri(g.TEXTURE_2D,g.TEXTURE_WRAP_S,g.CLAMP_TO_EDGE);g.texParameteri(g.TEXTURE_2D,g.TEXTURE_WRAP_T,g.CLAMP_TO_EDGE);return t;}
 const load=u=>new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.src=u;});
 window.addTex=async(k,c,d)=>{TEX[k]={c:mk(await load(c)),d:mk(await load(d))};return k;};
+let CLIPK=new Set(); // planos con clip de vídeo: sin paralaje 3D (el mapa de profundidad es de la foto, no de cada fotograma)
+window.setClip=async(k,u)=>{const im=await load(u);g.bindTexture(g.TEXTURE_2D,TEX[k].c);g.pixelStorei(g.UNPACK_FLIP_Y_WEBGL,true);
+ g.texImage2D(g.TEXTURE_2D,0,g.RGBA,g.RGBA,g.UNSIGNED_BYTE,im);return k;};
 window.setup=async(tl,imgs)=>{TL=tl;if(tl.res){RS=tl.res;GS=tl.gs??1;resize();}for(const k in imgs){TEX[k]={c:mk(await load(imgs[k].c)),d:mk(await load(imgs[k].d))};}
  await document.fonts.load('900 50px "Inter Display"');return Object.keys(TEX).length;};
 // ---------- cámara ----------
@@ -140,10 +143,10 @@ window.frame=time=>{ctx.setTransform(RS,0,0,RS,0,0);
  const sk=shake(time);
  const zoom=(m[0]+(m[1]-m[0])*e)*(1+.18*eo(tin)*(1)+.12*tout*tout);
  const L2=(a,b)=>[a[0]+(b[0]-a[0])*e,a[1]+(b[1]-a[1])*e];
- const par=L2(m[2],m[3]),pan=L2(m[4],m[5]);
+ const cl=CLIPK.has(s.k),par=cl?[0,0]:L2(m[2],m[3]),pan=L2(m[4],m[5]);
  pan[0]+=sk*.012*Math.sin(time*73);pan[1]+=sk*.012*Math.cos(time*61);
  g.viewport(0,0,gl.width,gl.height);g.activeTexture(g.TEXTURE0);g.bindTexture(g.TEXTURE_2D,TEX[s.k].c);g.activeTexture(g.TEXTURE1);g.bindTexture(g.TEXTURE_2D,TEX[s.k].d);
- g.uniform2f(U('R'),gl.width,gl.height);g.uniform1f(U('GR'),RS>1?.022:.045);g.uniform1f(U('AR'),(W/H)/(832/1216));g.uniform1f(U('zoom'),zoom);g.uniform1f(U('dz'),m[8]);
+ g.uniform2f(U('R'),gl.width,gl.height);g.uniform1f(U('GR'),RS>1?.022:.045);g.uniform1f(U('AR'),(W/H)/(832/1216));g.uniform1f(U('zoom'),zoom);g.uniform1f(U('dz'),cl?0:m[8]);
  g.uniform1f(U('rot'),m[6]+(m[7]-m[6])*e+sk*.01*Math.sin(time*50));g.uniform2f(U('par'),par[0],par[1]);g.uniform2f(U('pan'),pan[0],pan[1]);
  g.uniform1f(U('heat'),heat);g.uniform1f(U('blur'),Math.max(tin*tin*1.6,tout*1.4,sk*.5));g.uniform1f(U('ca'),Math.max(tin,tout,sk)*.012);
  g.uniform1f(U('T'),time);g.uniform1f(U('flash'),flashAt(time)+tin*tin*.12);g.uniform1f(U('red'),TL.red.some(r=>time>=r[0]&&time<r[1])?.35:0);

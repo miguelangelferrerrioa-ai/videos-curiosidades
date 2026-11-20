@@ -14,9 +14,11 @@ if [ "${2:-}" != "" ]; then
   mkdir -p "$D/imagenes" "$D/voz"
   [ -d "$T/imagenes" ] && cp "$T"/imagenes/* "$D/imagenes/"
   [ -d "$T/voz" ] && cp "$T"/voz/* "$D/voz/"
+  [ -d "$T/clips" ] && mkdir -p "$D/clips" && cp "$T"/clips/*.mp4 "$D/clips/"
   rm -rf "$T"
 fi
 $PY motor/recortar_voz.py "$D"
+[ -d "$D/clips" ] && $PY motor/clips.py "$D"  # clips de imagen a vídeo (si los hay)
 # Superresolución x4 por IA de las imágenes elegidas (no es 4K nativo: SDXL genera ~832x1216)
 [ "${RES:-4k}" = "1080" ] || $PY motor/escalar.py "$D"
 node motor/render.js "$D" solo-timeline

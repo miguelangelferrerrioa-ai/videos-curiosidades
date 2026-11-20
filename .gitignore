@@ -16,3 +16,4 @@ videos/*/*.log
 videos/*/revision/
 .earshot/
 videos/*/musica/
+videos/*/clips/

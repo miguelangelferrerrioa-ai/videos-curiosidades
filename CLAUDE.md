@@ -43,6 +43,11 @@ systematic-debugging, caveman; copia `canal/voice.md`).
 4. **Elegir imágenes** — con el zip: descomprimir en la carpeta del vídeo, `python3 motor/hojas.py videos/NN-tema`,
    mirar las hojas y poner en `plan.json` → `elegidas` la mejor semilla de cada prompt (`"a03": "a03_20"`).
    Descartar las que no encajan (planetas que parecen otros, objetos imposibles, texto).
+4b. **Imagen a vídeo (opcional)** — `python3 motor/celda.py videos/NN-tema --clips` → `celda_clips.txt` (LTX-Video 2B en la T4,
+   Colab NUEVO; rehace las elegidas con su semilla y las anima en clips de 3 s, 512×768, ~1–2 min por clip). Movimiento por imagen:
+   campo opcional `mov` en `imagenes` (en inglés; si no, uno genérico suave). `clips.zip` → descomprimir en la carpeta del vídeo;
+   `montar.sh` extrae los fotogramas (`motor/clips.py`) y el clip sustituye a la foto (sin paralaje 3D). Los clips son de menos
+   resolución que las fotos escaladas: revisar nitidez. Licencia LTXV: libre salvo empresas con ≥10 M$/año; declarar contenido IA.
 5. **Montar** — `motor/montar.sh videos/NN-tema [zip]` → `videos/NN-tema/final.mp4` en 4K (~15 min de escalado + ~25 min de render). Antes, sacar 6–8
    fotogramas de prueba (`node motor/render.js videos/NN-tema t SEGUNDO salida.jpg`) y revisar que los textos no
    tapen lo importante. Medir el audio con earshot (`earshot measure`). Mandar el vídeo con SendUserFile, más
