@@ -29,6 +29,15 @@ for k in 0 1 2 3; do
 done
 wait
 grep -h ERR "$D"/seg*.log && exit 1 || true
+# Comprobar cada trozo: si uno sale corto (p. ej. el proceso murió por memoria en 4K), repetirlo solo
+for k in 0 1 2 3; do
+  A=$($PY -c "print(round($k*$SEG,2))"); B=$($PY -c "print(round(min(($k+1)*$SEG,$TOTAL),2))")
+  for intento in 1 2; do
+    DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$D/seg$k.mp4" 2>/dev/null || echo 0)
+    $PY -c "import sys;sys.exit(0 if float('${DUR:-0}')>=$B-$A-0.1 else 1)" && break
+    echo "trozo $k corto ($DUR s), repitiendo..."; node motor/render.js "$D" "$A" "$B" "$D/seg$k.mp4" > "$D/seg$k.log" 2>&1
+  done
+done
 printf "file seg0.mp4\nfile seg1.mp4\nfile seg2.mp4\nfile seg3.mp4\n" > "$D/segs.txt"
 case "${RES:-4k}" in 4k) Q="-crf 19 -maxrate 35M -bufsize 70M";; 2k) Q="-crf 19 -maxrate 20M -bufsize 40M";; *) Q="-crf 23 -maxrate 5M -bufsize 10M";; esac
 ffmpeg -y -loglevel error -f concat -i "$D/segs.txt" -i "$D/mezcla.wav" -map 0:v -map 1:a -c:v libx264 $Q -profile:v high \
