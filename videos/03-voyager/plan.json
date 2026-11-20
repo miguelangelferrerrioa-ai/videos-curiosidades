@@ -163,7 +163,7 @@
    "say": "Si hoy le dices hola a esta nave… lo escucha mañana.",
    "show": "Si hoy le dices hola a esta nave… lo escucha mañana.",
    "planos": [
-    "c01",
+    "c18",
     "c03"
    ],
    "textos": [
@@ -208,7 +208,7 @@
    "say": "Nada fabricado por el ser humano había llegado tan lejos.",
    "show": "Nada fabricado por el ser humano había llegado tan lejos.",
    "planos": [
-    "c06"
+    "c17"
    ],
    "textos": [
     {
@@ -224,7 +224,7 @@
    "show": "25.900 millones de kilómetros.",
    "planos": [
     "c04",
-    "c17"
+    "c17b"
    ],
    "textos": [
     {
@@ -247,7 +247,7 @@
    "say": "En coche, a ciento veinte por hora, tardarías casi veinticinco mil años.",
    "show": "En coche, a 120 km/h, tardarías casi 25.000 años.",
    "planos": [
-    "c06"
+    "c05b"
    ],
    "textos": [
     {
@@ -315,8 +315,8 @@
    "say": "Y aun así, sigue hablándonos. Con una emisora de menos potencia que una bombilla.",
    "show": "Y aun así, sigue hablándonos. Con una emisora de menos potencia que una bombilla.",
    "planos": [
-    "c02",
-    "c03"
+    "c02b",
+    "c03b"
    ],
    "textos": [
     {
@@ -331,8 +331,7 @@
    "say": "Pero se está apagando. Cada año pierde unos cuatro vatios de energía.",
    "show": "Pero se está apagando. Cada año pierde unos 4 vatios de energía.",
    "planos": [
-    "c12",
-    "c13"
+    "c12"
    ],
    "textos": [
     {
@@ -354,7 +353,7 @@
    "say": "De sus diez instrumentos, solo quedan dos encendidos.",
    "show": "De sus 10 instrumentos, solo quedan 2 encendidos.",
    "planos": [
-    "c13"
+    "c12b"
    ],
    "textos": [
     {
@@ -563,8 +562,55 @@
    "rush",
    "sparks",
    0
+  ],
+  "c02b": [
+   "push",
+   "none",
+   0
+  ],
+  "c03b": [
+   "orbitR",
+   "none",
+   0
+  ],
+  "c05b": [
+   "drift",
+   "dust",
+   0
+  ],
+  "c12b": [
+   "pull",
+   "embers",
+   0.3
+  ],
+  "c17b": [
+   "push",
+   "dust",
+   0
   ]
  },
  "cola": 2.6,
- "elegidas": {}
+ "elegidas": {
+  "c02": "c02_22",
+  "c02b": "c02_21",
+  "c03": "c03_32",
+  "c03b": "c03_31",
+  "c04": "c04_42",
+  "c05": "c05_51",
+  "c05b": "c05_52",
+  "c07": "c07_71",
+  "c08": "c08_82",
+  "c09": "c09_91",
+  "c10": "c10_102",
+  "c11": "c11_112",
+  "c12": "c12_122",
+  "c12b": "c12_121",
+  "c14": "c14_142",
+  "c15": "c15_151",
+  "c16": "c16_161",
+  "c17": "c17_172",
+  "c17b": "c17_171",
+  "c18": "c18_182",
+  "c19": "c19_191"
+ }
 }
