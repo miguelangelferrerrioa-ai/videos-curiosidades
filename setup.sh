@@ -26,10 +26,9 @@ if [ "${1:-}" = "alinear" ]; then
 fi
 # --- skills ---
 SK="${HOME}/.claude/skills"; T=$(mktemp -d); mkdir -p "$SK" "${HOME}/.claude/youtube"
-git clone -q --depth 1 https://github.com/Jakeschincariol/youtube-agent-skill.git "$T/yt" && cp -r "$T"/yt/skills/yt-* "$SK/" && echo "skills yt ok"
-git clone -q --depth 1 https://github.com/Leonxlnx/earshot.git "$T/ea" && cp -r "$T"/ea/skills/earshot "$T"/ea/skills/real-sound "$SK/" && echo "skills earshot ok"
+git clone -q --depth 1 https://github.com/Jakeschincariol/youtube-agent-skill.git "$T/yt" && for k in yt-script yt-viral yt-package yt-seo; do cp -r "$T/yt/skills/$k" "$SK/"; done && echo "skills yt ok"
+git clone -q --depth 1 https://github.com/Leonxlnx/earshot.git "$T/ea" && cp -r "$T"/ea/skills/earshot "$SK/" && echo "skills earshot ok"
 git clone -q --depth 1 https://github.com/obra/superpowers.git "$T/sp" && cp -r "$T"/sp/skills/verification-before-completion "$T"/sp/skills/systematic-debugging "$SK/" && echo "skills superpowers ok"
 git clone -q --depth 1 https://github.com/JuliusBrussee/caveman.git "$T/cv" && cp -r "$T"/cv/skills/caveman "$SK/" && echo "skill caveman ok"
-curl -fsSL -o "$T/e.zip" https://github.com/victorcorralsocial/skills-claude/releases/download/v13/enrutador.zip && unzip -oq "$T/e.zip" -d "$SK" && echo "skill enrutador ok"
 cp canal/voice.md "${HOME}/.claude/youtube/voice.md"
 rm -rf "$T"

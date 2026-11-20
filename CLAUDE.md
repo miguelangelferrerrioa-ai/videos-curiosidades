@@ -4,7 +4,8 @@ Canal de vídeos cortos verticales (TikTok / Reels / Shorts) de curiosidades, en
 El dueño trabaja **desde el móvil**: responder siempre en español, corto y al grano. Él da una idea; Claude hace el resto.
 
 ## Al empezar una sesión
-`./setup.sh` (entorno de Python + skills: yt-*, earshot, real-sound, enrutador; copia `canal/voice.md`).
+`./setup.sh` (entorno de Python + skills: yt-script, yt-viral, yt-package, yt-seo, earshot, verification-before-completion,
+systematic-debugging, caveman; copia `canal/voice.md`).
 
 ## El flujo de un vídeo (idea → vídeo)
 0. **Buscar temas virales** — SIEMPRE que diga "nuevo vídeo" (aunque traiga tema, comprobar si tiene tirón):
