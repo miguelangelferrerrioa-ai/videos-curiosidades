@@ -83,7 +83,7 @@ for k, (p, sd, xn, mov) in todo:
 del pipe; torch.cuda.empty_cache()
 def gen(lt, im, p, mov, sd):
     return lt(image=im, prompt=p + ", " + mov, negative_prompt="worst quality, inconsistent motion, blurry, jittery, distorted, morphing, text, watermark",
-            width=512, height=768, num_frames=73, num_inference_steps=30, guidance_scale=3.0, decode_timestep=0.05, image_cond_noise_scale=0.025,
+            width=512, height=768, num_frames=73, num_inference_steps=30, guidance_scale=3.0, frame_rate=24, decode_timestep=0.05,
             generator=torch.Generator("cuda").manual_seed(sd)).frames[0]
 def carga(dt):
     x = LTXImageToVideoPipeline.from_pretrained("Lightricks/LTX-Video", torch_dtype=dt)

@@ -74,7 +74,7 @@ if todo:
         x.transformer.to("cuda"); x.vae.to("cuda"); x.vae.enable_tiling(); x.set_progress_bar_config(disable=True); return x
     def gen(lt, im, p, sd):
         return lt(image=im, prompt=p, negative_prompt="worst quality, inconsistent motion, blurry, jittery, distorted, morphing, text, watermark",
-                  width=512, height=768, num_frames=73, num_inference_steps=30, guidance_scale=3.0, decode_timestep=0.05, image_cond_noise_scale=0.025,
+                  width=512, height=768, num_frames=73, num_inference_steps=30, guidance_scale=3.0, frame_rate=24, decode_timestep=0.05,
                   generator=torch.Generator("cuda").manual_seed(sd)).frames[0]
     lt = carga(torch.float16)  # la T4 no tiene bfloat16 nativo: float16 va mucho más rápido
     for n, (k, p, sd, base, xn) in enumerate(todo):
