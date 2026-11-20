@@ -26,6 +26,9 @@ SEG=$($PY -c "print(round($TOTAL/4+0.01,2))")
 for k in 0 1 2 3; do
   A=$($PY -c "print(round($k*$SEG,2))"); B=$($PY -c "print(round(($k+1)*$SEG,2))")
   node motor/render.js "$D" "$A" "$B" "$D/seg$k.mp4" > "$D/seg$k.log" 2>&1 &
+  # Como mucho PAR renders a la vez: con 4 en paralelo en 4K el WebGL por software pierde las texturas
+  # (fondo negro y estelas en los últimos trozos, sin error ni duración corta). Por defecto 2.
+  [ $(( (k+1) % ${PAR:-2} )) -eq 0 ] && wait
 done
 wait
 grep -h ERR "$D"/seg*.log && exit 1 || true
