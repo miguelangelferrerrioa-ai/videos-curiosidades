@@ -46,10 +46,12 @@ if '--musica' in sys.argv:
     L = ['import os, json, zipfile',
          f'open("/content/musica.json", "w").write(json.dumps({CFG!r}))',
          f'open("/content/musica.py", "w").write({MUS!r})',
-         '!pip -q install uv',
-         f'!git clone -q https://github.com/ACE-Step/ACE-Step-1.5.git /content/ace && cd /content/ace && git checkout -q {ACE} && uv sync -q',
-         '!cd /content/ace && uv run python /content/musica.py',
-         'z = zipfile.ZipFile("musica.zip", "w"); _ = [z.write(os.path.join(r, f), os.path.relpath(os.path.join(r, f), "/content/out")) for r, _d, fs in os.walk("/content/out/musica") for f in fs]; z.close()',
+         'os.makedirs("/content/out/musica", exist_ok=True)',
+         '!pip -q install uv 2>&1 | tail -3 | tee /content/out/log_musica.txt',
+         f'!(git clone -q https://github.com/ACE-Step/ACE-Step-1.5.git /content/ace; cd /content/ace && git checkout -q {ACE} && uv sync) 2>&1 | tail -40 | tee -a /content/out/log_musica.txt',
+         '!cd /content/ace && uv run python /content/musica.py 2>&1 | tail -80 | tee -a /content/out/log_musica.txt',
+         'print("OK: musica generada" if os.listdir("/content/out/musica") else "FALLO: mándame el zip, lleva el registro del error")',
+         'z = zipfile.ZipFile("musica.zip", "w"); _ = [z.write(os.path.join(r, f), os.path.relpath(os.path.join(r, f), "/content/out")) for r, _d, fs in os.walk("/content/out") for f in fs]; z.close()',
          'from google.colab import files; files.download("musica.zip")']
     out = '\n'.join(L) + '\n'
     assert not any(l.startswith((' ', '\t')) for l in out.splitlines()), 'la celda no puede llevar sangrías'
