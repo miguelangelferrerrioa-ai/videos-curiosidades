@@ -37,6 +37,11 @@ Google Drive (`Mi unidad/videos-curiosidades/<nombre>/`) y, si Colab se corta, a
      Coordenadas: buscarlas, nunca inventarlas.
    - `camara`: por imagen `[movimiento, partículas, calor]`; movimientos: push pull orbitL orbitR crane rush
      drift spin; partículas: embers ash dust acid bubbles sparks none; calor 0–1.
+   - `sfx` (por frase): `[{"id": "glitch/dropout", "t": 0.6, "g": 0.5}]` → el pico del efecto cae en esa fracción de la frase.
+     Ids: los 252 del banco de earshot (`earshot sfx list`, p. ej. `shutter/film`, `logo_sting/spark`; `dur`/`pitch` opcionales) y
+     614 CC0 de Hugging Face (`motor/sfx/cc0/indice.txt`, p. ej. `cc0:sfx-kit/sounds/digital/digital-power-down`; los descarga
+     `motor/sfx_cc0.sh`). Elegirlos por lo que dice la frase, escucharlos antes con `earshot describe` y no taparle palabras clave
+     a la voz (comprobar con Whisper sobre `mezcla.wav`).
    - `musica`: `{"prompt": "…en inglés, instrumental…", "bpm": 100, "seed": 7}` → música con IA (paso 3b). Tras elegir: `"elegida": "m_0"`.
 3. **Celda de Colab** — `python3 motor/celda.py videos/NN-tema --solo-imagenes` → `celda_colab.txt`. Mandársela en un
    bloque de código: genera las imágenes + mapas de profundidad (SDXL + Depth Anything) y descarga un zip.

@@ -180,6 +180,13 @@
      "golpe": true,
      "flash": true
     }
+   ],
+   "sfx": [
+    {
+     "id": "glitch/chirp",
+     "t": 0.45,
+     "g": 0.45
+    }
    ]
   },
   {
@@ -202,6 +209,18 @@
      "texto": "1 DÍA LUZ",
      "color": "amarillo"
     }
+   ],
+   "sfx": [
+    {
+     "id": "pro_riser/nblips",
+     "t": 0.62,
+     "g": 0.3
+    },
+    {
+     "id": "shimmer/m1",
+     "t": 0.8,
+     "g": 0.45
+    }
    ]
   },
   {
@@ -216,6 +235,13 @@
      "texto": "NUNCA",
      "tam": "enorme",
      "color": "crema"
+    }
+   ],
+   "sfx": [
+    {
+     "id": "reverse_swell/ring",
+     "t": 0.9,
+     "g": 0.45
     }
    ]
   },
@@ -241,6 +267,13 @@
      "tam": "medio",
      "golpe": true
     }
+   ],
+   "sfx": [
+    {
+     "id": "sub_drop/long",
+     "t": 0.75,
+     "g": 0.55
+    }
    ]
   },
   {
@@ -263,6 +296,13 @@
      "contar": 25000,
      "durante": 1.6,
      "color": "amarillo"
+    }
+   ],
+   "sfx": [
+    {
+     "id": "whoosh_fast/whistle",
+     "t": 0.15,
+     "g": 0.4
     }
    ]
   },
@@ -313,7 +353,19 @@
       "t": 0.55
      }
     ]
-   }
+   },
+   "sfx": [
+    {
+     "id": "cut_hit/rumble",
+     "t": 0.02,
+     "g": 0.65
+    },
+    {
+     "id": "mallet/glock",
+     "t": 0.26,
+     "g": 0.4
+    }
+   ]
   },
   {
    "say": "Su ordenador tiene sesenta y nueve kilobaits de memoria. Menos que una sola foto de tu móvil.",
@@ -334,6 +386,18 @@
      "pos": "arriba2",
      "tam": "medio"
     }
+   ],
+   "sfx": [
+    {
+     "id": "glitch/data",
+     "t": 0.1,
+     "g": 0.45
+    },
+    {
+     "id": "pro_pop/tink",
+     "t": 0.62,
+     "g": 0.4
+    }
    ]
   },
   {
@@ -349,6 +413,18 @@
      "texto": "< 1 BOMBILLA",
      "tam": "medio",
      "color": "crema"
+    }
+   ],
+   "sfx": [
+    {
+     "id": "pro_logo_sting/chirp_hum",
+     "t": 0.3,
+     "g": 0.4
+    },
+    {
+     "id": "cc0:sfx-kit/sounds/digital/digital-radio",
+     "t": 0.15,
+     "g": 0.3
     }
    ]
   },
@@ -372,6 +448,18 @@
      "texto": "-4 W / AÑO",
      "color": "rojo"
     }
+   ],
+   "sfx": [
+    {
+     "id": "downlifter/synth_fall",
+     "t": 0.1,
+     "g": 0.5
+    },
+    {
+     "id": "cc0:sfx-kit/sounds/digital/digital-power-down",
+     "t": 0.3,
+     "g": 0.5
+    }
    ]
   },
   {
@@ -392,6 +480,13 @@
      "texto": "2",
      "tam": "enorme",
      "color": "rojo"
+    }
+   ],
+   "sfx": [
+    {
+     "id": "pro_sub_drop/soft",
+     "t": 0.62,
+     "g": 0.55
     }
    ]
   },
@@ -414,6 +509,18 @@
      "tam": "pequeno",
      "pos": "centro",
      "color": "azul"
+    }
+   ],
+   "sfx": [
+    {
+     "id": "shutter/film",
+     "t": 0.4,
+     "g": 0.6
+    },
+    {
+     "id": "shimmer/m4",
+     "t": 0.85,
+     "g": 0.4
     }
    ]
   },
@@ -439,6 +546,18 @@
      "pos": "arriba2",
      "tam": "medio"
     }
+   ],
+   "sfx": [
+    {
+     "id": "logo_sting/spark",
+     "t": 0.08,
+     "g": 0.55
+    },
+    {
+     "id": "mallet/celesta",
+     "t": 0.5,
+     "g": 0.4
+    }
    ]
   },
   {
@@ -457,6 +576,13 @@
      "color": "crema",
      "golpe": true,
      "flash": true
+    }
+   ],
+   "sfx": [
+    {
+     "id": "cc0:sfx-kit/sounds/digital/digital-signal-drop",
+     "t": 0.3,
+     "g": 0.5
     }
    ]
   },
@@ -488,6 +614,13 @@
      "texto": "+ HISTORIAS DEL ESPACIO",
      "pos": "centro3",
      "tam": "mini"
+    }
+   ],
+   "sfx": [
+    {
+     "id": "logo_sting/soft_bloom",
+     "t": 0.45,
+     "g": 0.5
     }
    ]
   }

@@ -7,6 +7,7 @@ cd "$(dirname "$0")"
 [ -x .venv/bin/python ] || python3 -m venv .venv
 .venv/bin/pip install -q numpy scipy soundfile pillow yt-dlp && echo "entorno ok"
 npm install --silent --no-audit --no-fund && echo "mapas ok"  # world-atlas + d3-geo (mapas en render.js)
+motor/sfx_cc0.sh  # efectos CC0 de Hugging Face (614 sonidos) -> motor/sfx/cc0/
 mkdir -p .modelos  # Real-ESRGAN (superresolución x4 de las imágenes, motor/escalar.py)
 [ -f .modelos/realesr-general-x4v3.pth ] || curl -fsSL -o .modelos/realesr-general-x4v3.pth https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesr-general-x4v3.pth
 [ -f .modelos/realesr-general-x4v3.pth ] && echo "escalado ok"

@@ -48,11 +48,37 @@ while b < stop:
     if i % 4 == 2: put(drums, snare * .55, b)
     put(drums, hat * .25, b + beat / 2); put(drums, hat * .15, b); b += beat; i += 1
 # ---- efectos ----
-def S(n, g=1.0):
-    x = load(f'{HERE}/sfx/{n}.flac'); return x / np.abs(x).max() * g
-def at_peak(n, tm, g=1.0):
-    x = S(n, g); put(sfx, x, tm - np.argmax(np.abs(x)) / SR)
-cutw = ['whoosh_fast_whip', 'swish_blade', 'whoosh_fast_crisp', 'swish_zing', 'whoosh_fast_heavy', 'pro_whoosh_big_gritty']
+# Banco: los 25 de motor/sfx (flac) + los 252 de earshot ("familia/nombre"), que se generan la primera vez y se guardan
+# en motor/sfx/banco/ (earshot sfx render; --dur y --pitch opcionales).
+EAR = os.path.join(HERE, '..', '.venv-voz', 'bin', 'earshot')
+def banco(n, dur=None, pitch=None):
+    import subprocess
+    tag = n.replace('/', '__') + (f'_d{dur}' if dur else '') + (f'_p{pitch}' if pitch else '')
+    f = f'{HERE}/sfx/banco/{tag}.wav'
+    if not os.path.exists(f):
+        os.makedirs(os.path.dirname(f), exist_ok=True)
+        cmd = [EAR, 'sfx', 'render', n, '-o', f] + (['--dur', str(dur)] if dur else []) + (['--pitch', str(pitch)] if pitch else [])
+        subprocess.run(cmd, check=True, capture_output=True)
+    return f
+def cc0(n):  # "cc0:sfx-kit/sounds/appear-and-vanish/appear-burst" -> archivo (mp3 se pasa a wav una vez)
+    import glob, subprocess
+    f = glob.glob(f'{HERE}/sfx/cc0/{n[4:]}.*'); assert f, f'no está {n} (motor/sfx_cc0.sh)'
+    if f[0].endswith('.mp3'):
+        w = f[0][:-4] + '.wav'
+        if not os.path.exists(w): subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f[0], w], check=True)
+        return w
+    return f[0]
+def S(n, g=1.0, dur=None, pitch=None):
+    f = cc0(n) if n.startswith('cc0:') else f'{HERE}/sfx/{n}.flac' if '/' not in n else banco(n, dur, pitch)
+    x = load(f)
+    if dur and n.startswith('cc0:'): x = x[:int(dur * SR)]; k = min(len(x), int(.05 * SR)); x[-k:] *= np.linspace(1, 0, k)
+    return x / np.abs(x).max() * g
+def at_peak(n, tm, g=1.0, dur=None, pitch=None):
+    x = S(n, g, dur, pitch); put(sfx, x, tm - np.argmax(np.abs(x)) / SR)
+# cortes: toda la familia de whooshes y swishes del banco, sin repetir seguido
+cutw = ['whoosh_fast/whip', 'swish/blade', 'whoosh_fast/crisp', 'swish/zing', 'whoosh_fast/heavy', 'pro_whoosh_big/gritty', 'whoosh_fast/tight',
+        'swish/bright', 'whoosh_big/cape', 'swish/flick', 'whoosh_fast/sleeve', 'pro_whoosh_big/windy', 'swish/cane', 'whoosh_big/gust',
+        'whoosh_fast/whistle', 'swish/soft', 'pro_whoosh_big/tonal', 'whoosh_big/jet', 'swish/stick', 'pro_whoosh_big/swell']
 for j, s_ in enumerate(TL['shots'][1:]):
     near = any(abs(s_['a'] - x) < .5 for x in imp)
     at_peak('whoosh_big_thump_deep' if near else cutw[j % len(cutw)], s_['a'] + .03, .55 if near else .42)
@@ -66,6 +92,7 @@ if imp:
     for tm in imp[1:-1]:
         if rng.random() < .5: at_peak('reverse_swell_dark', tm, .5)
 at_peak('shimmer_m3', .6, .35)
+for e in TL.get('sfx', []): at_peak(e['id'], e['a'], e['g'], e.get('dur'), e.get('pitch'))  # efectos por frase (plan.json)
 for c in TL['calls']:
     if not any(abs(c['a'] - x) < .3 for x in imp): at_peak('ui_pop_blip', c['a'] + .02, .35)
     if c.get('count'):

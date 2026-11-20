@@ -66,14 +66,16 @@ const COL={amarillo:['#ffd23f','rgba(255,120,30,.9)'],naranja:['#ff7a2a','rgba(2
  acido:['#f4ff6a','rgba(200,220,0,.8)'],rosa:['#ff9a8a','rgba(255,80,60,.7)']};
 const L=(i,f)=>starts[i]+realRel(i,durs[i]*f); // fracción de la frase -> momento real en que se dice esa palabra
 const END=i=>i<F.length-1?starts[i+1]-.15:TOTAL-.2;
-const calls=[],impacts=[],flashes=[],red=[];
+const calls=[],impacts=[],flashes=[],red=[],sfxEv=[];
 F.forEach((l,i)=>{(l.textos||[]).forEach(x=>{const a=L(i,x.t??0);
   const b=x.hasta==null||x.hasta==='fin'?END(i):x.hasta==='final'?TOTAL-.2:L(i,x.hasta);
   const [color,glow]=COL[x.color||'blanco'];
   calls.push({a,b,text:x.texto,y:POS[x.pos||'arriba'],size:TAM[x.tam||'grande'],color,glow:x.brillo===false?null:glow,
    count:x.contar?[x.contar,x.durante??1.5]:null});
   if(x.golpe)impacts.push(a);if(x.flash)flashes.push(a);});
- if(l.rojo)red.push([L(i,l.rojo[0]),L(i,l.rojo[1])]);});
+ if(l.rojo)red.push([L(i,l.rojo[0]),L(i,l.rojo[1])]);
+ // efectos por frase: "sfx":[{"id":"glitch/dropout","t":0.6,"g":0.7}] (id del banco de earshot o de motor/sfx; el pico cae en t)
+ (l.sfx||[]).forEach(x=>sfxEv.push({id:x.id,a:L(i,x.t??0),g:x.g??.7,dur:x.dur??null,pitch:x.pitch??null}));});
 impacts.sort((a,b)=>a-b);
 // Nunca dos textos grandes en el mismo sitio a la vez: el anterior se quita cuando entra el siguiente
 calls.sort((a,b)=>a.a-b.a);
@@ -87,7 +89,7 @@ const maps=[];F.forEach((l,i)=>{const m=l.mapa;if(!m)return;
  const a=m.t?L(i,m.t):shotA(i),b=m.hasta!=null?L(i,m.hasta):shotB(Math.min(F.length-1,i+(m.frases??1)-1)),at=f=>a+(b-a)*f;const rt=m.ruta_t||[.15,.85];
  maps.push({a,b,vuela:m.vuela||[[0,20,1]],ruta:m.ruta||null,ra:at(rt[0]),rb:at(rt[1]),
   marcas:(m.marcas||[]).map(x=>({en:x.en,texto:x.texto||'',a:at(x.t??.3)}))});});
-const TL={shots,words,calls,impacts,flashes,red,maps,total:TOTAL,starts,durs,voice,beatEnd:P.ritmo_hasta!=null?starts[P.ritmo_hasta]:null,res:RES,gs:1};
+const TL={shots,words,calls,impacts,flashes,red,maps,sfx:sfxEv,total:TOTAL,starts,durs,voice,beatEnd:P.ritmo_hasta!=null?starts[P.ritmo_hasta]:null,res:RES,gs:1};
 fs.writeFileSync(DIR+'/timeline.json',JSON.stringify(TL,null,1));
 
 // ---- cámara por plano (movimiento, partículas, calor) ----
