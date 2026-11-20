@@ -18,7 +18,8 @@ systematic-debugging, caveman; copia `canal/voice.md`).
    - Entregarle **5 propuestas** ordenadas: tema, gancho de la primera frase, por qué tiene tirón (con la evidencia
      y los enlaces), y si hay noticia de actualidad que lo empuje. Nada de temas ya hechos (`canal/temas.md`).
      Él elige una; anotarla en `canal/temas.md`.
-1. **Guion** — con `/yt-script` y `canal/voice.md`: gancho en el primer segundo, ~200 palabras (55–60 s),
+1. **Guion** — gancho con `/viral-hooks` (lote de 6–10 en 3 capas: imagen, voz y texto en pantalla; elegir el mejor),
+   resto con `/yt-script` y `canal/voice.md`: gancho en el primer segundo, ~200 palabras (55–60 s),
    frases cortas, datos comprobados (nada inventado). Escribir `say` (números en letra, para la voz) y
    `show` (números en cifras, para los subtítulos).
 2. **Plan** — `videos/NN-tema/plan.json` (copiar la estructura de `videos/01-venus/plan.json`):
@@ -42,7 +43,7 @@ systematic-debugging, caveman; copia `canal/voice.md`).
 5. **Montar** — `motor/montar.sh videos/NN-tema [zip]` → `videos/NN-tema/final.mp4` en 4K (~15 min de escalado + ~25 min de render). Antes, sacar 6–8
    fotogramas de prueba (`node motor/render.js videos/NN-tema t SEGUNDO salida.jpg`) y revisar que los textos no
    tapen lo importante. Medir el audio con earshot (`earshot measure`). Mandar el vídeo con SendUserFile, más
-   título, descripción y hashtags (`/yt-package`, `/yt-seo`).
+   título, descripción, hashtags y comentario fijado (`/yt-package`, `/yt-seo`, `/viral-captions-and-ctas`).
 5b. **Revisión obligatoria antes de mandar nada** — `motor/revisar.sh videos/NN-tema` tiene que decir
    `RESULTADO: OK` (resolución real, duración = línea de tiempo, sin negros, textos que no se pisan, volumen) y hay que
    mirar `revision/hoja.jpg` (orden de escenas, textos). Con la skill `verification-before-completion`: nada de
