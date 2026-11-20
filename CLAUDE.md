@@ -55,7 +55,11 @@ Google Drive (`Mi unidad/videos-curiosidades/<nombre>/`) y, si Colab se corta, a
    Colab NUEVO; rehace las elegidas con su semilla y las anima en clips de 3 s, 512×768, ~1–2 min por clip). Movimiento por imagen:
    campo opcional `mov` en `imagenes` (en inglés; si no, uno genérico suave). `clips.zip` → descomprimir en la carpeta del vídeo;
    `montar.sh` extrae los fotogramas (`motor/clips.py`) y el clip sustituye a la foto (sin paralaje 3D). Los clips son de menos
-   resolución que las fotos escaladas: revisar nitidez. Licencia LTXV: libre salvo empresas con ≥10 M$/año; declarar contenido IA.
+   resolución que las fotos escaladas: revisar nitidez. **Lección (vídeo 03):** LTX 2B apenas mueve paisajes espaciales estáticos
+   (estrellas, planetas, antenas: cambio ~1/255) y a veces se funde a negro o se deforma pasados ~1,7 s. Medir el movimiento de cada
+   clip y quedarse solo con los que se mueven; en plan.json `clip_max` (`{"c18": 40}` = solo los 40 primeros fotogramas) y
+   `clip_no` (`["c04"]` = usar la foto con cámara 3D). Los planos más largos que el clip lo reproducen adelante y atrás. Pedir
+   movimiento explícito en `mov` (p. ej. "the probe drifts slowly to the left, antenna rotating"). Licencia LTXV: libre salvo empresas con ≥10 M$/año; declarar contenido IA.
 5. **Montar** — `motor/montar.sh videos/NN-tema [zip]` → `videos/NN-tema/final.mp4` en 4K (~15 min de escalado + ~25 min de render). Antes, sacar 6–8
    fotogramas de prueba (`node motor/render.js videos/NN-tema t SEGUNDO salida.jpg`) y revisar que los textos no
    tapen lo importante. Medir el audio con earshot (`earshot measure`). Mandar el vídeo con SendUserFile, más

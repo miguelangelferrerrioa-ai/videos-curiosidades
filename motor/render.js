@@ -109,12 +109,15 @@ const camFor=(k,i)=>CAM[k]||CAM[k.split('_')[0]]||[MOVS[i%MOVS.length],'dust',0]
   await p.evaluate(([k,c,d])=>window.addTex(k,c,d),[k,'data:image/jpeg;base64,'+fs.readFileSync(c).toString('base64'),'data:image/png;base64,'+fs.readFileSync(`${DIR}/imagenes/${k}_d.png`).toString('base64')]);}
  await p.evaluate(cam=>{for(const k in cam)SH[k]=cam[k];},sh);
  // ---- clips de imagen a vídeo (celda.py --clips + motor/clips.py): sustituyen a la foto fija de su plano ----
- // A 24 fps desde el inicio del plano; si el plano dura más que el clip, el clip se estira (cámara lenta).
- const CL={};for(const k of Object.keys(sh)){const d=`${DIR}/clips/${k}`;if(fs.existsSync(d)){const n=fs.readdirSync(d).filter(x=>x.endsWith('.jpg')).length;if(n)CL[k]=n;}}
+ // A 24 fps desde el inicio del plano; si el plano dura más que el clip, va y vuelve (adelante y atrás) en vez de ralentizarse.
+ // plan.json -> "clip_max": {"c18": 40} usa solo los primeros N fotogramas (la parte buena); "clip_no": ["c04"] lo ignora.
+ const CMAX=P.clip_max||{},CNO=P.clip_no||[],base=k=>k.split('_')[0];
+ const CL={};for(const k of Object.keys(sh)){const d=`${DIR}/clips/${k}`;if(fs.existsSync(d)&&!CNO.includes(k)&&!CNO.includes(base(k))){
+  const n=fs.readdirSync(d).filter(x=>x.endsWith('.jpg')).length,m=CMAX[k]??CMAX[base(k)];if(n)CL[k]=Math.max(2,Math.min(n,m||n));}}
  if(Object.keys(CL).length){console.log('clips:',Object.keys(CL).length);await p.evaluate(ks=>{CLIPK=new Set(ks);},Object.keys(CL));}
  const last={};
  const clipAt=async time=>{let i=shots.findIndex(s=>time>=s.a&&time<s.b);if(i<0)i=shots.length-1;const s=shots[i],n=CL[s.k];if(!n)return;
-  const t=time-s.a,L=s.b-s.a,idx=Math.min(n-1,Math.floor(L>n/24?t/L*n:t*24));if(last[s.k]===idx)return;last[s.k]=idx;
+  const f=Math.floor((time-s.a)*24),pp=2*(n-1),j=f%pp,idx=j<n?j:pp-j;if(last[s.k]===idx)return;last[s.k]=idx;
   await p.evaluate(([k,u])=>window.setClip(k,u),[s.k,'data:image/jpeg;base64,'+fs.readFileSync(`${DIR}/clips/${s.k}/${String(idx+1).padStart(3,'0')}.jpg`).toString('base64')]);};
  if(mode==='t'){await clipAt(+process.argv[4]);const d=await p.evaluate(x=>window.frame(x),+process.argv[4]);fs.writeFileSync(process.argv[5],Buffer.from(d.split(',')[1],'base64'));await br.close();return;}
  const from=+process.argv[3],to=Math.min(+process.argv[4],TOTAL),outp=process.argv[5];
