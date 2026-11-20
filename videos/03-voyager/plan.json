@@ -1,0 +1,570 @@
+{
+ "nombre": "voyager",
+ "titulo": "Voyager 1 llega a un día luz de la Tierra",
+ "voz": "clon",
+ "resolucion": "4k",
+ "estilo": "hyperrealistic, NASA style space photography, cinematic lighting, ultra detailed textures, sharp focus, high dynamic range, 35mm film still",
+ "imagenes": [
+  {
+   "id": "c01",
+   "prompt": "NASA Voyager space probe with large white high-gain dish antenna, tiny and alone in a vast black starfield, wide shot",
+   "seeds": [
+    11,
+    12
+   ]
+  },
+  {
+   "id": "c02",
+   "prompt": "extreme close-up of the Voyager spacecraft high-gain dish antenna, aged metallic surface, lit by a faint distant sun, deep shadows",
+   "seeds": [
+    21,
+    22
+   ]
+  },
+  {
+   "id": "c03",
+   "prompt": "giant radio telescope dish antenna on Earth at night pointing at a starry sky, Milky Way above, desert landscape",
+   "seeds": [
+    31,
+    32
+   ]
+  },
+  {
+   "id": "c04",
+   "prompt": "planet Earth seen from deep space as a small blue sphere, distant sun glare, black space",
+   "seeds": [
+    41,
+    42
+   ]
+  },
+  {
+   "id": "c05",
+   "prompt": "a single beam of light streaking across dark interstellar space, long exposure, stars in background",
+   "seeds": [
+    51,
+    52
+   ]
+  },
+  {
+   "id": "c06",
+   "prompt": "the Sun seen from the far edge of the solar system as just a bright star among thousands, deep black space",
+   "seeds": [
+    61,
+    62
+   ]
+  },
+  {
+   "id": "c07",
+   "prompt": "1977 Titan Centaur rocket launching at dusk from Cape Canaveral, huge fire plume, smoke clouds, vintage film look",
+   "seeds": [
+    71,
+    72
+   ]
+  },
+  {
+   "id": "c08",
+   "prompt": "Voyager space probe flying past giant planet Jupiter, striped clouds and Great Red Spot filling the frame",
+   "seeds": [
+    81,
+    82
+   ]
+  },
+  {
+   "id": "c09",
+   "prompt": "Voyager space probe passing Saturn, huge rings in sharp detail, sunlight on the rings",
+   "seeds": [
+    91,
+    92
+   ]
+  },
+  {
+   "id": "c10",
+   "prompt": "macro photograph of a vintage 1970s circuit board with magnetic core memory, copper wires, dust, warm light",
+   "seeds": [
+    101,
+    102
+   ]
+  },
+  {
+   "id": "c11",
+   "prompt": "close-up of an old reel-to-reel magnetic tape recorder mechanism inside a spacecraft, metallic, dim light",
+   "seeds": [
+    111,
+    112
+   ]
+  },
+  {
+   "id": "c12",
+   "prompt": "close-up of a radioisotope thermoelectric generator cylinder with cooling fins on a spacecraft boom, faint orange glow, darkness",
+   "seeds": [
+    121,
+    122
+   ]
+  },
+  {
+   "id": "c13",
+   "prompt": "long scientific instrument boom of a space probe fading into darkness, small sensors, lights dimming, cold mood",
+   "seeds": [
+    131,
+    132
+   ]
+  },
+  {
+   "id": "c14",
+   "prompt": "a tiny pale blue dot of light inside a ray of scattered sunlight in vast black space, melancholic",
+   "seeds": [
+    141,
+    142
+   ]
+  },
+  {
+   "id": "c15",
+   "prompt": "close-up of a gold-plated copper phonograph record mounted on a spacecraft, golden reflections, starlight",
+   "seeds": [
+    151,
+    152
+   ]
+  },
+  {
+   "id": "c16",
+   "prompt": "a golden phonograph record floating alone in deep space, slowly spinning, starfield behind",
+   "seeds": [
+    161,
+    162
+   ]
+  },
+  {
+   "id": "c17",
+   "prompt": "interstellar space with the Milky Way band, cosmic dust clouds, deep and silent",
+   "seeds": [
+    171,
+    172
+   ]
+  },
+  {
+   "id": "c18",
+   "prompt": "Voyager space probe receding into the Milky Way, very small in frame, final farewell shot",
+   "seeds": [
+    181,
+    182
+   ]
+  },
+  {
+   "id": "c19",
+   "prompt": "glowing boundary of the heliosphere, wisps of purple and blue plasma in space, a tiny probe crossing it",
+   "seeds": [
+    191,
+    192
+   ]
+  }
+ ],
+ "frases": [
+  {
+   "say": "Si hoy le dices hola a esta nave… lo escucha mañana.",
+   "show": "Si hoy le dices hola a esta nave… lo escucha mañana.",
+   "planos": [
+    "c01",
+    "c03"
+   ],
+   "textos": [
+    {
+     "t": 0.0,
+     "hasta": 0.5,
+     "texto": "HOY",
+     "color": "blanco"
+    },
+    {
+     "t": 0.55,
+     "texto": "MAÑANA",
+     "color": "amarillo",
+     "golpe": true,
+     "flash": true
+    }
+   ]
+  },
+  {
+   "say": "Es la Voyáyer uno. Y esta semana ha llegado a un día luz de la Tierra.",
+   "show": "Es la Voyager 1. Y esta semana ha llegado a un día luz de la Tierra.",
+   "planos": [
+    "c02",
+    "c05"
+   ],
+   "textos": [
+    {
+     "t": 0.1,
+     "hasta": 0.45,
+     "texto": "VOYAGER 1",
+     "tam": "medio",
+     "color": "crema"
+    },
+    {
+     "t": 0.55,
+     "texto": "1 DÍA LUZ",
+     "color": "amarillo"
+    }
+   ]
+  },
+  {
+   "say": "Nada fabricado por el ser humano había llegado tan lejos.",
+   "show": "Nada fabricado por el ser humano había llegado tan lejos.",
+   "planos": [
+    "c06"
+   ],
+   "textos": [
+    {
+     "t": 0.6,
+     "texto": "NUNCA",
+     "tam": "enorme",
+     "color": "crema"
+    }
+   ]
+  },
+  {
+   "say": "Veinticinco mil novecientos millones de kilómetros.",
+   "show": "25.900 millones de kilómetros.",
+   "planos": [
+    "c04",
+    "c17"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "texto": "# MILLONES",
+     "contar": 25900,
+     "durante": 2.0,
+     "color": "amarillo"
+    },
+    {
+     "t": 0.7,
+     "texto": "DE KM",
+     "pos": "arriba2",
+     "tam": "medio",
+     "golpe": true
+    }
+   ]
+  },
+  {
+   "say": "En coche, a ciento veinte por hora, tardarías casi veinticinco mil años.",
+   "show": "En coche, a 120 km/h, tardarías casi 25.000 años.",
+   "planos": [
+    "c06"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "hasta": 0.4,
+     "texto": "120 KM/H",
+     "tam": "medio",
+     "color": "blanco"
+    },
+    {
+     "t": 0.45,
+     "texto": "# AÑOS",
+     "contar": 25000,
+     "durante": 1.6,
+     "color": "amarillo"
+    }
+   ]
+  },
+  {
+   "say": "Salió en mil novecientos setenta y siete. Lleva cuarenta y nueve años viajando sin parar.",
+   "show": "Salió en 1977. Lleva 49 años viajando sin parar.",
+   "planos": [
+    "c07",
+    "c08",
+    "c09"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "hasta": 0.4,
+     "texto": "1977",
+     "color": "naranja"
+    },
+    {
+     "t": 0.45,
+     "texto": "# AÑOS",
+     "contar": 49,
+     "durante": 1.4,
+     "color": "blanco"
+    }
+   ]
+  },
+  {
+   "say": "Su ordenador tiene sesenta y nueve kilobaits de memoria. Menos que una sola foto de tu móvil.",
+   "show": "Su ordenador tiene 69 KB de memoria. Menos que una sola foto de tu móvil.",
+   "planos": [
+    "c10",
+    "c11"
+   ],
+   "textos": [
+    {
+     "t": 0.1,
+     "texto": "69 KB",
+     "color": "azul"
+    },
+    {
+     "t": 0.6,
+     "texto": "< 1 FOTO",
+     "pos": "arriba2",
+     "tam": "medio"
+    }
+   ]
+  },
+  {
+   "say": "Y aun así, sigue hablándonos. Con una emisora de menos potencia que una bombilla.",
+   "show": "Y aun así, sigue hablándonos. Con una emisora de menos potencia que una bombilla.",
+   "planos": [
+    "c02",
+    "c03"
+   ],
+   "textos": [
+    {
+     "t": 0.6,
+     "texto": "< 1 BOMBILLA",
+     "tam": "medio",
+     "color": "crema"
+    }
+   ]
+  },
+  {
+   "say": "Pero se está apagando. Cada año pierde unos cuatro vatios de energía.",
+   "show": "Pero se está apagando. Cada año pierde unos 4 vatios de energía.",
+   "planos": [
+    "c12",
+    "c13"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "hasta": 0.4,
+     "texto": "SE APAGA",
+     "tam": "medio",
+     "color": "rojo",
+     "golpe": true
+    },
+    {
+     "t": 0.5,
+     "texto": "-4 W / AÑO",
+     "color": "rojo"
+    }
+   ]
+  },
+  {
+   "say": "De sus diez instrumentos, solo quedan dos encendidos.",
+   "show": "De sus 10 instrumentos, solo quedan 2 encendidos.",
+   "planos": [
+    "c13"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "hasta": 0.55,
+     "texto": "10",
+     "color": "blanco"
+    },
+    {
+     "t": 0.6,
+     "texto": "2",
+     "tam": "enorme",
+     "color": "rojo"
+    }
+   ]
+  },
+  {
+   "say": "En mil novecientos noventa se giró para hacernos una última foto. La Tierra salió como un punto diminuto.",
+   "show": "En 1990 se giró para hacernos una última foto. La Tierra salió como un punto diminuto.",
+   "planos": [
+    "c14"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "hasta": 0.45,
+     "texto": "1990",
+     "color": "crema"
+    },
+    {
+     "t": 0.7,
+     "texto": "LA TIERRA",
+     "tam": "pequeno",
+     "pos": "centro",
+     "color": "azul"
+    }
+   ]
+  },
+  {
+   "say": "Lleva un disco de oro con saludos en cincuenta y cinco idiomas. Por si alguien la encuentra.",
+   "show": "Lleva un disco de oro con saludos en 55 idiomas. Por si alguien la encuentra.",
+   "planos": [
+    "c15",
+    "c16"
+   ],
+   "textos": [
+    {
+     "t": 0.1,
+     "texto": "DISCO DE ORO",
+     "tam": "medio",
+     "color": "amarillo"
+    },
+    {
+     "t": 0.45,
+     "texto": "# IDIOMAS",
+     "contar": 55,
+     "durante": 1.2,
+     "pos": "arriba2",
+     "tam": "medio"
+    }
+   ]
+  },
+  {
+   "say": "Algún día dejará de contestar. Pero seguirá viajando… con nuestras voces dentro.",
+   "show": "Algún día dejará de contestar. Pero seguirá viajando… con nuestras voces dentro.",
+   "planos": [
+    "c19",
+    "c18"
+   ],
+   "textos": [
+    {
+     "t": 0.7,
+     "texto": "SEGUIRÁ VIAJANDO",
+     "pos": "centro",
+     "tam": "grande",
+     "color": "crema",
+     "golpe": true,
+     "flash": true
+    }
+   ]
+  },
+  {
+   "say": "¿Qué le dirías tú? Sígueme para más historias del espacio.",
+   "show": "¿Qué le dirías tú? Sígueme para más historias del espacio.",
+   "planos": [
+    "c18"
+   ],
+   "textos": [
+    {
+     "t": 0.05,
+     "hasta": 0.45,
+     "texto": "¿QUÉ LE DIRÍAS?",
+     "pos": "centro",
+     "tam": "grande"
+    },
+    {
+     "t": 0.45,
+     "hasta": "final",
+     "texto": "SÍGUEME",
+     "pos": "centro",
+     "tam": "grande",
+     "color": "amarillo"
+    },
+    {
+     "t": 0.6,
+     "hasta": "final",
+     "texto": "+ HISTORIAS DEL ESPACIO",
+     "pos": "centro3",
+     "tam": "mini"
+    }
+   ]
+  }
+ ],
+ "camara": {
+  "c01": [
+   "push",
+   "dust",
+   0
+  ],
+  "c02": [
+   "orbitL",
+   "none",
+   0
+  ],
+  "c03": [
+   "crane",
+   "none",
+   0
+  ],
+  "c04": [
+   "pull",
+   "none",
+   0
+  ],
+  "c05": [
+   "rush",
+   "sparks",
+   0
+  ],
+  "c06": [
+   "drift",
+   "dust",
+   0
+  ],
+  "c07": [
+   "crane",
+   "embers",
+   0.6
+  ],
+  "c08": [
+   "orbitR",
+   "none",
+   0
+  ],
+  "c09": [
+   "orbitL",
+   "none",
+   0
+  ],
+  "c10": [
+   "push",
+   "dust",
+   0.2
+  ],
+  "c11": [
+   "drift",
+   "dust",
+   0
+  ],
+  "c12": [
+   "push",
+   "embers",
+   0.4
+  ],
+  "c13": [
+   "pull",
+   "dust",
+   0
+  ],
+  "c14": [
+   "push",
+   "none",
+   0
+  ],
+  "c15": [
+   "orbitR",
+   "sparks",
+   0
+  ],
+  "c16": [
+   "spin",
+   "dust",
+   0
+  ],
+  "c17": [
+   "drift",
+   "dust",
+   0
+  ],
+  "c18": [
+   "pull",
+   "dust",
+   0
+  ],
+  "c19": [
+   "rush",
+   "sparks",
+   0
+  ]
+ },
+ "cola": 2.6,
+ "elegidas": {}
+}
