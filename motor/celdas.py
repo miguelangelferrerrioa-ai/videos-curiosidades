@@ -45,7 +45,8 @@ for i, a in enumerate(r.audios):
     os.system(f'cp "{a["path"]}" "{O}/m_{i}.wav"')
 print("MÚSICA LISTA:", len(r.audios), "versiones", flush=True)
 '''
-LTX = '''import json, os, torch, numpy as np
+LTX = '''import os; os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"  # menos memoria de GPU desperdiciada
+import json, gc, torch, numpy as np
 from PIL import Image
 C = json.load(open("/content/cfg.json")); O = C["out"]; os.makedirs(O + "/clips", exist_ok=True)
 todo = [j for j in C["clips"] if not os.path.exists(f"{O}/clips/{j[0]}.mp4")]
@@ -65,7 +66,7 @@ if todo:
     from diffusers import LTXImageToVideoPipeline
     from diffusers.utils import export_to_video
     from transformers import T5EncoderModel, BitsAndBytesConfig
-    import gc; gc.collect()
+    gc.collect()
     # El codificador de texto (T5-XXL) no cabe en la RAM de Colab gratis junto al resto: va a 8 bits directo a la GPU (~5 GB)
     te = T5EncoderModel.from_pretrained("Lightricks/LTX-Video", subfolder="text_encoder", quantization_config=BitsAndBytesConfig(load_in_8bit=True),
                                         torch_dtype=torch.float16, device_map={"": 0}, low_cpu_mem_usage=True)
@@ -84,6 +85,7 @@ if todo:
             print("float16 da negro: paso a bfloat16 (más lento)", flush=True)
             del lt; gc.collect(); torch.cuda.empty_cache(); lt = carga(torch.bfloat16); fr = gen(lt, im, p, sd)
         export_to_video(fr, f"/content/{k}.mp4", fps=24); os.system(f"cp /content/{k}.mp4 {O}/clips/{k}.mp4")
+        del fr, im; gc.collect(); torch.cuda.empty_cache()  # sin esto, el 2.º clip se queda sin memoria de GPU
         print(f"Clip {n + 1} de {len(todo)}: {k}", flush=True)
 print("CLIPS LISTOS", flush=True)
 '''
