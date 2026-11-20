@@ -100,6 +100,38 @@ function captions(time){const w=TL.words;let i=w.findIndex(x=>time>=x.a&&time<x.
  ws.forEach((x0,j)=>{const cur=time>=x0.a&&time<x0.b+.15&&x0===w[i];const said=time>=x0.a;
   const sc=cur?1+.18*Math.max(0,1-(time-x0.a)/.15):1;
   txt(x0.s,x+widths[j]/2,y,84,{s:sc,color:cur?'#ffd23f':said?'#ffffff':'rgba(255,255,255,.75)',a:said?1:.85});x+=widths[j]+sp;});ctx.restore();}
+// ---------- mapas (globo con países reales; d3-geo y GEO los inyecta render.js) ----------
+let GEO=null;window.setGeo=x=>{GEO=x;GEO.grat=d3.geoGraticule10();};
+function rutaPts(r){const o=[];for(let k=0;k<r.length-1;k++){const f=d3.geoInterpolate(r[k],r[k+1]);for(let j=0;j<64;j++)o.push(f(j/64));}o.push(r[r.length-1]);return o;}
+function mapa(time){const m=(TL.maps||[]).find(x=>time>=x.a&&time<x.b);if(!m||!GEO)return;
+ const al=Math.min(1,(time-m.a)/.35,(m.b-time)/.3),u=(time-m.a)/(m.b-m.a),K=m.vuela;let c;
+ if(K.length===1)c=[K[0][0]+(time-m.a)*4,K[0][1],K[0][2]]; // un solo punto: el globo gira despacio
+ else{const n=K.length-1,sg=Math.min(n-1,Math.floor(u*n)),v=ease(u*n-sg),A=K[sg],B=K[sg+1];
+  const ll=d3.geoInterpolate([A[0],A[1]],[B[0],B[1]])(v);c=[ll[0],ll[1],A[2]*Math.pow(B[2]/A[2],v)];}
+ const R=W*.42*c[2],cx=W/2,cy=H*.45;
+ const pj=d3.geoOrthographic().scale(R).translate([cx,cy]).rotate([-c[0],-c[1]]).clipAngle(90).precision(.3),path=d3.geoPath(pj,ctx);
+ ctx.save();ctx.globalAlpha=al;ctx.fillStyle='rgba(0,0,0,.7)';ctx.fillRect(0,0,W,H);
+ const at=ctx.createRadialGradient(cx,cy,R*.96,cx,cy,R*1.16);at.addColorStop(0,'rgba(90,175,255,.55)');at.addColorStop(1,'rgba(90,175,255,0)');
+ ctx.fillStyle=at;ctx.beginPath();ctx.arc(cx,cy,R*1.16,0,7);ctx.fill(); // atmósfera
+ const oc=ctx.createRadialGradient(cx-R*.35,cy-R*.35,R*.1,cx,cy,R);oc.addColorStop(0,'#14406a');oc.addColorStop(1,'#030c18');
+ ctx.beginPath();path({type:'Sphere'});ctx.fillStyle=oc;ctx.fill();
+ ctx.beginPath();path(GEO.grat);ctx.strokeStyle='rgba(159,224,255,.1)';ctx.lineWidth=1;ctx.stroke();
+ ctx.beginPath();path(GEO.land);ctx.fillStyle='#34503d';ctx.fill();
+ ctx.save();ctx.shadowColor='rgba(120,200,255,.9)';ctx.shadowBlur=8;ctx.strokeStyle='rgba(170,225,255,.85)';ctx.lineWidth=1.6;ctx.stroke();ctx.restore();
+ ctx.beginPath();path(GEO.borders);ctx.strokeStyle='rgba(255,255,255,.25)';ctx.lineWidth=.9;ctx.stroke();
+ ctx.save();ctx.beginPath();path({type:'Sphere'});ctx.clip(); // luz lateral: volumen de esfera
+ const sh=ctx.createRadialGradient(cx-R*.4,cy-R*.45,R*.15,cx,cy,R*1.05);sh.addColorStop(0,'rgba(255,255,255,.1)');sh.addColorStop(.55,'rgba(0,0,0,0)');sh.addColorStop(1,'rgba(0,0,0,.6)');
+ ctx.fillStyle=sh;ctx.fillRect(0,0,W,H);ctx.restore();
+ const vis=p=>d3.geoDistance(p,[c[0],c[1]])<Math.PI/2-.03;
+ if(m.ruta&&m.ruta.length>1&&time>m.ra){const P=m._p||(m._p=rutaPts(m.ruta)),k=eo((time-m.ra)/(m.rb-m.ra)),n=Math.max(2,Math.round(k*(P.length-1))+1),S=P.slice(0,n);
+  ctx.save();ctx.beginPath();path({type:'LineString',coordinates:S});ctx.lineCap='round';
+  ctx.shadowColor='rgba(255,120,30,.9)';ctx.shadowBlur=18;ctx.strokeStyle='#ffd23f';ctx.lineWidth=7;ctx.stroke();ctx.restore();
+  const hd=S[S.length-1];if(k<1&&vis(hd)){const q=pj(hd);ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(q[0],q[1],10,0,7);ctx.fill();}}
+ for(const k of m.marcas){if(time<k.a||!vis(k.en))continue;const q=pj(k.en),d=time-k.a,ph=(d*1.1)%1;
+  ctx.strokeStyle=`rgba(255,210,63,${1-ph})`;ctx.lineWidth=4;ctx.beginPath();ctx.arc(q[0],q[1],12+ph*46,0,7);ctx.stroke();
+  ctx.save();ctx.shadowColor='rgba(255,120,30,1)';ctx.shadowBlur=20;ctx.fillStyle='#ffd23f';ctx.beginPath();ctx.arc(q[0],q[1],11,0,7);ctx.fill();ctx.restore();
+  if(k.texto&&q[1]>330)txt(k.texto,Math.min(W-230,Math.max(230,q[0])),q[1]-70,54,{a:al*Math.min(1,d/.12),s:pop(d),color:'#ffffff',glow:'rgba(255,120,30,.8)'});}
+ ctx.restore();}
 // ---------- fotograma ----------
 window.frame=time=>{ctx.setTransform(RS,0,0,RS,0,0);
  const S=TL.shots;let i=S.findIndex(s=>time>=s.a&&time<s.b);if(i<0)i=S.length-1;const s=S[i];const L=s.b-s.a,t=time-s.a,u=t/L;
@@ -118,6 +150,7 @@ window.frame=time=>{ctx.setTransform(RS,0,0,RS,0,0);
  g.drawArrays(g.TRIANGLES,0,3);
  ctx.drawImage(gl,0,0,W,H);
  parts(pk,time,i+1);
+ mapa(time);
  // barra de progreso arriba
  ctx.fillStyle='rgba(255,255,255,.25)';ctx.fillRect(0,0,W,8);ctx.fillStyle='#ffd23f';ctx.fillRect(0,0,W*time/TL.total,8);
  callouts(time);captions(time);

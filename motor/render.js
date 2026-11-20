@@ -79,7 +79,15 @@ impacts.sort((a,b)=>a-b);
 calls.sort((a,b)=>a.a-b.a);
 for(let i=0;i<calls.length;i++)for(let j=i+1;j<calls.length;j++){const A=calls[i],B=calls[j];
  if(Math.abs(A.y-B.y)<(A.size+B.size)*.45&&B.a<A.b)A.b=Math.max(A.a+.2,B.a-.05);}
-const TL={shots,words,calls,impacts,flashes,red,total:TOTAL,starts,durs,voice,beatEnd:P.ritmo_hasta!=null?starts[P.ritmo_hasta]:null,res:RES,gs:1};
+// ---- mapas: globo terráqueo con países reales (Natural Earth), vuelo de cámara, ruta y marcadores ----
+// "mapa":{"vuela":[[lon,lat,zoom],...],"ruta":[[lon,lat],...],"ruta_t":[0.15,0.85],"marcas":[{"en":[lon,lat],"texto":"...","t":0.3}],
+//         "t":0,"frases":1}   (t, ruta_t y marcas.t = fracción de la ventana del mapa; zoom 1 = globo entero)
+const shotA=i=>i?starts[i]-.12:0,shotB=i=>i<F.length-1?starts[i+1]-.12:TOTAL;
+const maps=[];F.forEach((l,i)=>{const m=l.mapa;if(!m)return;
+ const a=m.t?L(i,m.t):shotA(i),b=shotB(Math.min(F.length-1,i+(m.frases??1)-1)),at=f=>a+(b-a)*f;const rt=m.ruta_t||[.15,.85];
+ maps.push({a,b,vuela:m.vuela||[[0,20,1]],ruta:m.ruta||null,ra:at(rt[0]),rb:at(rt[1]),
+  marcas:(m.marcas||[]).map(x=>({en:x.en,texto:x.texto||'',a:at(x.t??.3)}))});});
+const TL={shots,words,calls,impacts,flashes,red,maps,total:TOTAL,starts,durs,voice,beatEnd:P.ritmo_hasta!=null?starts[P.ritmo_hasta]:null,res:RES,gs:1};
 fs.writeFileSync(DIR+'/timeline.json',JSON.stringify(TL,null,1));
 
 // ---- cámara por plano (movimiento, partículas, calor) ----
@@ -92,6 +100,10 @@ const camFor=(k,i)=>CAM[k]||CAM[k.split('_')[0]]||[MOVS[i%MOVS.length],'dust',0]
  await p.goto('file://'+__dirname+'/scene.html');
  const sh={};shots.forEach((s,i)=>{sh[s.k]=sh[s.k]||camFor(s.k,i);});
  await p.evaluate(tl=>window.setup(tl,{}),TL);
+ if(maps.length){ // d3-geo + contornos de países (escala 1:50 m) solo si el vídeo tiene mapas
+  for(const m of ['d3-array','d3-geo'])await p.addScriptTag({path:path.join(__dirname,'..','node_modules',m,'dist',m+'.min.js')});
+  const topo=require('world-atlas/countries-50m.json'),{feature,mesh}=require('topojson-client');
+  await p.evaluate(g=>window.setGeo(g),{land:feature(topo,topo.objects.land),borders:mesh(topo,topo.objects.countries,(a,b)=>a!==b)});}
  for(const k of Object.keys(sh)){ // de una en una (las imágenes x4 pesan varios MB)
   const c=X4&&fs.existsSync(`${DIR}/imagenes_x4/${k}.jpg`)?`${DIR}/imagenes_x4/${k}.jpg`:`${DIR}/imagenes/${k}.jpg`;
   await p.evaluate(([k,c,d])=>window.addTex(k,c,d),[k,'data:image/jpeg;base64,'+fs.readFileSync(c).toString('base64'),'data:image/png;base64,'+fs.readFileSync(`${DIR}/imagenes/${k}_d.png`).toString('base64')]);}

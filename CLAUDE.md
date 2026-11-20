@@ -21,6 +21,12 @@ systematic-debugging, caveman; copia `canal/voice.md`).
    - `frases`: cada una con `say`, `show`, `planos` (1–3 imágenes, cortes cada 2–3 s) y `textos`
      (cifras grandes: `t` = fracción de la frase, `hasta`, `pos`, `tam`, `color`, `contar`, `golpe`, `flash`).
      4–6 `golpe` en todo el vídeo (el primero arranca la batería, el último es la explosión final).
+   - `mapa` (opcional, en una frase): globo terráqueo con países reales sobre la imagen oscurecida (para lugares:
+     lanzamientos, caídas de meteoritos, eclipses…). `vuela`: puntos `[lon, lat, zoom]` por los que pasa la cámara
+     (zoom 1 = globo entero, 3 = un país; un solo punto = gira despacio); `ruta`: `[[lon, lat], …]` que se dibuja
+     entre `ruta_t` (fracciones, por defecto `[0.15, 0.85]`); `marcas`: `[{"en": [lon, lat], "texto": "CABO CAÑAVERAL", "t": 0.6}]`;
+     `frases`: cuántas frases dura (1). Las etiquetas no salen en la franja de los textos grandes de arriba.
+     Coordenadas: buscarlas, nunca inventarlas.
    - `camara`: por imagen `[movimiento, partículas, calor]`; movimientos: push pull orbitL orbitR crane rush
      drift spin; partículas: embers ash dust acid bubbles sparks none; calor 0–1.
 3. **Celda de Colab** — `python3 motor/celda.py videos/NN-tema --solo-imagenes` → `celda_colab.txt`. Mandársela en un
