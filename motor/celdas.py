@@ -50,6 +50,17 @@ from PIL import Image
 C = json.load(open("/content/cfg.json")); O = C["out"]; os.makedirs(O + "/clips", exist_ok=True)
 todo = [j for j in C["clips"] if not os.path.exists(f"{O}/clips/{j[0]}.mp4")]
 print("Clips por hacer:", len(todo), flush=True)
+falta = [j for j in todo if not os.path.exists(f"{O}/imagenes/{j[0]}.jpg")]
+if falta:  # imágenes que no están en Drive (p. ej. hechas con la celda antigua): se rehacen con su semilla
+    os.makedirs(O + "/imagenes", exist_ok=True)
+    from diffusers import StableDiffusionXLPipeline, DPMSolverMultistepScheduler
+    pipe = StableDiffusionXLPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16, variant="fp16", use_safetensors=True).to("cuda")
+    pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config, use_karras_sigmas=True); pipe.set_progress_bar_config(disable=True)
+    for k, p, sd, base, xn in falta:
+        pipe(base + ", " + C["style"], negative_prompt=C["neg"] + (", " + xn if xn else ""), width=832, height=1216, num_inference_steps=30, guidance_scale=6.5,
+             generator=torch.Generator("cuda").manual_seed(sd)).images[0].save(f"{O}/imagenes/{k}.jpg", quality=92)
+        print("Imagen rehecha", k, flush=True)
+    del pipe; torch.cuda.empty_cache()
 if todo:
     from diffusers import LTXImageToVideoPipeline
     from diffusers.utils import export_to_video
@@ -61,7 +72,7 @@ if todo:
                   width=512, height=768, num_frames=73, num_inference_steps=30, guidance_scale=3.0, decode_timestep=0.05, image_cond_noise_scale=0.025,
                   generator=torch.Generator("cuda").manual_seed(sd)).frames[0]
     lt = carga(torch.float16)  # la T4 no tiene bfloat16 nativo: float16 va mucho más rápido
-    for n, (k, p, sd) in enumerate(todo):
+    for n, (k, p, sd, base, xn) in enumerate(todo):
         im = Image.open(f"{O}/imagenes/{k}.jpg").convert("RGB").resize((512, 768))
         fr = gen(lt, im, p, sd)
         if n == 0 and float(np.asarray(fr[len(fr) // 2], dtype=np.float32).mean()) < 5:
@@ -99,8 +110,8 @@ elif MODO == 'clips':
     JOBS = []
     for b in base:
         k = EL.get(b, b); i = IM[k.rsplit('_', 1)[0]]
-        if k not in [j[0] for j in JOBS]: JOBS.append([k, i['prompt'] + ', ' + i.get('mov', MOVDEF), int(k.rsplit('_', 1)[1])])
-    CFG = {'out': O, 'clips': JOBS}
+        if k not in [j[0] for j in JOBS]: JOBS.append([k, i['prompt'] + ', ' + i.get('mov', MOVDEF), int(k.rsplit('_', 1)[1]), i['prompt'], i.get('neg', '')])
+    CFG = {'out': O, 'clips': JOBS, 'style': STYLE, 'neg': NEG}
     L += [f'open("/content/cfg.json", "w").write(json.dumps({CFG!r}))', f'open("/content/clips.py", "w").write({LTX!r})',
           '!pip -q install -U diffusers "transformers<5" accelerate sentencepiece imageio imageio-ffmpeg 2>&1 | tail -2',
           f'!python -u /content/clips.py 2>&1 | grep -v AutoencoderKL | tee -a "{O}/log.txt"',
