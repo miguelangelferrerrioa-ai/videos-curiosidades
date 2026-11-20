@@ -641,6 +641,7 @@
  "musica": {
   "prompt": "cinematic space ambient soundtrack, emotional and epic, slow pulsing synth arpeggio, soft felt piano, warm analog pads, deep sub bass, gentle drums building to a powerful climax, interstellar mood, instrumental",
   "bpm": 100,
-  "seed": 7
+  "seed": 7,
+  "elegida": "m_1"
  }
 }
