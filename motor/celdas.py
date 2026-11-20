@@ -64,9 +64,14 @@ if falta:  # imágenes que no están en Drive (p. ej. hechas con la celda antigu
 if todo:
     from diffusers import LTXImageToVideoPipeline
     from diffusers.utils import export_to_video
+    from transformers import T5EncoderModel, BitsAndBytesConfig
+    import gc; gc.collect()
+    # El codificador de texto (T5-XXL) no cabe en la RAM de Colab gratis junto al resto: va a 8 bits directo a la GPU (~5 GB)
+    te = T5EncoderModel.from_pretrained("Lightricks/LTX-Video", subfolder="text_encoder", quantization_config=BitsAndBytesConfig(load_in_8bit=True),
+                                        torch_dtype=torch.float16, device_map={"": 0}, low_cpu_mem_usage=True)
     def carga(dt):
-        x = LTXImageToVideoPipeline.from_pretrained("Lightricks/LTX-Video", torch_dtype=dt)
-        x.enable_model_cpu_offload(); x.vae.enable_tiling(); x.set_progress_bar_config(disable=True); return x
+        x = LTXImageToVideoPipeline.from_pretrained("Lightricks/LTX-Video", text_encoder=te, torch_dtype=dt, low_cpu_mem_usage=True)
+        x.transformer.to("cuda"); x.vae.to("cuda"); x.vae.enable_tiling(); x.set_progress_bar_config(disable=True); return x
     def gen(lt, im, p, sd):
         return lt(image=im, prompt=p, negative_prompt="worst quality, inconsistent motion, blurry, jittery, distorted, morphing, text, watermark",
                   width=512, height=768, num_frames=73, num_inference_steps=30, guidance_scale=3.0, decode_timestep=0.05, image_cond_noise_scale=0.025,
@@ -77,7 +82,7 @@ if todo:
         fr = gen(lt, im, p, sd)
         if n == 0 and float(np.asarray(fr[len(fr) // 2], dtype=np.float32).mean()) < 5:
             print("float16 da negro: paso a bfloat16 (más lento)", flush=True)
-            del lt; torch.cuda.empty_cache(); lt = carga(torch.bfloat16); fr = gen(lt, im, p, sd)
+            del lt; gc.collect(); torch.cuda.empty_cache(); lt = carga(torch.bfloat16); fr = gen(lt, im, p, sd)
         export_to_video(fr, f"/content/{k}.mp4", fps=24); os.system(f"cp /content/{k}.mp4 {O}/clips/{k}.mp4")
         print(f"Clip {n + 1} de {len(todo)}: {k}", flush=True)
 print("CLIPS LISTOS", flush=True)
@@ -113,7 +118,7 @@ elif MODO == 'clips':
         if k not in [j[0] for j in JOBS]: JOBS.append([k, i['prompt'] + ', ' + i.get('mov', MOVDEF), int(k.rsplit('_', 1)[1]), i['prompt'], i.get('neg', '')])
     CFG = {'out': O, 'clips': JOBS, 'style': STYLE, 'neg': NEG}
     L += [f'open("/content/cfg.json", "w").write(json.dumps({CFG!r}))', f'open("/content/clips.py", "w").write({LTX!r})',
-          '!pip -q install -U diffusers "transformers<5" accelerate sentencepiece imageio imageio-ffmpeg 2>&1 | tail -2',
+          '!pip -q install -U diffusers "transformers<5" accelerate bitsandbytes sentencepiece imageio imageio-ffmpeg 2>&1 | tail -2',
           f'!python -u /content/clips.py 2>&1 | grep -v AutoencoderKL | tee -a "{O}/log.txt"',
           f'Z = {O + "_clips.zip"!r}; S = ["clips"]']
     QUE = f'{len(JOBS)} clips ({", ".join(j[0] for j in JOBS)})'
