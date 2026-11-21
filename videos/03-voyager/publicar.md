@@ -22,3 +22,7 @@ Fuentes: NASA, CNN, Space.com.
 
 ## Comentario fijado
 Si pudieras grabar UN mensaje en el disco de oro… ¿cuál sería? Lo leo todo 👇
+
+## Al subirlo (obligatorio)
+- YouTube: marcar **"Contenido alterado o sintético" → Sí** (voz, imágenes, clips y música generados con IA).
+- TikTok: activar **"Contenido generado por IA"**. Instagram: etiqueta **"Información de IA"**.
