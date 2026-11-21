@@ -24,6 +24,6 @@ Cierre: "¿Te irías a vivir allí? Sígueme para más curiosidades del espacio.
 Ningún dato sin comprobar. Nada de cifras inventadas ni redondeadas para que suenen mejor.
 
 ## Formato
-Vertical 9:16, 55–60 s, unas 200 palabras de narración. Sin intro: arranca con el gancho.
+Vertical 9:16, 61–65 s (TikTok solo paga vídeos de más de 1 minuto), unas 215 palabras de narración. Sin intro: arranca con el gancho.
 Imágenes generadas con IA, cortes cada 2–3 s, cifras grandes en pantalla, subtítulos palabra a palabra,
 música con ritmo y efectos de sonido. Temas: curiosidades del espacio (primer vídeo: Venus).
