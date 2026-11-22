@@ -33,7 +33,9 @@ yt-viral, yt-package, yt-seo, earshot, verification-before-completion, systemati
    (Colab → Entorno de ejecución → T4 GPU; ~25 min). Imágenes + mapas de profundidad + 2 músicas (ACE-Step 1.5, MIT). Guarda en su
    Drive (`Mi unidad/videos-curiosidades/<nombre>/`) y, si Colab se corta, al volver a ejecutar sigue donde iba. Me pasa
    `<nombre>_fase1.zip`. Las celdas van SIN sangrías (el editor del móvil las rompe).
-4. **Voz (a la vez)** — él la genera en **ElevenLabs** (plan de pago: el gratis no permite monetizar): su voz diseñada,
+4. **Voz (a la vez)** — él la genera en **ElevenLabs** (plan de pago: el gratis no permite monetizar). **Voz del canal (elegida
+   2026-11-22):** estilo de su referencia (`canal/voz_ref/voz_canal.wav`, no se sube): hombre joven de España, tono medio-grave
+   (~120 Hz), cercano, rápido (~3,5 palabras/s), seguro y algo pícaro, pausas antes de revelar. Su voz diseñada con ese estilo,
    Multilingual v2, Speed ~1.15–1.2, **guion entero de una vez** (mandarle el texto de `say` seguido). Guardarla en
    `videos/NN-tema/voz_eleven/narracion.wav` y `HF_HUB_DISABLE_XET=1 .venv-voz/bin/python motor/partir_narracion.py videos/NN-tema
    videos/NN-tema/voz_eleven/narracion.wav` → `voz/vo_XX.wav` + `voz/palabras.json` (subtítulos y efectos al milisegundo).
