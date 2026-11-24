@@ -15,7 +15,7 @@ yt-viral, yt-package, yt-seo, earshot, verification-before-completion, systemati
    **61–65 s** (~215 palabras): TikTok solo paga vídeos de más de 1 minuto. Frases cortas, datos comprobados con fuentes.
    `say` (números en letra, para la voz) y `show` (cifras, para subtítulos).
 2. **Plan** — `videos/NN-tema/plan.json` (copiar la estructura de `videos/03-voyager/plan.json`, el más completo):
-   - `imagenes`: ~18–20 prompts en inglés para SDXL, 2 semillas cada uno; planos variados, nada de texto ni personas.
+   - `imagenes`: ~18–20 prompts en inglés para SDXL, 2 semillas cada uno; planos variados, nada de texto. **Estilo gráfico SIEMPRE 3D animado estilizado** (`canal/estilo.md`); si salen personas, en ese mismo estilo 3D.
      `mov` opcional (movimiento explícito para los clips, en inglés).
    - `frases`: `say`, `show`, `planos` (1–3 imágenes, cortes cada 2–3 s), `textos` (cifras grandes: `t` = fracción de la frase,
      `hasta`, `pos`, `tam`, `color`, `contar`, `golpe`, `flash`; 4–6 `golpe` en todo el vídeo) y `sfx` (ver abajo).
@@ -35,7 +35,8 @@ yt-viral, yt-package, yt-seo, earshot, verification-before-completion, systemati
    `<nombre>_fase1.zip`. Las celdas van SIN sangrías (el editor del móvil las rompe).
 4. **Voz (a la vez)** — él la genera en **ElevenLabs** (plan de pago: el gratis no permite monetizar). **Voz del canal (elegida
    2026-11-22):** estilo de su referencia (`canal/voz_ref/voz_canal.wav`, no se sube): hombre joven de España, tono medio-grave
-   (~120 Hz), cercano, rápido (~3,5 palabras/s), seguro y algo pícaro, pausas antes de revelar. Su voz diseñada con ese estilo,
+   (~120 Hz), cercano, rápido (~3,5 palabras/s), seguro y algo pícaro, pausas antes de revelar. Voz: **Dan - Upbeat Dynamic and
+   Friendly** (biblioteca ElevenLabs; a Speed 1.0 va a ~2,4 p/s → acelerar hasta ~3,5 p/s como la referencia),
    Multilingual v2, Speed ~1.15–1.2, **guion entero de una vez** (mandarle el texto de `say` seguido). Guardarla en
    `videos/NN-tema/voz_eleven/narracion.wav` y `HF_HUB_DISABLE_XET=1 .venv-voz/bin/python motor/partir_narracion.py videos/NN-tema
    videos/NN-tema/voz_eleven/narracion.wav` → `voz/vo_XX.wav` + `voz/palabras.json` (subtítulos y efectos al milisegundo).

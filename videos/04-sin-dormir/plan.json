@@ -1,0 +1,473 @@
+{
+ "nombre": "sin-dormir",
+ "titulo": "¿Qué pasaría si nunca durmieras?",
+ "voz": "eleven",
+ "resolucion": "2k",
+ "estilo": "stylized 3D animated render, Blender cinematic, soft volumetric lighting, smooth clay-like materials, vibrant colors, Pixar style characters, depth of field, high detail, no text",
+ "imagenes": [
+  {
+   "id": "c01",
+   "prompt": "a stylized 3D cartoon young man lying wide awake in bed at night, huge open eyes, dark bedroom lit by a blue phone glow, clock on the nightstand",
+   "seeds": [
+    11,
+    12
+   ]
+  },
+  {
+   "id": "c02",
+   "prompt": "a stylized 3D cartoon young man yawning at a desk at sunrise, coffee mugs piled up, warm orange window light",
+   "seeds": [
+    21,
+    22
+   ]
+  },
+  {
+   "id": "c03",
+   "prompt": "a stylized 3D cartoon human brain glowing softly, floating in a dark void, a few neurons sparkling and flickering",
+   "seeds": [
+    31,
+    32
+   ]
+  },
+  {
+   "id": "c04",
+   "prompt": "a stylized 3D cartoon young man swaying dizzy in a city street at night, blurry neon lights, as if drunk",
+   "seeds": [
+    41,
+    42
+   ]
+  },
+  {
+   "id": "c05",
+   "prompt": "a stylized 3D cartoon car on a dark empty highway at night, headlights drifting toward the edge of the road",
+   "seeds": [
+    51,
+    52
+   ]
+  },
+  {
+   "id": "c06",
+   "prompt": "a stylized 3D cartoon young man sitting on a sofa with eyes half closed, frozen mid-blink, a ghostly translucent copy of him falling asleep",
+   "seeds": [
+    61,
+    62
+   ]
+  },
+  {
+   "id": "c07",
+   "prompt": "a stylized 3D cartoon human brain made of glowing city blocks, lights switching off block by block in the dark",
+   "seeds": [
+    71,
+    72
+   ]
+  },
+  {
+   "id": "c08",
+   "prompt": "a stylized 3D cartoon cross-section of a brain being washed by flowing glowing blue liquid at night, carrying away tiny dark particles",
+   "seeds": [
+    81,
+    82
+   ]
+  },
+  {
+   "id": "c09",
+   "prompt": "a stylized 3D cartoon brain clogged with sticky dark purple gunk, dim and murky, unsettling mood",
+   "seeds": [
+    91,
+    92
+   ]
+  },
+  {
+   "id": "c10",
+   "prompt": "a stylized 3D cartoon bedroom at night where the shadows on the wall look like strange creatures, eerie purple light",
+   "seeds": [
+    101,
+    102
+   ]
+  },
+  {
+   "id": "c11",
+   "prompt": "a stylized 3D cartoon teenage boy in 1960s clothes sitting at a kitchen table in 1964 California, sleepy eyes, retro wall calendar, warm light",
+   "seeds": [
+    111,
+    112
+   ]
+  },
+  {
+   "id": "c12",
+   "prompt": "a stylized 3D cartoon street sign at night that looks like a standing man, foggy suburban street, streetlight glow",
+   "seeds": [
+    121,
+    122
+   ]
+  },
+  {
+   "id": "c13",
+   "prompt": "a stylized 3D cartoon hospital room at night, empty bed, green heart monitor glow, quiet and ominous",
+   "seeds": [
+    131,
+    132
+   ]
+  },
+  {
+   "id": "c14",
+   "prompt": "a stylized 3D cartoon DNA double helix glowing red in darkness, one rung cracked",
+   "seeds": [
+    141,
+    142
+   ]
+  },
+  {
+   "id": "c15",
+   "prompt": "a stylized 3D cartoon white laboratory rat on a small rotating platform over water, sleepy eyes, cool lab lighting",
+   "seeds": [
+    151,
+    152
+   ]
+  },
+  {
+   "id": "c16",
+   "prompt": "a stylized 3D cartoon young man finally asleep in a cozy bed, moonlight through the window, peaceful stars, calm blue night",
+   "seeds": [
+    161,
+    162
+   ]
+  },
+  {
+   "id": "c17",
+   "prompt": "a stylized 3D cartoon alarm clock with cracked glass spinning fast in a dark void, motion blur",
+   "seeds": [
+    171,
+    172
+   ]
+  },
+  {
+   "id": "c18",
+   "prompt": "a stylized 3D cartoon earth at night from space with city lights, a giant crescent moon nearby, dreamy",
+   "seeds": [
+    181,
+    182
+   ]
+  }
+ ],
+ "frases": [
+  {
+   "say": "¿Qué pasaría si dejaras de dormir? Para siempre.",
+   "show": "¿Qué pasaría si dejaras de dormir? Para siempre.",
+   "planos": [
+    "c01",
+    "c17"
+   ],
+   "textos": [
+    {
+     "t": 0.55,
+     "texto": "PARA SIEMPRE",
+     "color": "amarillo",
+     "golpe": true,
+     "flash": true
+    }
+   ],
+   "sfx": [
+    {
+     "id": "glitch/chirp",
+     "t": 0.55,
+     "g": 0.4
+    }
+   ]
+  },
+  {
+   "say": "Parece un superpoder. Pasamos un tercio de la vida durmiendo: todo eso, para ti.",
+   "show": "Parece un superpoder. Pasamos 1/3 de la vida durmiendo: todo eso, para ti.",
+   "planos": [
+    "c18"
+   ],
+   "textos": [
+    {
+     "t": 0.35,
+     "hasta": 0.8,
+     "texto": "1/3",
+     "color": "amarillo"
+    }
+   ],
+   "sfx": []
+  },
+  {
+   "say": "Las primeras veinticuatro horas parecen fáciles. Un poco de sueño, y ya.",
+   "show": "Las primeras 24 horas parecen fáciles. Un poco de sueño, y ya.",
+   "planos": [
+    "c02"
+   ],
+   "textos": [
+    {
+     "t": 0.1,
+     "hasta": 0.6,
+     "texto": "24 H",
+     "color": "blanco",
+     "contar": true
+    }
+   ],
+   "sfx": []
+  },
+  {
+   "say": "Pero tu cerebro ya va como si hubieras bebido. El doble del límite para conducir.",
+   "show": "Pero tu cerebro ya va como si hubieras bebido. El doble del límite para conducir.",
+   "planos": [
+    "c04",
+    "c05"
+   ],
+   "textos": [
+    {
+     "t": 0.6,
+     "texto": "×2",
+     "color": "rojo",
+     "golpe": true
+    }
+   ],
+   "sfx": []
+  },
+  {
+   "say": "Al segundo día, empiezan los microsueños. Duermes unos segundos con los ojos abiertos… y no te enteras.",
+   "show": "Al 2º día, empiezan los microsueños. Duermes unos segundos con los ojos abiertos… y no te enteras.",
+   "planos": [
+    "c06",
+    "c07"
+   ],
+   "textos": [
+    {
+     "t": 0.1,
+     "hasta": 0.5,
+     "texto": "DÍA 2",
+     "color": "crema",
+     "tam": "medio"
+    }
+   ],
+   "sfx": []
+  },
+  {
+   "say": "Y aquí viene lo raro. Por la noche, tu cerebro se lava. Como si alguien limpiara tu casa mientras duermes.",
+   "show": "Y aquí viene lo raro. Por la noche, tu cerebro se lava. Como si alguien limpiara tu casa mientras duermes.",
+   "planos": [
+    "c03",
+    "c08"
+   ],
+   "textos": [],
+   "sfx": []
+  },
+  {
+   "say": "Un líquido arrastra la basura que acumulas durante el día. Sin dormir… esa basura se queda dentro.",
+   "show": "Un líquido arrastra la basura que acumulas durante el día. Sin dormir… esa basura se queda dentro.",
+   "planos": [
+    "c08",
+    "c09"
+   ],
+   "textos": [],
+   "sfx": []
+  },
+  {
+   "say": "Al tercer día, empiezas a ver cosas que no están.",
+   "show": "Al 3er día, empiezas a ver cosas que no están.",
+   "planos": [
+    "c10"
+   ],
+   "textos": [
+    {
+     "t": 0.1,
+     "hasta": 0.5,
+     "texto": "DÍA 3",
+     "color": "crema",
+     "tam": "medio"
+    }
+   ],
+   "sfx": []
+  },
+  {
+   "say": "En mil novecientos sesenta y cuatro, un chico de diecisiete años aguantó once días sin dormir.",
+   "show": "En 1964, un chico de 17 años aguantó 11 días sin dormir.",
+   "planos": [
+    "c11"
+   ],
+   "textos": [
+    {
+     "t": 0.65,
+     "texto": "11 DÍAS",
+     "color": "amarillo",
+     "golpe": true,
+     "contar": true
+    }
+   ],
+   "sfx": []
+  },
+  {
+   "say": "Se llamaba Randy Gardner. Llegó a confundir una señal de tráfico con una persona. Y al acabar, durmió catorce horas seguidas.",
+   "show": "Se llamaba Randy Gardner. Llegó a confundir una señal de tráfico con una persona. Y al acabar, durmió 14 horas seguidas.",
+   "planos": [
+    "c11",
+    "c12"
+   ],
+   "textos": [],
+   "sfx": []
+  },
+  {
+   "say": "Pero lo más inquietante no es eso. Existe una enfermedad que no te deja dormir.",
+   "show": "Pero lo más inquietante no es eso. Existe una enfermedad que no te deja dormir.",
+   "planos": [
+    "c13",
+    "c14"
+   ],
+   "textos": [],
+   "sfx": []
+  },
+  {
+   "say": "Se llama insomnio familiar fatal. Y hasta hoy, no tiene cura.",
+   "show": "Se llama insomnio familiar fatal. Y hasta hoy, no tiene cura.",
+   "planos": [
+    "c14",
+    "c13"
+   ],
+   "textos": [
+    {
+     "t": 0.55,
+     "texto": "SIN CURA",
+     "color": "rojo",
+     "golpe": true,
+     "flash": true
+    }
+   ],
+   "sfx": []
+  },
+  {
+   "say": "En un experimento, a unas ratas no las dejaron dormir. En unas semanas, murieron todas.",
+   "show": "En un experimento, a unas ratas no las dejaron dormir. En unas semanas, murieron todas.",
+   "planos": [
+    "c15"
+   ],
+   "textos": [
+    {
+     "t": 0.6,
+     "texto": "< 1 MES",
+     "color": "rojo",
+     "golpe": true
+    }
+   ],
+   "sfx": []
+  },
+  {
+   "say": "Así que dormir no es descansar. Es lo que te mantiene vivo.",
+   "show": "Así que dormir no es descansar. Es lo que te mantiene vivo.",
+   "planos": [
+    "c16",
+    "c18"
+   ],
+   "textos": [],
+   "sfx": []
+  },
+  {
+   "say": "Y tú, ¿cuántas horas has dormido hoy? Dímelo abajo.",
+   "show": "Y tú, ¿cuántas horas has dormido hoy? Dímelo abajo.",
+   "planos": [
+    "c01"
+   ],
+   "textos": [],
+   "sfx": []
+  }
+ ],
+ "camara": {
+  "c01": [
+   "push",
+   "dust",
+   0
+  ],
+  "c02": [
+   "pull",
+   "none",
+   0
+  ],
+  "c03": [
+   "orbitL",
+   "none",
+   0
+  ],
+  "c04": [
+   "orbitR",
+   "dust",
+   0
+  ],
+  "c05": [
+   "crane",
+   "none",
+   0
+  ],
+  "c06": [
+   "drift",
+   "none",
+   0
+  ],
+  "c07": [
+   "push",
+   "dust",
+   0
+  ],
+  "c08": [
+   "pull",
+   "none",
+   0
+  ],
+  "c09": [
+   "orbitL",
+   "none",
+   0
+  ],
+  "c10": [
+   "orbitR",
+   "dust",
+   0
+  ],
+  "c11": [
+   "crane",
+   "none",
+   0
+  ],
+  "c12": [
+   "drift",
+   "none",
+   0
+  ],
+  "c13": [
+   "push",
+   "dust",
+   0
+  ],
+  "c14": [
+   "pull",
+   "none",
+   0
+  ],
+  "c15": [
+   "orbitL",
+   "none",
+   0
+  ],
+  "c16": [
+   "orbitR",
+   "dust",
+   0
+  ],
+  "c17": [
+   "crane",
+   "none",
+   0
+  ],
+  "c18": [
+   "drift",
+   "none",
+   0
+  ]
+ },
+ "cola": 2.6,
+ "elegidas": {},
+ "musica": {
+  "prompt": "mysterious cinematic documentary underscore, ticking clock percussion, soft pulsing synth, dreamy pads, tension building to an emotional climax, instrumental",
+  "bpm": 105,
+  "seed": 7
+ }
+}
