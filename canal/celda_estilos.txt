@@ -1,0 +1,15 @@
+import os,torch
+from diffusers import StableDiffusionXLPipeline,DPMSolverMultistepScheduler
+from PIL import Image,ImageDraw
+pipe=StableDiffusionXLPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0",torch_dtype=torch.float16,variant="fp16",use_safetensors=True).to("cuda")
+pipe.scheduler=DPMSolverMultistepScheduler.from_config(pipe.scheduler.config,use_karras_sigmas=True)
+S=["Pixar style 3D animation","stylized 3D animation like viral what-if shorts, simple smooth shapes, soft studio lighting","claymation stop motion, plasticine","Kurzgesagt flat vector illustration","anime key visual, cel shaded","low poly 3D render","Studio Ghibli watercolor style","2D cartoon, thick outlines, flat colors","hyperrealistic CGI, unreal engine 5","paper cutout collage animation","chibi 3D figurine, vinyl toy","stylized 3D like Arcane, painterly textures","retro 1950s cartoon, rubber hose style","isometric 3D diorama, tiny miniature","black ink sketch with one red accent color"]
+P="a young man lying wide awake in bed at night, tired eyes, dark bedroom, blue phone light"
+os.makedirs("/content/estilos",exist_ok=True);ims=[]
+for i,s in enumerate(S):
+ im=pipe(P+", "+s,negative_prompt="text, watermark, deformed, blurry, extra fingers",width=832,height=1216,num_inference_steps=25,guidance_scale=6.5,generator=torch.Generator("cuda").manual_seed(7)).images[0].resize((416,608))
+ ImageDraw.Draw(im).text((10,10),str(i+1),fill="yellow");ims.append(im);print(i+1,s,flush=True)
+H=Image.new("RGB",(416*5,608*3))
+for i,im in enumerate(ims):H.paste(im,((i%5)*416,(i//5)*608))
+H.save("/content/estilos.jpg",quality=88)
+from google.colab import files;files.download("/content/estilos.jpg")
