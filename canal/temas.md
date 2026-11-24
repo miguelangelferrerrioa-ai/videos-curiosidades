@@ -6,6 +6,7 @@
 | 01 | Venus (curiosidades) | 2026-11-19 | primer vídeo; voz ElevenLabs |
 | 02 | Las últimas palabras del rover Opportunity | 2026-11-19 | formato "final trágico" (Astrum Cassini 14x, Spirit 9,4x) |
 | 03 | Voyager 1 llega a un día luz | 2026-11-20 | noticia del 18-nov; formato "final de misión" (Cassini 14,2×) |
+| 04 | ¿Qué pasaría si nunca durmieras? | 2026-11-24 | elegido; kurzgesagt 3M 2,3×; estilo "¿qué pasaría si?" |
 
 ## Mi canal
 https://www.youtube.com/@randomfacts.tv1
