@@ -70,7 +70,7 @@ const calls=[],impacts=[],flashes=[],red=[],sfxEv=[];
 F.forEach((l,i)=>{(l.textos||[]).forEach(x=>{const a=L(i,x.t??0);
   const b=x.hasta==null||x.hasta==='fin'?END(i):x.hasta==='final'?TOTAL-.2:L(i,x.hasta);
   const [color,glow]=COL[x.color||'blanco'];
-  calls.push({a,b,text:x.texto,y:POS[x.pos||'arriba'],size:TAM[x.tam||'grande'],color,glow:x.brillo===false?null:glow,
+  calls.push({a,b,text:x.texto,y:POS[x.pos||(P.subs==='arriba'?'centro':'arriba')],size:TAM[x.tam||'grande'],color,glow:x.brillo===false?null:glow,
    count:x.contar?[x.contar,x.durante??1.5]:null});
   if(x.golpe)impacts.push(a);if(x.flash)flashes.push(a);});
  if(l.rojo)red.push([L(i,l.rojo[0]),L(i,l.rojo[1])]);
@@ -89,7 +89,9 @@ const maps=[];F.forEach((l,i)=>{const m=l.mapa;if(!m)return;
  const a=m.t?L(i,m.t):shotA(i),b=m.hasta!=null?L(i,m.hasta):shotB(Math.min(F.length-1,i+(m.frases??1)-1)),at=f=>a+(b-a)*f;const rt=m.ruta_t||[.15,.85];
  maps.push({a,b,vuela:m.vuela||[[0,20,1]],ruta:m.ruta||null,ra:at(rt[0]),rb:at(rt[1]),
   marcas:(m.marcas||[]).map(x=>({en:x.en,texto:x.texto||'',a:at(x.t??.3)}))});});
-const TL={shots,words,calls,impacts,flashes,red,maps,sfx:sfxEv,total:TOTAL,starts,durs,voice,beatEnd:P.ritmo_hasta!=null?starts[P.ritmo_hasta]:null,res:RES,gs:1};
+// zoom de énfasis por frase: "zoom":[{"t":0.5,"k":1.3,"x":0,"y":0,"hasta":0.9}] (x,y = desplazamiento hacia el objeto, -0.2..0.2)
+const zooms=[];F.forEach((l,i)=>(l.zoom||[]).forEach(z=>zooms.push({a:L(i,z.t??0),b:z.hasta==null?END(i):L(i,z.hasta),k:z.k??1.3,x:z.x??0,y:z.y??0})));
+const TL={shots,words,calls,impacts,flashes,red,maps,zooms,pro:!!P.pro,subs:P.subs||'abajo',sfx:sfxEv,total:TOTAL,starts,durs,voice,beatEnd:P.ritmo_hasta!=null?starts[P.ritmo_hasta]:null,res:RES,gs:1};
 fs.writeFileSync(DIR+'/timeline.json',JSON.stringify(TL,null,1));
 
 // ---- cámara por plano (movimiento, partículas, calor) ----

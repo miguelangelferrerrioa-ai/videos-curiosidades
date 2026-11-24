@@ -79,25 +79,32 @@ def at_peak(n, tm, g=1.0, dur=None, pitch=None):
 cutw = ['whoosh_fast/whip', 'swish/blade', 'whoosh_fast/crisp', 'swish/zing', 'whoosh_fast/heavy', 'pro_whoosh_big/gritty', 'whoosh_fast/tight',
         'swish/bright', 'whoosh_big/cape', 'swish/flick', 'whoosh_fast/sleeve', 'pro_whoosh_big/windy', 'swish/cane', 'whoosh_big/gust',
         'whoosh_fast/whistle', 'swish/soft', 'pro_whoosh_big/tonal', 'whoosh_big/jet', 'swish/stick', 'pro_whoosh_big/swell']
+PRO = TL.get('pro')  # modo profesional: solo efectos grabados reales (CC0), suaves; zooms con whoosh
+if PRO:
+    C = 'cc0:sfx-kit/sounds/'
+    cutw = [C + 'whooshes/whoosh-medium-soft', C + 'swipes/swipe-fast-soft', C + 'whooshes/whoosh-fast-soft', C + 'swipes/swipe-medium-soft']
+    for z in TL.get('zooms', []): at_peak(C + 'whooshes/whoosh-fast-medium', z['a'] + .1, .35)
 for j, s_ in enumerate(TL['shots'][1:]):
     near = any(abs(s_['a'] - x) < .5 for x in imp)
+    if PRO: at_peak(cutw[j % len(cutw)], s_['a'] + .03, .22); continue
     at_peak('whoosh_big_thump_deep' if near else cutw[j % len(cutw)], s_['a'] + .03, .55 if near else .42)
 seq = [['impact_deep'], ['impact_punch'], ['sub_drop_808'], ['cut_hit_sub', 'impact_punch'], ['impact_metal', 'glitch_crush']]
+if PRO: seq = [[C + 'booms-and-bass/boom-hit-soft'], [C + 'cinematic-hits/cinematic-drum-big'], [C + 'booms-and-bass/bass-sub-drop-short']]
 for j, tm in enumerate(imp):
-    names = ['impact_blast'] if j == len(imp) - 1 and len(imp) > 1 else seq[j % len(seq)]
-    for n in names: at_peak(n, tm, 1.0 if n in ('impact_deep', 'impact_blast', 'cut_hit_sub') else .8)
-if imp:
+    names = ['impact_blast'] if j == len(imp) - 1 and len(imp) > 1 and not PRO else seq[j % len(seq)]
+    for n in names: at_peak(n, tm, .6 if PRO else 1.0 if n in ('impact_deep', 'impact_blast', 'cut_hit_sub') else .8)
+if imp and not PRO:
     at_peak('riser_tension', imp[0], .55)
     if len(imp) > 1: at_peak('riser_build', imp[-1], .55)
     for tm in imp[1:-1]:
         if rng.random() < .5: at_peak('reverse_swell_dark', tm, .5)
-at_peak('shimmer_m3', .6, .35)
+if not PRO: at_peak('shimmer_m3', .6, .35)
 for e in TL.get('sfx', []): at_peak(e['id'], e['a'], e['g'], e.get('dur'), e.get('pitch'))  # efectos por frase (plan.json)
 for c in TL['calls']:
-    if not any(abs(c['a'] - x) < .3 for x in imp): at_peak('ui_pop_blip', c['a'] + .02, .35)
+    if not any(abs(c['a'] - x) < .3 for x in imp): at_peak(C + 'interface/click-tap-soft' if PRO else 'ui_pop_blip', c['a'] + .02, .3)
     if c.get('count'):
         n, d = c['count']; k = 0
-        while k * .08 < d: at_peak('hover_tick_air', c['a'] + k * .08, .18); k += 1
+        while k * .08 < d: at_peak(C + 'interface/click-hover-soft' if PRO else 'hover_tick_air', c['a'] + k * .08, .15); k += 1
 # ---- voz ----
 vo = np.zeros(N); vd = TL['voice']
 if 'single' in vd: put(vo, load(V + '/' + vd['single']), vd['offset'])
