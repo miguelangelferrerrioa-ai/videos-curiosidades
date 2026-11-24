@@ -1,7 +1,7 @@
 # Vídeos de curiosidades — instrucciones para Claude
 
 Canal de vídeos cortos verticales (TikTok / Reels / Shorts) de curiosidades, en español, con narrador en off.
-El dueño trabaja **desde el móvil**: responder siempre en español, **máximo 2 frases por respuesta** (tiene pocos tokens). Él da una idea; Claude hace el resto.
+El dueño trabaja **desde el móvil**: responder siempre en español, **máximo 2 líneas por respuesta** (tiene pocos tokens). Él da una idea; Claude hace el resto.
 
 ## Al empezar una sesión
 `./setup.sh && ./setup.sh voz` en segundo plano (~10 min): entorno de Python, Node (mapas), 614 efectos CC0, skills (yt-script,
