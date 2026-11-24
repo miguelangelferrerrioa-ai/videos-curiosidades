@@ -464,10 +464,29 @@
   ]
  },
  "cola": 2.6,
- "elegidas": {},
+ "elegidas": {
+  "c01": "c01_11",
+  "c02": "c02_22",
+  "c03": "c03_32",
+  "c04": "c04_42",
+  "c05": "c05_51",
+  "c06": "c06_61",
+  "c07": "c07_71",
+  "c08": "c08_82",
+  "c09": "c09_92",
+  "c10": "c10_101",
+  "c11": "c11_111",
+  "c12": "c12_122",
+  "c13": "c13_132",
+  "c14": "c14_142",
+  "c15": "c15_151",
+  "c16": "c16_161",
+  "c17": "c17_171",
+  "c18": "c18_182"
+ },
  "musica": {
   "prompt": "mysterious cinematic documentary underscore, ticking clock percussion, soft pulsing synth, dreamy pads, tension building to an emotional climax, instrumental",
   "bpm": 105,
-  "seed": 7
+  "seed": 7, "elegida": "m_1"
  }
 }
