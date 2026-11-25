@@ -86,11 +86,90 @@
  "musica": {
   "prompt": "epic cinematic space documentary underscore, warm deep synth pads, slow pulsing bass, shimmering arpeggio, sense of awe building to a powerful climax, instrumental",
   "bpm": 92,
-  "seed": 21
+  "seed": 21,
+  "elegida": "m_1"
  },
  "fuentes": [
   "NSF Inouye Solar Telescope (primera luz 2020, ~30 km)",
   "Physics World / Nature 2026: imagen de 2025 con ~20 km",
   "Gránulos 500–2000 km"
- ]
+ ],
+ "anim_sfx": {
+  "golpes": [
+   [
+    0,
+    "sol"
+   ],
+   [
+    1,
+    "detallada"
+   ],
+   [
+    3,
+    "fundir"
+   ],
+   [
+    5,
+    "espana"
+   ],
+   [
+    7,
+    "grados"
+   ],
+   [
+    9,
+    "20"
+   ],
+   [
+    10,
+    "moneda"
+   ]
+  ],
+  "etiquetas": [
+   [
+    1,
+    "imagen"
+   ],
+   [
+    2,
+    "inouye"
+   ],
+   [
+    4,
+    "refrigeracion"
+   ],
+   [
+    5,
+    "plasma"
+   ],
+   [
+    6,
+    "sube"
+   ],
+   [
+    6,
+    "hunde"
+   ],
+   [
+    8,
+    "minutos"
+   ],
+   [
+    10,
+    "150"
+   ],
+   [
+    12,
+    "dimelo"
+   ]
+  ],
+  "ticks": [
+   [
+    7,
+    "casi",
+    10,
+    0.8
+   ]
+  ]
+ }
 }

@@ -95,7 +95,7 @@ export const SolSVG: React.FC = () => {
       <Lienzo a={ini(7)} b={fin(7)} dir={-1}><FondoAbstracto t={ms} acento="#FF5A4A" />
         <Pop at={ini(7)} x={540} y={1450} from="up" heavy><Olla t={ms} x={540} y={1250} s={1.15} /></Pop>
       </Lienzo>
-      <Big text={`${Math.round(interpolate(ms, [kw(7, 'casi'), kw(7, 'grados') + 300], [0, 6000], {...cl, easing: EASE.out})).toLocaleString('es-ES')} °C`} at={kw(7, 'casi')} y={620} color="#FF8A3D" />
+      <Big text={`${Math.round(interpolate(ms, [kw(7, 'casi'), kw(7, 'grados')], [0, 6000], {...cl, easing: EASE.out})).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')} °C`} at={kw(7, 'casi')} y={620} color="#FF8A3D" />
     </Shot>
     {/* 8 cada grano dura 10 minutos */}
     <Shot startMs={ini(8)} endMs={fin(8)} punchMs={[kw(8, 'minutos')]}>
