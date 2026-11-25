@@ -520,5 +520,6 @@
   "elegida": "m_1"
  },
  "pro": true,
- "subs": "arriba"
+ "subs": "arriba",
+ "negativo": "text, letters, words, watermark, logo, blurry, lowres, jpeg artifacts, noise, photorealistic, photo, 3d render, deformed, extra fingers, ugly"
 }
