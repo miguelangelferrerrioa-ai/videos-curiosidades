@@ -1,0 +1,201 @@
+{
+ "nombre": "bostezo",
+ "titulo": "¿Por qué se contagian los bostezos?",
+ "modo": "anim",
+ "frases": [
+  {
+   "say": "Vas a bostezar antes de que acabe este vídeo.",
+   "show": "Vas a bostezar antes de que acabe este vídeo."
+  },
+  {
+   "say": "Si alguien bosteza cerca de ti, hay muchas papeletas de que tú también lo hagas.",
+   "show": "Si alguien bosteza cerca de ti, hay muchas papeletas de que tú también lo hagas."
+  },
+  {
+   "say": "Pasa en más o menos la mitad de los adultos.",
+   "show": "Pasa en más o menos la mitad de los adultos."
+  },
+  {
+   "say": "Y basta con verlo, oírlo… o incluso leerlo.",
+   "show": "Y basta con verlo, oírlo… o incluso leerlo."
+  },
+  {
+   "say": "Sí: leer la palabra bostezo ya funciona.",
+   "show": "Sí: leer la palabra bostezo ya funciona."
+  },
+  {
+   "say": "Una teoría dice que bostezar enfría el cerebro.",
+   "show": "Una teoría dice que bostezar enfría el cerebro."
+  },
+  {
+   "say": "Metes aire de golpe, estiras la mandíbula y llega sangre más fresca.",
+   "show": "Metes aire de golpe, estiras la mandíbula y llega sangre más fresca."
+  },
+  {
+   "say": "Pero eso no explica el contagio. Para eso, la clave parece ser la empatía.",
+   "show": "Pero eso no explica el contagio. Para eso, la clave parece ser la empatía."
+  },
+  {
+   "say": "Se contagia más con tu familia y tus amigos… y mucho menos con desconocidos.",
+   "show": "Se contagia más con tu familia y tus amigos… y mucho menos con desconocidos."
+  },
+  {
+   "say": "Y no solo entre humanos: hay perros que bostezan cuando bosteza su dueño.",
+   "show": "Y no solo entre humanos: hay perros que bostezan cuando bosteza su dueño."
+  },
+  {
+   "say": "Así que si has bostezado, es que tu cerebro conecta con los demás.",
+   "show": "Así que si has bostezado, es que tu cerebro conecta con los demás."
+  },
+  {
+   "say": "¿Has bostezado? Dímelo abajo.",
+   "show": "¿Has bostezado? Dímelo abajo."
+  }
+ ],
+ "musica": {
+  "prompt": "light playful curious documentary underscore, plucked strings, soft marimba, gentle pulse, warm and calm, instrumental",
+  "bpm": 96,
+  "seed": 11
+ },
+ "sprites": [
+  {
+   "id": "cara_bostezo",
+   "prompt": "close-up portrait of a young man yawning very widely, mouth wide open, eyes squeezed shut, front view",
+   "seeds": [
+    11,
+    12
+   ]
+  },
+  {
+   "id": "pasajero1",
+   "prompt": "a young woman sitting and yawning widely with hand near mouth, front view",
+   "seeds": [
+    21,
+    22
+   ]
+  },
+  {
+   "id": "pasajero2",
+   "prompt": "an old man with glasses sitting and yawning widely, front view",
+   "seeds": [
+    31,
+    32
+   ]
+  },
+  {
+   "id": "pasajero3",
+   "prompt": "a businessman in a suit sitting and yawning widely, front view",
+   "seeds": [
+    41,
+    42
+   ]
+  },
+  {
+   "id": "pasajero4",
+   "prompt": "a teenage girl with headphones sitting and yawning widely, front view",
+   "seeds": [
+    51,
+    52
+   ]
+  },
+  {
+   "id": "movil",
+   "prompt": "a hand holding a smartphone with a blank white screen, front view",
+   "seeds": [
+    61,
+    62
+   ]
+  },
+  {
+   "id": "cabeza_cerebro",
+   "prompt": "side view profile of a human head with transparent skull showing a pink brain inside",
+   "seeds": [
+    71,
+    72
+   ]
+  },
+  {
+   "id": "cabeza_chica",
+   "prompt": "side view profile of a young woman head, calm face",
+   "seeds": [
+    81,
+    82
+   ]
+  },
+  {
+   "id": "termometro",
+   "prompt": "a thermometer with red liquid, vertical",
+   "seeds": [
+    91,
+    92
+   ]
+  },
+  {
+   "id": "familia",
+   "prompt": "a happy family of mother father and child standing together, front view",
+   "seeds": [
+    101,
+    102
+   ]
+  },
+  {
+   "id": "amigos",
+   "prompt": "two young friends standing side by side smiling, front view",
+   "seeds": [
+    111,
+    112
+   ]
+  },
+  {
+   "id": "desconocido",
+   "prompt": "a stranger in a long coat and hat standing, front view",
+   "seeds": [
+    121,
+    122
+   ]
+  },
+  {
+   "id": "perro",
+   "prompt": "a cute brown dog sitting and yawning widely, front view",
+   "seeds": [
+    131,
+    132
+   ]
+  }
+ ],
+ "fondos": [
+  {
+   "id": "f_metro",
+   "prompt": "inside an empty subway train car, seats along the side, warm light, wide shot",
+   "seeds": [
+    511,
+    512
+   ]
+  },
+  {
+   "id": "f_noche",
+   "prompt": "a soft night sky gradient with stars, dark blue and purple",
+   "seeds": [
+    521,
+    522
+   ]
+  },
+  {
+   "id": "f_salon",
+   "prompt": "a cozy living room with sofa, warm evening light, wide shot",
+   "seeds": [
+    531,
+    532
+   ]
+  },
+  {
+   "id": "f_azul",
+   "prompt": "an abstract soft dark blue background with subtle shapes",
+   "seeds": [
+    541,
+    542
+   ]
+  }
+ ],
+ "imagenes": []
+}
