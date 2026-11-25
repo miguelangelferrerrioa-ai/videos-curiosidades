@@ -540,5 +540,177 @@
  },
  "pro": true,
  "subs": "arriba",
- "negativo": "text, letters, words, watermark, logo, blurry, lowres, jpeg artifacts, noise, photorealistic, photo, 3d render, deformed, extra fingers, ugly"
+ "negativo": "text, letters, words, watermark, logo, blurry, lowres, jpeg artifacts, noise, photorealistic, photo, 3d render, deformed, extra fingers, ugly",
+ "sprites": [
+  {
+   "id": "chico_cama",
+   "prompt": "a young man lying in bed under a teal blanket, wide awake with huge open tired eyes, side view",
+   "seeds": [
+    11,
+    12
+   ]
+  },
+  {
+   "id": "chico_dormido",
+   "prompt": "a young man sleeping peacefully in bed under a teal blanket, eyes closed, side view",
+   "seeds": [
+    21,
+    22
+   ]
+  },
+  {
+   "id": "chico_cansado",
+   "prompt": "a tired young man standing, dark circles under eyes, slouching, yawning, front view",
+   "seeds": [
+    31,
+    32
+   ]
+  },
+  {
+   "id": "chico_mareado",
+   "prompt": "a dizzy young man swaying, spiral eyes, front view",
+   "seeds": [
+    41,
+    42
+   ]
+  },
+  {
+   "id": "chico_1964",
+   "prompt": "a 17 year old boy with 1960s haircut and clothes, very sleepy eyes, sitting, front view",
+   "seeds": [
+    51,
+    52
+   ]
+  },
+  {
+   "id": "cerebro",
+   "prompt": "a cute pink human brain, side view, simple",
+   "seeds": [
+    61,
+    62
+   ]
+  },
+  {
+   "id": "cerebro_sucio",
+   "prompt": "a human brain covered in dark purple sticky gunk, side view",
+   "seeds": [
+    71,
+    72
+   ]
+  },
+  {
+   "id": "reloj",
+   "prompt": "a classic red alarm clock, front view",
+   "seeds": [
+    81,
+    82
+   ]
+  },
+  {
+   "id": "coche",
+   "prompt": "a small blue car, side view",
+   "seeds": [
+    91,
+    92
+   ]
+  },
+  {
+   "id": "rata",
+   "prompt": "a cute white lab rat sitting, side view",
+   "seeds": [
+    101,
+    102
+   ]
+  },
+  {
+   "id": "adn",
+   "prompt": "a red DNA double helix, vertical",
+   "seeds": [
+    111,
+    112
+   ]
+  },
+  {
+   "id": "cama_hospital",
+   "prompt": "an empty hospital bed with a heart monitor, side view",
+   "seeds": [
+    121,
+    122
+   ]
+  },
+  {
+   "id": "senal",
+   "prompt": "a street sign on a pole, blank sign, front view",
+   "seeds": [
+    131,
+    132
+   ]
+  },
+  {
+   "id": "copa",
+   "prompt": "a glass of red wine",
+   "seeds": [
+    141,
+    142
+   ]
+  },
+  {
+   "id": "calendario",
+   "prompt": "a blank wall calendar page, front view",
+   "seeds": [
+    151,
+    152
+   ]
+  }
+ ],
+ "fondos": [
+  {
+   "id": "f_dormitorio",
+   "prompt": "a cozy bedroom at night seen from the side, window with stars and moon, nightstand with lamp, dark blue and purple tones, wide shot, lots of empty space in the middle",
+   "seeds": [
+    511,
+    512
+   ]
+  },
+  {
+   "id": "f_calle",
+   "prompt": "a quiet suburban street at night, streetlights, dark blue sky, wide shot",
+   "seeds": [
+    521,
+    522
+   ]
+  },
+  {
+   "id": "f_espacio",
+   "prompt": "deep blue night sky with soft stars, simple gradient background",
+   "seeds": [
+    531,
+    532
+   ]
+  },
+  {
+   "id": "f_hospital",
+   "prompt": "a hospital room at night, green tones, wide shot, empty middle",
+   "seeds": [
+    541,
+    542
+   ]
+  },
+  {
+   "id": "f_lab",
+   "prompt": "a science laboratory, cool blue tones, wide shot, empty middle",
+   "seeds": [
+    551,
+    552
+   ]
+  },
+  {
+   "id": "f_cocina",
+   "prompt": "a 1960s kitchen, warm retro tones, wide shot, empty middle",
+   "seeds": [
+    561,
+    562
+   ]
+  }
+ ]
 }
