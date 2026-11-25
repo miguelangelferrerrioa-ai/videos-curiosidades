@@ -67,7 +67,7 @@ export const Persona: React.FC<{x: number; y: number; s?: number; yawn?: number;
     <path d="M-78 140 Q-85 10 0 -10 Q85 10 78 140 Z" fill={ropa} />
     <path d="M10 -8 Q85 10 78 140 L30 140 Z" fill="#000" opacity={0.18} />
     {/* brazo: de reposo a la boca */}
-    <g transform={`rotate(${-yawn * 125} 62 20)`}><rect x={48} y={15} width={34} height={110} rx={17} fill={ropa} /><circle cx={65} cy={128} r={20} fill={b} /></g>
+    <g transform={`rotate(${yawn * 140} 62 20)`}><rect x={48} y={15} width={34} height={110} rx={17} fill={ropa} /><circle cx={65} cy={128} r={20} fill={b} /></g>
     <rect x={-82} y={15} width={34} height={110} rx={17} fill={ropa} /><circle cx={-65} cy={128} r={20} fill={sh} />
     <rect x={-16} y={-36} width={32} height={34} rx={10} fill={sh} />
     <Cabeza x={0} y={-95} r={72} yawn={yawn} piel={piel} pelo={pelo} peinado={peinado} gafas={gafas} />

@@ -99,16 +99,16 @@ export const BostezoSVG: React.FC = () => {
         {([[220, kw(8, 'familia'), 14], [540, kw(8, 'amigos'), 10], [870, kw(8, 'desconocidos'), 3]] as const).map(([x, at, w], i) => {const k = interpolate(ms, [at - 200, at + 400], [0, 1], {...cl, easing: EASE.out});
           return <line key={i} x1={540} y1={820} x2={540 + (x - 540) * k} y2={820 + 330 * k} stroke={w > 4 ? PAL.rosa : 'rgba(255,255,255,.45)'} strokeWidth={w} strokeLinecap="round" strokeDasharray={w > 4 ? undefined : '10 12'} />;})}
         <circle cx={540} cy={820} r={30 + Math.sin(ms / 400) * 3} fill={PAL.rosa} />
-        <Pop at={kw(8, 'familia') - 150} x={220} y={1550}><Persona x={170} y={1350} s={0.6} sentado={false} ropa={PAL.rosa} piel={1} yawn={yw(ms, kw(8, 'familia') + 300)} /><Persona x={280} y={1420} s={0.45} sentado={false} ropa={PAL.azul0} piel={1} peinado={2} /></Pop>
-        <Pop at={kw(8, 'amigos') - 150} x={540} y={1600}><Persona x={540} y={1420} s={0.6} sentado={false} ropa={PAL.verde2} piel={2} peinado={1} yawn={yw(ms, kw(8, 'amigos') + 300)} /></Pop>
-        <Pop at={kw(8, 'desconocidos') - 150} x={870} y={1600}><g opacity={0.75}><Persona x={870} y={1400} s={0.6} sentado={false} ropa="#24184A" piel={3} pelo="#3B2470" /></g></Pop>
+        <Pop at={kw(8, 'familia') - 150} x={220} y={1550}><Persona x={170} y={1300} s={0.85} sentado={false} ropa={PAL.rosa} piel={1} yawn={yw(ms, kw(8, 'familia') + 300)} /><Persona x={300} y={1400} s={0.6} sentado={false} ropa={PAL.azul0} piel={1} peinado={2} /></Pop>
+        <Pop at={kw(8, 'amigos') - 150} x={540} y={1600}><Persona x={560} y={1330} s={0.85} sentado={false} ropa={PAL.verde2} piel={2} peinado={1} yawn={yw(ms, kw(8, 'amigos') + 300)} /></Pop>
+        <Pop at={kw(8, 'desconocidos') - 150} x={870} y={1600}><g opacity={0.75}><Persona x={890} y={1330} s={0.8} sentado={false} ropa="#24184A" piel={3} pelo="#3B2470" /></g></Pop>
       </Lienzo>
       <Tag text="+ contagio" x={260} y={1050} at={kw(8, 'amigos')} color={PAL.rosa} size={44} /><Tag text="− contagio" x={860} y={1050} at={kw(8, 'desconocidos')} color="#FFFFFF" size={44} />
     </Shot>
     {/* 9 perros */}
     <Shot startMs={ini(9)} endMs={fin(9)} punchMs={[kw(9, 'perros')]}>
       <Lienzo a={ini(9)} b={fin(9)} dir={-1}><FondoSalon t={ms} />
-        <Pop at={ini(9)} x={300} y={1600}><Persona x={300} y={1330} s={0.75} ropa={PAL.purp1} yawn={yw(ms, kw(9, 'bostezan') - 400)} /></Pop>
+        <Pop at={ini(9)} x={300} y={1600}><Persona x={290} y={1250} s={1.0} ropa={PAL.purp1} yawn={yw(ms, kw(9, 'bostezan') - 400)} /></Pop>
         <Aura x={700} y={1350} at={kw(9, 'dueno')} r={220} />
         <Pop at={kw(9, 'perros') - 300} x={720} y={1500} from="right" heavy><Perro x={760} y={1380} s={1.05} yawn={yw(ms, kw(9, 'dueno'))} cola={ms / 120} /></Pop>
       </Lienzo>

@@ -79,7 +79,8 @@
  "musica": {
   "prompt": "light playful curious documentary underscore, plucked strings, soft marimba, gentle pulse, warm and calm, instrumental",
   "bpm": 96,
-  "seed": 11
+  "seed": 11,
+  "elegida": "m_0"
  },
  "sprites": [
   {
@@ -222,5 +223,79 @@
   }
  ],
  "imagenes": [],
- "estilo_anim": "flat vector illustration, no outlines, no line art, shapes defined by color only, soft cel shading with 3 tones, simple rounded shapes, cute minimal character design, deep purple and midnight blue palette, subtle neon pink accents, clean edges, motion graphics explainer style"
+ "estilo_anim": "flat vector illustration, no outlines, no line art, shapes defined by color only, soft cel shading with 3 tones, simple rounded shapes, cute minimal character design, deep purple and midnight blue palette, subtle neon pink accents, clean edges, motion graphics explainer style",
+ "anim_sfx": {
+  "golpes": [
+   [
+    0,
+    "bostezar"
+   ],
+   [
+    2,
+    "mitad"
+   ],
+   [
+    3,
+    "leerlo"
+   ],
+   [
+    5,
+    "enfria"
+   ],
+   [
+    7,
+    "empatia"
+   ],
+   [
+    9,
+    "perros"
+   ],
+   [
+    10,
+    "conecta"
+   ]
+  ],
+  "etiquetas": [
+   [
+    2,
+    "adultos"
+   ],
+   [
+    3,
+    "verlo"
+   ],
+   [
+    3,
+    "oirlo"
+   ],
+   [
+    6,
+    "fresca"
+   ],
+   [
+    8,
+    "amigos"
+   ],
+   [
+    8,
+    "desconocidos"
+   ],
+   [
+    9,
+    "bostezan"
+   ],
+   [
+    11,
+    "dimelo"
+   ]
+  ],
+  "ticks": [
+   [
+    2,
+    "mitad",
+    8,
+    0.9
+   ]
+  ]
+ }
 }
