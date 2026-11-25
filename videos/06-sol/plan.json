@@ -1,0 +1,96 @@
+{
+ "nombre": "sol",
+ "titulo": "La imagen más detallada del Sol",
+ "modo": "anim",
+ "frases": [
+  {
+   "say": "Esto no son palomitas. Es la superficie del Sol.",
+   "show": "Esto no son palomitas. Es la superficie del Sol.",
+   "clave": "palomitas",
+   "color": "amarillo"
+  },
+  {
+   "say": "Y es la imagen más detallada que se ha hecho nunca.",
+   "show": "Y es la imagen más detallada que se ha hecho nunca.",
+   "clave": "detallada",
+   "color": "amarillo"
+  },
+  {
+   "say": "La sacó el telescopio Inouye, en lo alto de un volcán de Hawái.",
+   "show": "La sacó el telescopio Inouye, en lo alto de un volcán de Hawái.",
+   "clave": "volcán",
+   "color": "naranja"
+  },
+  {
+   "say": "Tiene un espejo de cuatro metros. Y concentra tanta luz que podría fundir metal.",
+   "show": "Tiene un espejo de 4 metros. Y concentra tanta luz que podría fundir metal.",
+   "clave": "fundir",
+   "color": "naranja"
+  },
+  {
+   "say": "Por eso necesita un sistema de refrigeración gigante para no quemarse.",
+   "show": "Por eso necesita un sistema de refrigeración gigante para no quemarse.",
+   "clave": "refrigeración",
+   "color": "verde"
+  },
+  {
+   "say": "Cada uno de estos granos es una burbuja de plasma. Algunos, más grandes que España.",
+   "show": "Cada uno de estos granos es una burbuja de plasma. Algunos, más grandes que España.",
+   "clave": "España",
+   "color": "amarillo"
+  },
+  {
+   "say": "En el centro, el plasma caliente sube. En los bordes oscuros, se enfría y se hunde.",
+   "show": "En el centro, el plasma caliente sube. En los bordes oscuros, se enfría y se hunde.",
+   "clave": "sube|hunde",
+   "color": "naranja"
+  },
+  {
+   "say": "Es como una olla hirviendo… a casi seis mil grados.",
+   "show": "Es como una olla hirviendo… a casi 6.000 grados.",
+   "clave": "grados",
+   "color": "naranja"
+  },
+  {
+   "say": "Y cada grano dura solo unos diez minutos antes de desaparecer.",
+   "show": "Y cada grano dura solo unos 10 minutos antes de desaparecer.",
+   "clave": "minutos",
+   "color": "amarillo"
+  },
+  {
+   "say": "Pero lo más increíble es el detalle: distingue cosas de solo veinte kilómetros.",
+   "show": "Pero lo más increíble es el detalle: distingue cosas de solo 20 kilómetros.",
+   "clave": "veinte|20",
+   "color": "verde"
+  },
+  {
+   "say": "Desde ciento cincuenta millones de kilómetros. Es como ver una moneda a ciento setenta kilómetros.",
+   "show": "Desde 150 millones de kilómetros. Es como ver una moneda a 170 kilómetros.",
+   "clave": "moneda",
+   "color": "amarillo"
+  },
+  {
+   "say": "Así que la luz que te calienta sale de una olla que nunca deja de hervir.",
+   "show": "Así que la luz que te calienta sale de una olla que nunca deja de hervir.",
+   "clave": "hervir",
+   "color": "naranja"
+  },
+  {
+   "say": "¿Sabías que el Sol era así? Dímelo abajo.",
+   "show": "¿Sabías que el Sol era así? Dímelo abajo.",
+   "clave": "abajo",
+   "color": "amarillo"
+  }
+ ],
+ "imagenes": [],
+ "musica": {
+  "prompt": "epic cinematic space documentary underscore, warm deep synth pads, slow pulsing bass, shimmering arpeggio, sense of awe building to a powerful climax, instrumental",
+  "bpm": 92,
+  "seed": 21
+ },
+ "fuentes": [
+  "NSF Inouye Solar Telescope (primera luz 2020, ~30 km)",
+  "Physics World / Nature 2026: imagen de 2025 con ~20 km",
+  "Gránulos 500–2000 km"
+ ]
+}
