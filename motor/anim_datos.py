@@ -6,7 +6,7 @@ P = json.load(open(D + '/plan.json')); PAL = json.load(open(D + '/voz/palabras.j
 out, t, fr, sr = [], .35, [], None
 for i, f in enumerate(P['frases']):
     x, sr = sf.read(f'{D}/voz/vo_{i:02d}.wav'); x = x if x.ndim == 1 else x.mean(1)
-    fr.append({'a': round(t, 3), 'b': round(t + len(x) / sr, 3), 'show': f['show'],
+    fr.append({'a': round(t, 3), 'b': round(t + len(x) / sr, 3), 'show': f['show'], 'clave': f.get('clave', ''), 'color': f.get('color', 'amarillo'),
                'words': [{'w': w['w'], 'a': round(t + w['a'], 3), 'b': round(t + w['b'], 3)} for w in PAL[i]]})
     out.append((t, x)); t += len(x) / sr + GAP
 total = t + 1.6

@@ -5,51 +5,75 @@
  "frases": [
   {
    "say": "Vas a bostezar antes de que acabe este vídeo.",
-   "show": "Vas a bostezar antes de que acabe este vídeo."
+   "show": "Vas a bostezar antes de que acabe este vídeo.",
+   "clave": "bostezar",
+   "color": "amarillo"
   },
   {
    "say": "Si alguien bosteza cerca de ti, hay muchas papeletas de que tú también lo hagas.",
-   "show": "Si alguien bosteza cerca de ti, hay muchas papeletas de que tú también lo hagas."
+   "show": "Si alguien bosteza cerca de ti, hay muchas papeletas de que tú también lo hagas.",
+   "clave": "también",
+   "color": "amarillo"
   },
   {
    "say": "Pasa en más o menos la mitad de los adultos.",
-   "show": "Pasa en más o menos la mitad de los adultos."
+   "show": "Pasa en más o menos la mitad de los adultos.",
+   "clave": "mitad",
+   "color": "verde"
   },
   {
    "say": "Y basta con verlo, oírlo… o incluso leerlo.",
-   "show": "Y basta con verlo, oírlo… o incluso leerlo."
+   "show": "Y basta con verlo, oírlo… o incluso leerlo.",
+   "clave": "leerlo",
+   "color": "rosa"
   },
   {
    "say": "Sí: leer la palabra bostezo ya funciona.",
-   "show": "Sí: leer la palabra bostezo ya funciona."
+   "show": "Sí: leer la palabra bostezo ya funciona.",
+   "clave": "funciona",
+   "color": "amarillo"
   },
   {
    "say": "Una teoría dice que bostezar enfría el cerebro.",
-   "show": "Una teoría dice que bostezar enfría el cerebro."
+   "show": "Una teoría dice que bostezar enfría el cerebro.",
+   "clave": "enfría",
+   "color": "verde"
   },
   {
    "say": "Metes aire de golpe, estiras la mandíbula y llega sangre más fresca.",
-   "show": "Metes aire de golpe, estiras la mandíbula y llega sangre más fresca."
+   "show": "Metes aire de golpe, estiras la mandíbula y llega sangre más fresca.",
+   "clave": "fresca",
+   "color": "verde"
   },
   {
    "say": "Pero eso no explica el contagio. Para eso, la clave parece ser la empatía.",
-   "show": "Pero eso no explica el contagio. Para eso, la clave parece ser la empatía."
+   "show": "Pero eso no explica el contagio. Para eso, la clave parece ser la empatía.",
+   "clave": "empatía",
+   "color": "rosa"
   },
   {
    "say": "Se contagia más con tu familia y tus amigos… y mucho menos con desconocidos.",
-   "show": "Se contagia más con tu familia y tus amigos… y mucho menos con desconocidos."
+   "show": "Se contagia más con tu familia y tus amigos… y mucho menos con desconocidos.",
+   "clave": "familia|amigos",
+   "color": "amarillo"
   },
   {
    "say": "Y no solo entre humanos: hay perros que bostezan cuando bosteza su dueño.",
-   "show": "Y no solo entre humanos: hay perros que bostezan cuando bosteza su dueño."
+   "show": "Y no solo entre humanos: hay perros que bostezan cuando bosteza su dueño.",
+   "clave": "perros",
+   "color": "naranja"
   },
   {
    "say": "Así que si has bostezado, es que tu cerebro conecta con los demás.",
-   "show": "Así que si has bostezado, es que tu cerebro conecta con los demás."
+   "show": "Así que si has bostezado, es que tu cerebro conecta con los demás.",
+   "clave": "conecta",
+   "color": "rosa"
   },
   {
    "say": "¿Has bostezado? Dímelo abajo.",
-   "show": "¿Has bostezado? Dímelo abajo."
+   "show": "¿Has bostezado? Dímelo abajo.",
+   "clave": "abajo",
+   "color": "amarillo"
   }
  ],
  "musica": {
