@@ -12,7 +12,7 @@ from diffusers import StableDiffusionXLPipeline, DPMSolverMultistepScheduler
 from rembg import remove, new_session
 pipe = StableDiffusionXLPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16, variant="fp16", use_safetensors=True).to("cuda")
 pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config, use_karras_sigmas=True); pipe.set_progress_bar_config(disable=True)
-ses = new_session("isnet-general-use"); NEG = "text, letters, watermark, logo, blurry, photo, photorealistic, 3d render, deformed, extra fingers, shadow on floor, frame, border"
+ses = new_session("isnet-general-use"); NEG = "text, letters, watermark, logo, blurry, photo, photorealistic, 3d render, deformed, extra fingers, shadow on floor, frame, border, black outlines, thick lines, stroke, lineart, ink, sketch, comic"
 for kind, L in (("sprite", C["sprites"]), ("fondo", C["fondos"])):
     for n, p, seeds in L:
         for sd in seeds:

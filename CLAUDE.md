@@ -15,7 +15,7 @@ yt-viral, yt-package, yt-seo, earshot, verification-before-completion, systemati
    **61–65 s** (~215 palabras): TikTok solo paga vídeos de más de 1 minuto. Frases cortas, datos comprobados con fuentes.
    `say` (números en letra, para la voz) y `show` (cifras, para subtítulos).
 2. **Plan** — `videos/NN-tema/plan.json` (copiar la estructura de `videos/03-voyager/plan.json`, el más completo):
-   - `imagenes`: ~18–20 prompts en inglés para SDXL, 2 semillas cada uno; planos variados, nada de texto. **Estilo gráfico SIEMPRE 3D animado estilizado** (`canal/estilo.md`); si salen personas, en ese mismo estilo 3D.
+   - `imagenes`: ~18–20 prompts en inglés para SDXL, 2 semillas cada uno; planos variados, nada de texto. **Estilo gráfico SIEMPRE 3D animado estilizado** (`canal/estilo.md`); si salen personas, en ese mismo estilo 3D. Modo animación (Remotion, `anim/`): seguir `canal/biblia_estilo.md`.
      `mov` opcional (movimiento explícito para los clips, en inglés).
    - `frases`: `say`, `show`, `planos` (1–3 imágenes, cortes cada 2–3 s), `textos` (cifras grandes: `t` = fracción de la frase,
      `hasta`, `pos`, `tam`, `color`, `contar`, `golpe`, `flash`; 4–6 `golpe` en todo el vídeo) y `sfx` (ver abajo).
