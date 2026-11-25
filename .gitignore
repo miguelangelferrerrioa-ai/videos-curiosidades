@@ -24,3 +24,7 @@ videos/*/voz_A/
 videos/*/voz_eleven/
 canal/voz_ref/
 videos/*/log.txt
+anim/public/
+videos/*/mezcla_anim.wav
+videos/*/voz_unida.wav
+videos/*/final_anim.mp4
