@@ -8,7 +8,24 @@ El dueño trabaja **desde el móvil**: responder siempre en español, **máximo 
 yt-viral, yt-package, yt-seo, earshot, verification-before-completion, systematic-debugging, caveman) y Whisper + earshot
 (`.venv-voz`, para partir la voz de ElevenLabs y escuchar el audio). Copia `canal/voice.md`.
 
-## El flujo de un vídeo (idea → vídeo) — objetivo ~1 h, él solo pega 2 celdas y genera la voz en ElevenLabs
+## ⭐ FORMATO DEL CANAL (desde 2026-11-25): animación vectorial SVG en Remotion — es EXACTAMENTE lo que él quiere
+Referencia aprobada: `videos/05-bostezo` → `anim/src/BostezoSVG.tsx`. Estilo @1mdatos / @NEXO.sciences. Todo vídeo nuevo, así:
+1. Temas (`/tendencias`, variados, no solo espacio) → guion escena por escena (`videos/NN/guion.md`: tiempo, visual, voz, palabra clave),
+   45–65 s, gancho fuerte en 3 s y cierre en bucle con el gancho. `plan.json`: `frases` con `say`, `show`, `clave` y `color`; `musica`.
+2. Ilustraciones **100 % SVG en línea** (`anim/src/vec/arte.tsx`: Persona, Cabeza que bosteza, Perro, Cerebro, CabezaPerfil, Movil,
+   Termometro, fondos Metro/Noche/Salon/Abstracto…). Ampliar esa librería con lo que pida cada tema. NADA de imágenes de SDXL ni recortes.
+   Reglas visuales: `canal/biblia_estilo.md` (sin contornos negros, paleta nocturna, sombras de contacto, grano).
+3. Movimiento: `anim/src/lib/motion.tsx` (nada quieto, easing, transiciones whip/fade/zoomThrough, punch en palabras clave).
+   Subtítulos: `anim/src/lib/captions.tsx` (grupos de 2–3 palabras arriba, clave en color al pronunciarse).
+4. Colab: solo la **música** (`python3 motor/celdas.py videos/NN fase1` con `"imagenes": []`). Voz: Dan (ElevenLabs) a 1.2, sin acelerar.
+5. `partir_narracion.py` → `.venv/bin/python motor/anim_datos.py videos/NN 0.42` (tiempos en `anim/src/<nombre>.json`) →
+   componente `anim/src/<Nombre>SVG.tsx` registrado en `anim/src/Root.tsx` → fotogramas de prueba con `npx remotion still`
+   (de uno en uno: en paralelo se queda sin memoria) → `anim_sfx` en plan.json + `.venv-voz/bin/python motor/anim_audio.py videos/NN`
+   → `npx remotion render src/index.ts <Id> out.mp4 --browser-executable=/opt/pw-browsers/chromium --concurrency=2` + ffmpeg con
+   `mezcla_anim.wav` → `videos/NN/final_anim.mp4`. Revisar tira de fotogramas y loudness antes de mandar.
+El flujo antiguo de abajo (imágenes SDXL + motor/render.js) queda solo como respaldo.
+
+## Flujo antiguo (respaldo): imágenes SDXL + render.js — objetivo ~1 h, él solo pega 2 celdas y genera la voz en ElevenLabs
 0. **Temas** — SIEMPRE que diga "nuevo vídeo" (aunque traiga tema): skill `/tendencias` (`motor/tendencias.py`, datos reales de
    YouTube + noticias con WebSearch) → 5 propuestas con su evidencia. Él elige; anotarla en `canal/temas.md`.
 1. **Guion** — gancho con `/viral-hooks` (lote de 6–10 en 3 capas; elegir yo el mejor), resto con `/yt-script` y `canal/voice.md`.
