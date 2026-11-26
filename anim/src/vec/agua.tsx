@@ -95,7 +95,7 @@ export const Botella: React.FC<{t: number; x: number; y: number; s?: number; got
 
 // cuadrícula de personas: 'marcadas' en rosa (1 de cada 4)
 export const Gente: React.FC<{t: number; k: number}> = ({t, k}) => <g>{Array.from({length: 48}, (_, i) => {
-  const c = i % 6, r = Math.floor(i / 6), x = 190 + c * 140, y = 760 + r * 140, on = i % 4 === 1 && rnd(i) * 1 < k * 1.2;
+  const c = i % 6, r = Math.floor(i / 6), x = 190 + c * 140, y = 600 + r * 128, on = i % 4 === 1 && rnd(i) * 1 < k * 1.2;
   return <g key={i} transform={`translate(${x} ${y + Math.sin(t / 500 + i) * 3})`}><circle cx={0} cy={-30} r={22} fill={on ? PAL.rosa : '#B9AEE8'} />
     <rect x={-28} y={-4} width={56} height={60} rx={26} fill={on ? PAL.rosa : '#8C7BD1'} /></g>;})}</g>;
 
