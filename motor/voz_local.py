@@ -8,7 +8,7 @@ import librosa, numpy as np, soundfile as sf, torch
 from chatterbox.mtl_tts import ChatterboxMultilingualTTS
 from faster_whisper import WhisperModel
 D = sys.argv[1]; P = json.load(open(D + '/plan.json')); os.makedirs(D + '/voz', exist_ok=True)
-REF = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'voz', 'muestra.wav')
+REF = os.environ.get('VOZ_REF') or os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'canal', 'voz_ref', 'voz_propia.wav')
 rehacer = set(int(x) for x in sys.argv[sys.argv.index('--rehacer') + 1].split(',')) if '--rehacer' in sys.argv else set()
 torch.set_num_threads(os.cpu_count())
 nz = lambda s: [re.sub(r'[^a-z0-9]', '', w) for w in unicodedata.normalize('NFD', s.lower()).encode('ascii', 'ignore').decode().replace('.', '').split()]
