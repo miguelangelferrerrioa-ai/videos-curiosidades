@@ -1,0 +1,98 @@
+{
+ "nombre": "agua",
+ "titulo": "¿Se puede quedar la Tierra sin agua?",
+ "modo": "anim",
+ "frases": [
+  {
+   "say": "¿Se puede quedar la Tierra sin agua? La respuesta te va a sorprender.",
+   "show": "¿Se puede quedar la Tierra sin agua? La respuesta te va a sorprender.",
+   "clave": "agua",
+   "color": "verde"
+  },
+  {
+   "say": "En el planeta hay unos mil trescientos ochenta y seis millones de kilómetros cúbicos de agua.",
+   "show": "En el planeta hay unos 1.386 millones de km³ de agua.",
+   "clave": "millones",
+   "color": "amarillo"
+  },
+  {
+   "say": "Y casi nunca se pierde: se evapora, llueve y vuelve al mar.",
+   "show": "Y casi nunca se pierde: se evapora, llueve y vuelve al mar.",
+   "clave": "vuelve",
+   "color": "verde"
+  },
+  {
+   "say": "El agua que bebes hoy pudo bebérsela un dinosaurio.",
+   "show": "El agua que bebes hoy pudo bebérsela un dinosaurio.",
+   "clave": "dinosaurio",
+   "color": "naranja"
+  },
+  {
+   "say": "Pero hay trampa: el noventa y siete por ciento es salada.",
+   "show": "Pero hay trampa: el 97 % es salada.",
+   "clave": "salada",
+   "color": "rosa"
+  },
+  {
+   "say": "Y de la poca agua dulce, la mayoría está congelada en glaciares o escondida bajo tierra.",
+   "show": "Y de la poca agua dulce, la mayoría está congelada en glaciares o escondida bajo tierra.",
+   "clave": "congelada",
+   "color": "verde"
+  },
+  {
+   "say": "Si toda el agua del mundo cupiera en una botella de un litro, la de ríos y lagos serían apenas un par de gotas.",
+   "show": "Si toda el agua del mundo cupiera en una botella de 1 litro, la de ríos y lagos serían apenas un par de gotas.",
+   "clave": "gotas",
+   "color": "amarillo"
+  },
+  {
+   "say": "Por eso hoy, más de dos mil millones de personas no tienen agua potable segura en casa.",
+   "show": "Por eso hoy, más de 2.000 millones de personas no tienen agua potable segura en casa.",
+   "clave": "dos|2",
+   "color": "rosa"
+  },
+  {
+   "say": "En dos mil dieciocho, Ciudad del Cabo estuvo a punto de cortar el grifo a toda la ciudad.",
+   "show": "En 2018, Ciudad del Cabo estuvo a punto de cortar el grifo a toda la ciudad.",
+   "clave": "grifo",
+   "color": "naranja"
+  },
+  {
+   "say": "Y a muy largo plazo, sí la perderemos: la Tierra pierde hidrógeno hacia el espacio cada segundo.",
+   "show": "Y a muy largo plazo, sí la perderemos: la Tierra pierde hidrógeno hacia el espacio cada segundo.",
+   "clave": "espacio",
+   "color": "verde"
+  },
+  {
+   "say": "Dentro de unos mil millones de años, el Sol brillará tanto que evaporará los océanos.",
+   "show": "Dentro de unos 1.000 millones de años, el Sol brillará tanto que evaporará los océanos.",
+   "clave": "evaporará",
+   "color": "naranja"
+  },
+  {
+   "say": "Así que el agua no se acaba. Lo que se acaba es la que podemos beber.",
+   "show": "Así que el agua no se acaba. Lo que se acaba es la que podemos beber.",
+   "clave": "beber",
+   "color": "amarillo"
+  },
+  {
+   "say": "¿Sabías que había tan poca? Dímelo abajo.",
+   "show": "¿Sabías que había tan poca? Dímelo abajo.",
+   "clave": "abajo",
+   "color": "amarillo"
+  }
+ ],
+ "imagenes": [],
+ "musica": {
+  "prompt": "curious uplifting documentary underscore, soft piano and plucked strings, flowing water textures, light pulse, gentle tension in the middle, hopeful ending, instrumental",
+  "bpm": 98,
+  "seed": 31
+ },
+ "fuentes": [
+  "USGS: 1.386 millones km³, 97 % salada, agua dulce mayoría en hielo y subterránea",
+  "OMS/UNICEF 2025: ~2.100 millones sin agua potable gestionada de forma segura",
+  "Ciudad del Cabo, Día Cero 2018",
+  "Pérdida de hidrógeno de la atmósfera (~3 kg/s)",
+  "Sol más brillante: océanos evaporados en ~1.000 millones de años"
+ ]
+}
