@@ -86,7 +86,8 @@
  "musica": {
   "prompt": "curious uplifting documentary underscore, soft piano and plucked strings, flowing water textures, light pulse, gentle tension in the middle, hopeful ending, instrumental",
   "bpm": 98,
-  "seed": 31
+  "seed": 31,
+  "elegida": "m_1"
  },
  "fuentes": [
   "USGS: 1.386 millones km³, 97 % salada, agua dulce mayoría en hielo y subterránea",
@@ -94,5 +95,95 @@
   "Ciudad del Cabo, Día Cero 2018",
   "Pérdida de hidrógeno de la atmósfera (~3 kg/s)",
   "Sol más brillante: océanos evaporados en ~1.000 millones de años"
- ]
+ ],
+ "anim_sfx": {
+  "golpes": [
+   [
+    0,
+    "agua"
+   ],
+   [
+    1,
+    "millones"
+   ],
+   [
+    3,
+    "dinosaurio"
+   ],
+   [
+    4,
+    "salada"
+   ],
+   [
+    6,
+    "gotas"
+   ],
+   [
+    7,
+    "2.000"
+   ],
+   [
+    8,
+    "grifo"
+   ],
+   [
+    10,
+    "evaporara"
+   ],
+   [
+    11,
+    "beber"
+   ]
+  ],
+  "etiquetas": [
+   [
+    1,
+    "millones"
+   ],
+   [
+    2,
+    "evapora"
+   ],
+   [
+    2,
+    "llueve"
+   ],
+   [
+    5,
+    "congelada"
+   ],
+   [
+    5,
+    "escondida"
+   ],
+   [
+    6,
+    "litro"
+   ],
+   [
+    8,
+    "ciudad"
+   ],
+   [
+    9,
+    "hidrogeno"
+   ],
+   [
+    10,
+    "dentro"
+   ],
+   [
+    12,
+    "dimelo"
+   ]
+  ],
+  "ticks": [
+   [
+    1,
+    "1.386",
+    10,
+    0.9
+   ]
+  ]
+ }
 }

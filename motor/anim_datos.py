@@ -8,6 +8,11 @@ for i, f in enumerate(P['frases']):
     x, sr = sf.read(f'{D}/voz/vo_{i:02d}.wav'); x = x if x.ndim == 1 else x.mean(1)
     fr.append({'a': round(t, 3), 'b': round(t + len(x) / sr, 3), 'show': f['show'], 'clave': f.get('clave', ''), 'color': f.get('color', 'amarillo'),
                'words': [{'w': w['w'], 'a': round(t + w['a'], 3), 'b': round(t + w['b'], 3)} for w in PAL[i]]})
+    ws = fr[-1]['words']; m = []  # une "1" + ".386" (Whisper parte las cifras con punto de miles)
+    for w in ws:
+        if m and w['w'].startswith('.') and m[-1]['w'][-1:].isdigit(): m[-1]['w'] += w['w']; m[-1]['b'] = w['b']
+        else: m.append(w)
+    fr[-1]['words'] = m
     out.append((t, x)); t += len(x) / sr + GAP
 total = t + 1.6
 v = np.zeros(int(total * sr))
