@@ -41,9 +41,9 @@ export const BostezoSVG: React.FC = () => {
   const pasAt = (i: number) => ini(1) + 150 + i * ((fin(1) - ini(1) - 900) / 4);
   return <AbsoluteFill style={{background: PAL.noche0}}>
     {/* 0 gancho: cara que bosteza hacia cámara; salida "entrando" en la boca */}
-    <Shot startMs={0} endMs={fin(0)} inT="fade" outT="zoomThrough" punchMs={[kw(0, 'bostezar')]}>
+    <Shot startMs={0} endMs={fin(0)} inT="none" outT="zoomThrough" punchMs={[kw(0, 'bostezar')]}>
       <Lienzo a={0} b={fin(0)}><FondoAbstracto t={ms} />
-        <g transform={`translate(0 ${id(1).float})`}><Pop at={0} x={540} y={1150} heavy><Cabeza x={540} y={1100} r={330} yawn={yw(ms, kw(0, 'bostezar') - 200)} pelo="#1A1440" /></Pop></g>
+        <g transform={`translate(0 ${id(1).float})`}><Pop at={-2000} x={540} y={1150} heavy><Cabeza x={540} y={1100} r={330} yawn={yw(ms, kw(0, 'bostezar') - 200)} pelo="#1A1440" /></Pop></g>
       </Lienzo><Motes seed={1} />
     </Shot>
     {/* 1 contagio en cadena en el metro */}

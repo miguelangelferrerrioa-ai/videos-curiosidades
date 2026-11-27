@@ -93,15 +93,15 @@ export const StaggerText: React.FC<{text: string; atMs: number; y: number; size?
 // a) paneo rápido de cámara (whip): la escena saliente se va 320 ms hacia la izquierda con desenfoque de movimiento,
 //    la entrante llega desde la derecha; se solapan 320 ms.
 // b) fundido cruzado: 400 ms, inOut.  c) "morph": un objeto escala/viaja hasta la posición del siguiente (MorphBridge).
-export const TRANS_MS = {whip: 320, fade: 400, zoomThrough: 450};
-export type Trans = 'whip' | 'fade' | 'zoomThrough';
+export const TRANS_MS = {whip: 320, fade: 400, zoomThrough: 450, none: 0};
+export type Trans = 'whip' | 'fade' | 'zoomThrough' | 'none';
 export const Shot: React.FC<{startMs: number; endMs: number; inT?: Trans; outT?: Trans; punchMs?: number[]; children: React.ReactNode}> = ({startMs, endMs, inT = 'whip', outT = 'whip', punchMs = [], children}) => {
   const ms = useMs(), d = TRANS_MS[inT], dOut = TRANS_MS[outT];
   if (ms < startMs - d || ms > endMs + dOut) return null;
   const a = interpolate(ms, [startMs - d, startMs], [0, 1], {...cl, easing: EASE.out});     // entrada 0→1
   const b = interpolate(ms, [endMs, endMs + dOut], [0, 1], {...cl, easing: EASE.in});       // salida 0→1
   let x = 0, sc = 1, op = 1, blur = 0;
-  if (inT === 'whip') {x += (1 - a) * W; blur += (1 - a) * 18;} else if (inT === 'fade') op *= a; else {sc *= 0.85 + 0.15 * a; op *= a;}
+  if (inT === 'whip') {x += (1 - a) * W; blur += (1 - a) * 18;} else if (inT === 'fade') op *= a; else if (inT === 'zoomThrough') {sc *= 0.85 + 0.15 * a; op *= a;}
   if (outT === 'whip') {x -= b * W; blur += b * 18;} else if (outT === 'fade') op *= 1 - b; else {sc *= 1 + b * 1.4; op *= 1 - b;}
   // zoom de énfasis en palabra clave: +12 % en 180 ms (back), aguanta 900 ms, vuelve en 300 ms
   for (const p of punchMs) sc *= 1 + 0.12 * interpolate(ms, [p, p + 180, p + 1080, p + 1380], [0, 1, 1, 0], {...cl, easing: EASE.back});

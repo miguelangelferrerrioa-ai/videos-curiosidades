@@ -40,7 +40,7 @@ export const SolSVG: React.FC = () => {
   const morf = interpolate(ms, [kw(0, 'superficie') - 200, kw(0, 'sol') + 300], [0, 1], {...cl, easing: EASE.inOut});
   return <AbsoluteFill style={{background: PAL.noche0}}>
     {/* 0 gancho: palomitas → superficie del Sol */}
-    <Shot startMs={0} endMs={fin(0)} inT="fade" outT="fade" punchMs={[kw(0, 'sol')]}>
+    <Shot startMs={0} endMs={fin(0)} inT="none" outT="fade" punchMs={[kw(0, 'sol')]}>
       <Lienzo a={0} b={fin(0)}><FondoAbstracto t={ms} acento="#FF8A3D" />
         <g opacity={1 - morf}><Cubo x={540} y={1400} s={1} />
           {Array.from({length: 16}, (_, i) => {const ph = ((ms / 1100) + i / 16) % 1, a = (i * 137) % 360;

@@ -39,9 +39,9 @@ export const AguaSVG: React.FC = () => {
   const ms = useMs(), id = (s: number) => idle(ms, s);
   return <AbsoluteFill style={{background: PAL.noche0}}>
     {/* 0 gancho: la Tierra se queda sin agua (los océanos se vacían y vuelven) */}
-    <Shot startMs={0} endMs={fin(0)} inT="fade" punchMs={[kw(0, 'agua')]}>
+    <Shot startMs={0} endMs={fin(0)} inT="none" punchMs={[kw(0, 'agua')]}>
       <Lienzo a={0} b={fin(0)}><FondoNoche t={ms} />
-        <Pop at={0} x={540} y={1150} heavy><Tierra t={ms} x={540} y={1150} r={330} seca={interpolate(ms, [kw(0, 'sin'), kw(0, 'agua') + 400, kw(0, 'respuesta'), fin(0)], [0, 1, 1, 0], {...cl, easing: EASE.inOut})} /></Pop>
+        <Pop at={-2000} x={540} y={1150} heavy><Tierra t={ms} x={540} y={1150} r={330} seca={interpolate(ms, [kw(0, 'sin'), kw(0, 'agua') + 400, kw(0, 'respuesta'), fin(0)], [0, 1, 1, 0], {...cl, easing: EASE.inOut})} /></Pop>
       </Lienzo><Motes color="#7FD8FF" seed={1} />
     </Shot>
     {/* 1 1.386 millones de km³ */}

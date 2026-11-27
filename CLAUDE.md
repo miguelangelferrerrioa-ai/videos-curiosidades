@@ -11,7 +11,8 @@ yt-viral, yt-package, yt-seo, earshot, verification-before-completion, systemati
 ## ⭐ FORMATO DEL CANAL (desde 2026-11-25): animación vectorial SVG en Remotion — es EXACTAMENTE lo que él quiere
 Referencia aprobada: `videos/05-bostezo` → `anim/src/BostezoSVG.tsx`. Estilo @1mdatos / @NEXO.sciences. Todo vídeo nuevo, así:
 1. Temas (`/tendencias`, variados, no solo espacio) → guion escena por escena (`videos/NN/guion.md`: tiempo, visual, voz, palabra clave),
-   45–65 s, gancho fuerte en 3 s y cierre en bucle con el gancho. `plan.json`: `frases` con `say`, `show`, `clave` y `color`; `musica`.
+   45–65 s, gancho fuerte en 3 s y cierre en bucle con el gancho. **Fotograma 0 lleno** (protagonista ya en pantalla, `inT="none"`,
+   nada de fundidos desde negro): en el 05 la portada/primer fotograma salió vacío y solo el 45 % se quedó a verlo (meta: >70 %). `plan.json`: `frases` con `say`, `show`, `clave` y `color`; `musica`.
 2. Ilustraciones **100 % SVG en línea** (`anim/src/vec/arte.tsx`: Persona, Cabeza que bosteza, Perro, Cerebro, CabezaPerfil, Movil,
    Termometro, fondos Metro/Noche/Salon/Abstracto…). Ampliar esa librería con lo que pida cada tema. NADA de imágenes de SDXL ni recortes.
    Reglas visuales: `canal/biblia_estilo.md` (sin contornos negros, paleta nocturna, sombras de contacto, grano).
