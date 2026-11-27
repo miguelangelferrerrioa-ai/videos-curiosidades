@@ -17,7 +17,7 @@ REGLA: analizar SOLO los vídeos hechos con este sistema (los de la tabla "Hecho
 Los vídeos anteriores del canal NO se analizan nunca (ni /yt-audit, ni /yt-viral, ni /yt-retention).
 
 ## Canales de referencia (para /yt-viral)
-@astrumspace @astrumespanol @QuantumFracture @CuriosaMente @kurzgesagt channel/UCwc1Uxlut58nYkLDM9Wr82w (MisteriosDelCosmos)
+@1mdatos @NEXO.Sciences @MentesHipoteticas @astrumspace @astrumespanol @QuantumFracture @CuriosaMente @kurzgesagt channel/UCwc1Uxlut58nYkLDM9Wr82w (MisteriosDelCosmos)
 
 ## Señales de lo que funciona (búsqueda del 2026-11-19)
 - Comparaciones de escala y "¿qué pasaría si…?" (exoplanetas, nube de Oort, Betelgeuse).
