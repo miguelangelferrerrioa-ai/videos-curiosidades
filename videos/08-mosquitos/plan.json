@@ -1,0 +1,98 @@
+{
+ "nombre": "mosquitos",
+ "titulo": "¿Qué pasaría si desaparecieran los mosquitos?",
+ "modo": "anim",
+ "frases": [
+  {
+   "say": "¿Qué pasaría si mañana desaparecieran todos los mosquitos?",
+   "show": "¿Qué pasaría si mañana desaparecieran todos los mosquitos?",
+   "clave": "mosquitos",
+   "color": "rosa"
+  },
+  {
+   "say": "Parece un sueño. Pero el mosquito es el animal más mortal del planeta.",
+   "show": "Parece un sueño. Pero el mosquito es el animal más mortal del planeta.",
+   "clave": "mortal",
+   "color": "rosa"
+  },
+  {
+   "say": "Solo la malaria mata a casi seiscientas mil personas al año. La mayoría, niños pequeños.",
+   "show": "Solo la malaria mata a casi 600.000 personas al año. La mayoría, niños pequeños.",
+   "clave": "600.000|seiscientas",
+   "color": "rosa"
+  },
+  {
+   "say": "Y lo curioso: solo pican las hembras. Necesitan sangre para poner sus huevos.",
+   "show": "Y lo curioso: solo pican las hembras. Necesitan sangre para poner sus huevos.",
+   "clave": "hembras",
+   "color": "amarillo"
+  },
+  {
+   "say": "Hay más de tres mil quinientas especies, y la mayoría nunca pica a un humano.",
+   "show": "Hay más de 3.500 especies, y la mayoría nunca pica a un humano.",
+   "clave": "3.500|especies",
+   "color": "verde"
+  },
+  {
+   "say": "Si desaparecieran, millones de vidas se salvarían cada año.",
+   "show": "Si desaparecieran, millones de vidas se salvarían cada año.",
+   "clave": "salvarían",
+   "color": "verde"
+  },
+  {
+   "say": "Pero las larvas alimentan a peces, ranas y libélulas. Y los adultos, a pájaros y murciélagos.",
+   "show": "Pero las larvas alimentan a peces, ranas y libélulas. Y los adultos, a pájaros y murciélagos.",
+   "clave": "alimentan",
+   "color": "amarillo"
+  },
+  {
+   "say": "En el Ártico, nubes de mosquitos son la comida de miles de aves que llegan cada verano.",
+   "show": "En el Ártico, nubes de mosquitos son la comida de miles de aves que llegan cada verano.",
+   "clave": "aves",
+   "color": "naranja"
+  },
+  {
+   "say": "Y algunos hasta polinizan flores, como ciertas orquídeas.",
+   "show": "Y algunos hasta polinizan flores, como ciertas orquídeas.",
+   "clave": "flores",
+   "color": "verde"
+  },
+  {
+   "say": "Aun así, muchos científicos creen que otros insectos ocuparían su lugar.",
+   "show": "Aun así, muchos científicos creen que otros insectos ocuparían su lugar.",
+   "clave": "ocuparían",
+   "color": "amarillo"
+  },
+  {
+   "say": "Y ya lo están probando: sueltan mosquitos modificados para que sus crías no sobrevivan.",
+   "show": "Y ya lo están probando: sueltan mosquitos modificados para que sus crías no sobrevivan.",
+   "clave": "modificados",
+   "color": "naranja"
+  },
+  {
+   "say": "Así que borrar a los mosquitos quizás no sea ciencia ficción.",
+   "show": "Así que borrar a los mosquitos quizás no sea ciencia ficción.",
+   "clave": "ficción",
+   "color": "rosa"
+  },
+  {
+   "say": "¿Tú los harías desaparecer? Dímelo abajo.",
+   "show": "¿Tú los harías desaparecer? Dímelo abajo.",
+   "clave": "abajo",
+   "color": "amarillo"
+  }
+ ],
+ "imagenes": [],
+ "musica": {
+  "prompt": "quirky suspenseful documentary underscore, pizzicato strings, buzzing synth texture, light percussion, curious and slightly dark mood, building tension, instrumental",
+  "bpm": 104,
+  "seed": 41
+ },
+ "fuentes": [
+  "OMS, Informe mundial sobre el paludismo 2024: ~597.000 muertes en 2023, mayoría niños <5 años en África",
+  "Solo las hembras pican (proteínas para los huevos)",
+  "~3.500 especies de mosquitos",
+  "Nature 2010, 'A world without mosquitoes' (Ártico, aves, polinización de orquídeas)",
+  "Oxitec / Target Malaria: mosquitos modificados"
+ ]
+}

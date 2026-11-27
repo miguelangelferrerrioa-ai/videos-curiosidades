@@ -6,6 +6,7 @@
 | 01 | Venus (curiosidades) | 2026-11-19 | primer vídeo; voz ElevenLabs |
 | 02 | Las últimas palabras del rover Opportunity | 2026-11-19 | formato "final trágico" (Astrum Cassini 14x, Spirit 9,4x) |
 | 03 | Voyager 1 llega a un día luz | 2026-11-20 | noticia del 18-nov; formato "final de misión" (Cassini 14,2×) |
+| 08 | ¿Y si desaparecieran los mosquitos? | 2026-11-27 | formato 'desapareciera' (MentesHipoteticas ratas 244×) |
 | 07 | ¿Se puede quedar la Tierra sin agua? | 2026-11-26 | kurzgesagt 4,1M 3,2× |
 | 06 | La imagen más detallada del Sol | 2026-11-25 | Astrum 3,8M 10,6×; Inouye 20 km (Nature 2026) |
 | 05 | ¿Por qué se contagian los bostezos? | 2026-11-25 | ⭐ FORMATO APROBADO: animación SVG en Remotion |
