@@ -28,9 +28,21 @@
    "color": "amarillo"
   },
   {
+   "say": "Ese zumbido que oyes es el aleteo de sus alas: cientos de veces por segundo.",
+   "show": "Ese zumbido que oyes es el aleteo de sus alas: cientos de veces por segundo.",
+   "clave": "zumbido",
+   "color": "naranja"
+  },
+  {
    "say": "Hay más de tres mil quinientas especies, y la mayoría nunca pica a un humano.",
    "show": "Hay más de 3.500 especies, y la mayoría nunca pica a un humano.",
    "clave": "3.500|especies",
+   "color": "verde"
+  },
+  {
+   "say": "Y llevan aquí desde la época de los dinosaurios.",
+   "show": "Y llevan aquí desde la época de los dinosaurios.",
+   "clave": "dinosaurios",
    "color": "verde"
   },
   {
