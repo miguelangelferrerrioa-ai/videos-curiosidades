@@ -96,7 +96,7 @@ export const StaggerText: React.FC<{text: string; atMs: number; y: number; size?
 export const TRANS_MS = {whip: 320, fade: 400, zoomThrough: 450, none: 0};
 export type Trans = 'whip' | 'fade' | 'zoomThrough' | 'none';
 export const Shot: React.FC<{startMs: number; endMs: number; inT?: Trans; outT?: Trans; punchMs?: number[]; children: React.ReactNode}> = ({startMs, endMs, inT = 'whip', outT = 'whip', punchMs = [], children}) => {
-  const ms = useMs(), d = TRANS_MS[inT], dOut = TRANS_MS[outT];
+  const ms = useMs(), d = TRANS_MS[inT] || 1, dOut = TRANS_MS[outT] || 1;
   if (ms < startMs - d || ms > endMs + dOut) return null;
   const a = interpolate(ms, [startMs - d, startMs], [0, 1], {...cl, easing: EASE.out});     // entrada 0→1
   const b = interpolate(ms, [endMs, endMs + dOut], [0, 1], {...cl, easing: EASE.in});       // salida 0→1
