@@ -27,7 +27,10 @@ for i, w in C.get('etiquetas', []): at('interface/click-tap-soft', kw(i, w), .4)
 for i, w, n, d in C.get('ticks', []):
     t0 = kw(i, w)
     for k in range(n): at('interface/click-hover-soft', t0 + k * d / n, .25)
-m = load(f'{D}/musica/{P["musica"]["elegida"]}.wav'); bed = np.zeros(len(sfx)); bed[:min(len(m), len(bed))] = m[:len(bed)]
+m = load(f'{D}/musica/{P["musica"]["elegida"]}.wav'); xf = int(2 * SR)
+while len(m) < len(sfx):  # música más corta que el vídeo: se repite con fundido cruzado de 2 s
+    m = np.concatenate([m[:-xf], m[-xf:] * np.linspace(1, 0, xf) + m[:xf] * np.linspace(0, 1, xf), m[xf:]])
+bed = m[:len(sfx)].copy()
 fo = int(1.5 * SR); bed[len(vo) - fo:len(vo)] *= np.linspace(1, 0, fo); bed[len(vo):] = 0
 env = np.convolve((np.abs(np.pad(vo, (0, len(sfx) - len(vo)))) > .02).astype(float), np.ones(int(.3 * SR)) / int(.3 * SR), 'same').clip(0, 1)
 mix = np.pad(vo, (0, len(sfx) - len(vo))) + bed / np.abs(bed).max() * (.30 - .20 * env) + sfx * .7

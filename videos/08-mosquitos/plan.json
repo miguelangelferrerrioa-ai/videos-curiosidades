@@ -98,7 +98,8 @@
  "musica": {
   "prompt": "quirky suspenseful documentary underscore, pizzicato strings, buzzing synth texture, light percussion, curious and slightly dark mood, building tension, instrumental",
   "bpm": 104,
-  "seed": 41
+  "seed": 41,
+  "elegida": "m_1"
  },
  "fuentes": [
   "OMS, Informe mundial sobre el paludismo 2024: ~597.000 muertes en 2023, mayoría niños <5 años en África",
@@ -106,5 +107,105 @@
   "~3.500 especies de mosquitos",
   "Nature 2010, 'A world without mosquitoes' (Ártico, aves, polinización de orquídeas)",
   "Oxitec / Target Malaria: mosquitos modificados"
- ]
+ ],
+ "anim_sfx": {
+  "golpes": [
+   [
+    0,
+    "mosquitos"
+   ],
+   [
+    1,
+    "mortal"
+   ],
+   [
+    2,
+    "600.000"
+   ],
+   [
+    3,
+    "hembras"
+   ],
+   [
+    5,
+    "3.500"
+   ],
+   [
+    6,
+    "dinosaurios"
+   ],
+   [
+    7,
+    "salvarian"
+   ],
+   [
+    9,
+    "aves"
+   ],
+   [
+    12,
+    "modificados"
+   ],
+   [
+    13,
+    "ficcion"
+   ]
+  ],
+  "etiquetas": [
+   [
+    3,
+    "sangre"
+   ],
+   [
+    8,
+    "peces"
+   ],
+   [
+    8,
+    "ranas"
+   ],
+   [
+    8,
+    "libelulas"
+   ],
+   [
+    8,
+    "pajaros"
+   ],
+   [
+    8,
+    "murcielagos"
+   ],
+   [
+    9,
+    "artico"
+   ],
+   [
+    10,
+    "orquideas"
+   ],
+   [
+    11,
+    "insectos"
+   ],
+   [
+    14,
+    "dimelo"
+   ]
+  ],
+  "ticks": [
+   [
+    2,
+    "600.000",
+    10,
+    0.9
+   ],
+   [
+    5,
+    "3.500",
+    8,
+    0.8
+   ]
+  ]
+ }
 }

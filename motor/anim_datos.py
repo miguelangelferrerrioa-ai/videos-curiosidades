@@ -12,6 +12,9 @@ for i, f in enumerate(P['frases']):
     for w in ws:
         if m and w['w'].startswith('.') and m[-1]['w'][-1:].isdigit(): m[-1]['w'] += w['w']; m[-1]['b'] = w['b']
         else: m.append(w)
+    sh = f['show'].split()  # si cuadra palabra a palabra, los subtítulos usan el guion (Whisper oye "tumbido" por "zumbido")
+    if len(sh) == len(m):
+        for w, g in zip(m, sh): w['w'] = g
     fr[-1]['words'] = m
     out.append((t, x)); t += len(x) / sr + GAP
 total = t + 1.6
